@@ -1,3 +1,8 @@
+using GYM.Domain.Entities;
+using GYM_MVC.Data.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 namespace GYM_MVC
 {
     public class Program
@@ -8,6 +13,8 @@ namespace GYM_MVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<GYMContext>(options => options.UseSqlServer(
+               builder.Configuration.GetConnectionString("cs")));
 
             var app = builder.Build();
 
