@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GYM.Domain.Entities
+{
+    public class Trainer : BaseEntity
+    {
+        [MaxLength(30)]
+        public string Name { get; set; }
+
+        [MaxLength(100)]
+        public string Specialty { get; set; }
+
+        [MaxLength(200)]
+        public string? Bio { get; set; }
+
+        [Range(6000, 50000)]
+        public decimal Salary { get; set; }
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+        public virtual ICollection<Member> Members { get; set; }
+        public virtual ICollection<WorkoutPlan> WorkoutPlans { get; set; }
+    }
+}
