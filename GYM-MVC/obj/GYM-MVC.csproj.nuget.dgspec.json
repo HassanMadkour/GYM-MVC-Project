@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj": {}
+    "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj": {
+    "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj",
+        "projectUniqueName": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj",
         "projectName": "GYM-MVC.Core",
-        "projectPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj",
-        "packagesPath": "C:\\Users\\CM\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Core\\obj\\",
+        "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\CM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -79,20 +79,20 @@
         }
       }
     },
-    "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
+    "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj",
+        "projectUniqueName": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj",
         "projectName": "GYM-MVC.Data",
-        "projectPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj",
-        "packagesPath": "C:\\Users\\CM\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Data\\obj\\",
+        "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\CM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -107,8 +107,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj": {
-                "projectPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj"
+              "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj": {
+                "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj"
               }
             }
           }
@@ -164,20 +164,20 @@
         }
       }
     },
-    "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj": {
+    "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
+        "projectUniqueName": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
         "projectName": "GYM-MVC",
-        "projectPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
-        "packagesPath": "C:\\Users\\CM\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC\\obj\\",
+        "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\CM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -192,8 +192,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
-                "projectPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
+              "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
+                "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
               }
             }
           }

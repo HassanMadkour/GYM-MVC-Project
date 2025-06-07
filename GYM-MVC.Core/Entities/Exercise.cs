@@ -20,8 +20,7 @@ namespace GYM.Domain.Entities
     }
     public class Exercise : BaseEntity
     {
-        public int Id { get; set; }
-        [MaxLength(50)]
+        [Required,MaxLength(50)]
         public string Name { get; set; }
         [Range(1, 100)]
         public int Repetitions { get; set; }
@@ -32,7 +31,7 @@ namespace GYM.Domain.Entities
         public DayOfWeek DayOfWeek { get; set; }
 
         [ForeignKey("WorkoutPlan")]
-        public int WorkoutPlanId { get; set; }
+        public int? WorkoutPlanId { get; set; }
         public virtual WorkoutPlan WorkoutPlan { get; set; }
     }
 }
