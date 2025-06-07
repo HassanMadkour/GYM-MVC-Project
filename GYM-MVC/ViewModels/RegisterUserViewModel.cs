@@ -5,6 +5,7 @@ namespace GYM_MVC.ViewModels {
     public class RegisterUserViewModel {
 
         [Required]
+        [Display(Name = "User Name")]
         public string Name { get; set; }
 
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email is not valid")]
@@ -13,8 +14,13 @@ namespace GYM_MVC.ViewModels {
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match")]
         public string ConfirmPassword { get; set; }
     }
 }
