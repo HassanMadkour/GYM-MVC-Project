@@ -9,6 +9,13 @@ namespace GYM_MVC.Core.MapperConf {
         public MapperConfig() {
             CreateMap<ApplicationUser, RegisterMemberViewModel>().AfterMap((src, dist) => {
             });
+            CreateMap<RegisterMemberViewModel, ApplicationUser>().AfterMap((src, dist) => {
+            });
+
+            CreateMap<RegisterMemberViewModel, Member>().AfterMap((src, dist) => {
+            });
+            CreateMap<Member, RegisterMemberViewModel>().AfterMap((src, dist) => {
+            });
         }
     }
 }
