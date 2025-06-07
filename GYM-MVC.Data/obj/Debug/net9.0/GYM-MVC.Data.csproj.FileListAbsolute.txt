@@ -16,3 +16,21 @@ D:\Amin\TestPtoject\GYM-MVC-Project\GYM-MVC.Data\bin\Debug\net9.0\GYM-MVC.Core.p
 D:\Amin\TestPtoject\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.csproj.AssemblyReference.cache
 D:\Amin\TestPtoject\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC..AFD7FE20.Up2Date
 D:\Amin\TestPtoject\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.genruntimeconfig.cache
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\bin\Debug\net9.0\GYM-MVC.Data.deps.json
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\bin\Debug\net9.0\GYM-MVC.Data.runtimeconfig.json
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\bin\Debug\net9.0\GYM-MVC.Data.dll
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\bin\Debug\net9.0\GYM-MVC.Data.pdb
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\bin\Debug\net9.0\GYM-MVC.Core.dll
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\bin\Debug\net9.0\GYM-MVC.Core.pdb
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.csproj.AssemblyReference.cache
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.AssemblyInfoInputs.cache
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.AssemblyInfo.cs
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.csproj.CoreCompileInputs.cache
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.sourcelink.json
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC..AFD7FE20.Up2Date
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.dll
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\refint\GYM-MVC.Data.dll
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.pdb
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\GYM-MVC.Data.genruntimeconfig.cache
+C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Data\obj\Debug\net9.0\ref\GYM-MVC.Data.dll

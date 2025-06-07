@@ -10,6 +10,7 @@ namespace GYM.Domain.Entities
 {
     public class WorkoutPlan : BaseEntity
     {
+        public int Id { get; set; }
         [MaxLength(100)]
         public string Name { get; set; }
         [MaxLength(500)]
@@ -19,11 +20,11 @@ namespace GYM.Domain.Entities
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
 
-        public int MemberId { get; set; }
+        public string MemberId { get; set; }
         [ForeignKey("MemberId")]
         public virtual Member Member { get; set; }
 
-        public int TrainerId { get; set; }
+        public string TrainerId { get; set; }
         [ForeignKey("TrainerId")]
         public virtual Trainer Trainer { get; set; }
 

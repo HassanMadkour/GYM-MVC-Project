@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y45nTM8Kizw=",
+  "dgSpecHash": "VpcGPNF3Fxc=",
   "success": true,
-  "projectFilePath": "D:\\Amin\\TestPtoject\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
+  "projectFilePath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CM\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\CM\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

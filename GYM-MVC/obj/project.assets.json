@@ -4928,11 +4928,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Amin\\TestPtoject\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
+      "projectUniqueName": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
       "projectName": "GYM-MVC",
-      "projectPath": "D:\\Amin\\TestPtoject\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
+      "projectPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
       "packagesPath": "C:\\Users\\CM\\.nuget\\packages\\",
-      "outputPath": "D:\\Amin\\TestPtoject\\GYM-MVC-Project\\GYM-MVC\\obj\\",
+      "outputPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4953,8 +4953,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Amin\\TestPtoject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
-              "projectPath": "D:\\Amin\\TestPtoject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
+            "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
+              "projectPath": "C:\\Users\\CM\\Desktop\\New folder\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
             }
           }
         }

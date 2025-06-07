@@ -20,6 +20,7 @@ namespace GYM.Domain.Entities
     }
     public class Exercise : BaseEntity
     {
+        public int Id { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
         [Range(1, 100)]

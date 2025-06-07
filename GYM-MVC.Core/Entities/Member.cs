@@ -10,6 +10,8 @@ namespace GYM.Domain.Entities
 {
     public class Member : BaseEntity
     {
+        [Key]
+        public string UserId { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
         [Range(12,70)]
@@ -26,13 +28,12 @@ namespace GYM.Domain.Entities
         [Range(0, 24)]
         public int SleepHours { get; set; }
         public string AvailableDays { get; set; }
-    
-        public string UserId { get; set; }
+       
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
        
-        public int? TrainerId { get; set; }
+        public string? TrainerId { get; set; }
         [ForeignKey("TrainerId")]
         public virtual Trainer Trainer { get; set; }
 
