@@ -56,8 +56,8 @@ namespace GYM_MVC.Controllers {
                 IdentityResult result = _userManager.CreateAsync(user, registerMemberViewModel.Password).Result;
                 if (result.Succeeded) {
                     signInManager.SignInAsync(user, false);
+                    return View("Index", "Home");
                 }
-                return View("Register", registerMemberViewModel);
             }
             return RedirectToAction("Register", registerMemberViewModel);
         }
