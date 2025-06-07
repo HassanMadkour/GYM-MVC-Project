@@ -1,26 +1,45 @@
+.vs/# Visual Studio
 ## Ignore Visual Studio files
 .vs/
 *.user
 *.suo
 
-## Ignore build results
+# Build results
 bin/
 obj/
 
-## Ignore Rider and ReSharper
+# Rider / Resharper
 .idea/
 *.DotSettings.user
 
-## Ignore NuGet packages
+# VS Code settings
+.vscode/
+
+# NuGet
 *.nupkg
 packages/
 
-## Ignore logs
+# Logs
 *.log
 
-## Ignore temporary files
+# Temporary
 *.tmp
+*.temp
 
-## Ignore IIS Express settings
-.vs/config/
-GYM-MVC/appsetting.json
+# ASP.NET secrets & local settings
+**/secrets.json
+appsettings.Development.json
+appsettings.Local.json
+Properties/launchSettings.json
+
+# Media / large files (optional)
+*.mp4
+*.zip
+*.rar
+*.bak
+*.psd
+
+# Test files
+TestResults/
+*.coverage
+*.coveragexml
