@@ -1,7 +1,9 @@
 using GYM.Domain.Entities;
+using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.MapperConf;
 using GYM_MVC.Data.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace GYM_MVC {
@@ -16,6 +18,7 @@ namespace GYM_MVC {
             builder.Services.AddControllersWithViews();
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
                 (options) => {
+                    options.SignIn.RequireConfirmedEmail = true;
                     options.Password.RequireDigit = true;
                     options.Password.RequireLowercase = true;
                     options.Password.RequireUppercase = true;
@@ -23,6 +26,7 @@ namespace GYM_MVC {
                     options.Password.RequiredLength = 6;
                 }
                 ).AddEntityFrameworkStores<GYMContext>();
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
             builder.Services.AddDbContext<GYMContext>(options => options.UseSqlServer(
                builder.Configuration.GetConnectionString("cs")));
             builder.Services.AddAutoMapper(typeof(MapperConfig));
