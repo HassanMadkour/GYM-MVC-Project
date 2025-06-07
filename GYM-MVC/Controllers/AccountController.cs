@@ -47,6 +47,10 @@ namespace GYM_MVC.Controllers {
             if (ModelState.IsValid) {
                 ApplicationUser user = mapper.Map<RegisterMemberViewModel, ApplicationUser>(registerMemberViewModel);
                 Member member = mapper.Map<RegisterMemberViewModel, Member>(registerMemberViewModel);
+                IdentityResult result = _userManager.CreateAsync(user, registerMemberViewModel.Password).Result;
+                if (result.Succeeded) {
+                    signInManager.SignInAsync(user, false);
+                }
                 return View("Register", registerMemberViewModel);
             }
             return RedirectToAction("Register", registerMemberViewModel);

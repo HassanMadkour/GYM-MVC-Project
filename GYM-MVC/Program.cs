@@ -1,4 +1,5 @@
 using GYM.Domain.Entities;
+using GYM_MVC.Core.MapperConf;
 using GYM_MVC.Data.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,8 +19,7 @@ namespace GYM_MVC {
 
             builder.Services.AddDbContext<GYMContext>(options => options.UseSqlServer(
                builder.Configuration.GetConnectionString("cs")));
-    
-
+            builder.Services.AddAutoMapper(typeof(MapperConfig));
 
             var app = builder.Build();
 
