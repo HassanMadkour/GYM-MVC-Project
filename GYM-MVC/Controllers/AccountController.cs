@@ -11,11 +11,11 @@ namespace GYM_MVC.Controllers {
     public class AccountController : Controller {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> signInManager;
-        private IMapper mapper;
+        private Mapper mapper;
 
         public AccountController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IMapper mapper) {
+            Mapper mapper) {
             this._userManager = userManager;
             this.signInManager = signInManager;
             this.mapper = mapper;

@@ -1,13 +1,9 @@
-<<<<<<< HEAD
 .vs/# Visual Studio
-=======
 ## Ignore Visual Studio files
->>>>>>> 9f100ca8e5a885006604263871c6664e096f63f8
 .vs/
 *.user
 *.suo
 
-<<<<<<< HEAD
 # Build results
 bin/
 obj/
@@ -47,26 +43,4 @@ Properties/launchSettings.json
 TestResults/
 *.coverage
 *.coveragexml
-=======
-## Ignore build results
-bin/
-obj/
 
-## Ignore Rider and ReSharper
-.idea/
-*.DotSettings.user
-
-## Ignore NuGet packages
-*.nupkg
-packages/
-
-## Ignore logs
-*.log
-
-## Ignore temporary files
-*.tmp
-
-## Ignore IIS Express settings
-.vs/config/
-GYM-MVC/appsetting.json
->>>>>>> 9f100ca8e5a885006604263871c6664e096f63f8
