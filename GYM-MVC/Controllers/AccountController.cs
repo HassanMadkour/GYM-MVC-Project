@@ -20,7 +20,14 @@ namespace GYM_MVC.Controllers {
             this.mapper = mapper;
         }
 
-        public async Task<IActionResult> Login(LoginUserViewModel loginUserViewModel) {
+        [HttpGet]
+        public IActionResult Login() {
+            return View("Login");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LoginTheUser(LoginUserViewModel loginUserViewModel) {
             if (ModelState.IsValid) {
                 ApplicationUser user = await _userManager.FindByNameAsync(loginUserViewModel.UserName);
                 if (user != null) {
