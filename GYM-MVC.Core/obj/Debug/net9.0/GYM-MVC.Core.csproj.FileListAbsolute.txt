@@ -24,3 +24,16 @@ C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM
 C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\refint\GYM-MVC.Core.dll
 C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.pdb
 C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\ref\GYM-MVC.Core.dll
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\bin\Debug\net9.0\GYM-MVC.Core.deps.json
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\bin\Debug\net9.0\GYM-MVC.Core.dll
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\bin\Debug\net9.0\GYM-MVC.Core.pdb
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.csproj.AssemblyReference.cache
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.AssemblyInfoInputs.cache
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.AssemblyInfo.cs
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.csproj.CoreCompileInputs.cache
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.sourcelink.json
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.dll
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\refint\GYM-MVC.Core.dll
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.pdb
+E:\dotNetProjects\GYM-MVC\GYM-MVC.Core\obj\Debug\net9.0\ref\GYM-MVC.Core.dll

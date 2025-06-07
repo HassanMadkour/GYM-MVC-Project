@@ -1,5 +1,6 @@
 ﻿using GYM.Domain.Entities;
 using GYM_MVC.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,12 +30,22 @@ namespace GYM_MVC.Controllers {
             return View("Login", loginUserViewModel);
         }
 
-        public IActionResult Register() {
-            return View();
+        [HttpGet]
+        public IActionResult Register(RegisterMemberViewModel registerMemberViewModel) {
+            return View("Register", registerMemberViewModel);
         }
 
-        public IActionResult Logout() {
-            return View();
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Register(RegisterMemberViewModel registerMemberViewModel) {
+            if (ModelState.IsValid) {
+            }
+            return RedirectToAction("Register", registerMemberViewModel);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logout() {
+            await signInManager.SignOutAsync();
+            return View("Login");
         }
 
         public IActionResult ForgetPassword() {
