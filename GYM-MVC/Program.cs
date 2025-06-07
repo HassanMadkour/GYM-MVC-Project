@@ -15,7 +15,7 @@ namespace GYM_MVC {
             builder.Services.AddControllersWithViews();
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
                 (options) => {
-                    options.Password.RequireDigit = false;
+                    options.Password.RequireDigit = true;
                     options.Password.RequireLowercase = true;
                     options.Password.RequireUppercase = true;
                     options.Password.RequireNonAlphanumeric = true;
