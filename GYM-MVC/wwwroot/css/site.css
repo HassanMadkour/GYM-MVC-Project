@@ -10,19 +10,16 @@
     }
 }
 
-
 .register-page {
-    background: url('/images/main.jpg') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    width: 100vw;
+    padding-top: 80px; 
     display: flex;
-    margin-top: 40px;
     justify-content: center;
     align-items: center;
-    padding: 40px 0px;
-    position: relative;
+    min-height: calc(100vh - 80px); 
+    background: url('/images/main.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
+
 html, body {
     margin: 0;
     padding: 0;
@@ -37,7 +34,7 @@ html, body {
     -webkit-backdrop-filter: blur(12px);
     border-radius: 20px;
     padding: 30px;
-    margin-top: 60px;
+    margin-top: 0px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 600px;

@@ -1070,4 +1070,4 @@ F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\bin\Debug\net9.0\ru\Microsoft.CodeAna
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
-F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\compressed\hi8kq7elbq-eyh45p3ibi.gz
+F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\compressed\hi8kq7elbq-91j8eh8jhr.gz
