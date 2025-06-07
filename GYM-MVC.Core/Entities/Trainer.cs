@@ -10,6 +10,8 @@ namespace GYM.Domain.Entities
 {
     public class Trainer : BaseEntity
     {
+        [Key]
+        public string UserId { get; set; }
         [MaxLength(30)]
         public string Name { get; set; }
 
@@ -21,7 +23,7 @@ namespace GYM.Domain.Entities
 
         [Range(6000, 50000)]
         public decimal Salary { get; set; }
-        public string UserId { get; set; }
+   
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
