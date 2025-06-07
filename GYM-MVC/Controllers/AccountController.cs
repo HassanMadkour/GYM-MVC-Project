@@ -1,4 +1,5 @@
-﻿using GYM.Domain.Entities;
+﻿using AutoMapper;
+using GYM.Domain.Entities;
 using GYM_MVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,10 +11,14 @@ namespace GYM_MVC.Controllers {
     public class AccountController : Controller {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> signInManager;
+        private Mapper mapper;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) {
+        public AccountController(UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            Mapper mapper) {
             this._userManager = userManager;
             this.signInManager = signInManager;
+            this.mapper = mapper;
         }
 
         public async Task<IActionResult> Login(LoginUserViewModel loginUserViewModel) {
@@ -31,14 +36,17 @@ namespace GYM_MVC.Controllers {
             return View("Login", loginUserViewModel);
         }
 
-       [HttpGet]
-        public IActionResult Register(RegisterMemberViewModel registerMemberViewModel) {
-            return View("Register",  registerMemberViewModel);
+        [HttpGet]
+        public IActionResult Register() {
+            return View("Register");
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Register(RegisterMemberViewModel registerMemberViewModel) {
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RegisterTheMember(RegisterMemberViewModel registerMemberViewModel) {
             if (ModelState.IsValid) {
+                ApplicationUser user = mapper.Map<RegisterMemberViewModel, ApplicationUser>(registerMemberViewModel);
+                Member member = mapper.Map<RegisterMemberViewModel, Member>(registerMemberViewModel);
                 return View("Register", registerMemberViewModel);
             }
             return RedirectToAction("Register", registerMemberViewModel);
