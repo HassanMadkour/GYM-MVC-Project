@@ -14,7 +14,7 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-collapse collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Home</a>
@@ -32,10 +32,10 @@
 
 <div class="register-page" >
     <div class="blur-overlay text-dark">
-    <h2 class="text-center mb-4 text-dark">Register Member</h2>
+    <h2 class="text-dark mb-4 text-center">Register Member</h2>
 
     <form asp-action="RegisterTheMember">
-        <div asp-validation-summary="ModelOnly" class="text-danger col-md-6"></div>
+        <div asp-validation-summary="All" class="text-danger col-md-6"></div>
             <div class="row">
             <div class="col-md-6">
             <label asp-for="MemberName" class="form-label"></label>
@@ -121,7 +121,7 @@
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
 
-                <div class="col-md-12 mt-4 d-flex justify-content-center">
+                <div class="col-md-12 d-flex justify-content-center mt-4">
                     <input type="submit" value="Register" class="btn btn-primary w-50" />
         </div>
     </form>

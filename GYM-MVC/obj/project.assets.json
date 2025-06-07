@@ -703,15 +703,6 @@
           }
         }
       },
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.Razor.Language/6.0.24": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
-=======
       "Microsoft.AspNetCore.Identity.UI/9.0.5": {
         "type": "package",
         "dependencies": {
@@ -736,7 +727,15 @@
         },
         "buildMultiTargeting": {
           "buildMultiTargeting/Microsoft.AspNetCore.Identity.UI.targets": {}
->>>>>>> 4913eb35ae660bbde942bd0019ab181c17362c21
+        }
+      },
+      "Microsoft.AspNetCore.Razor.Language/6.0.24": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
         }
       },
       "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
@@ -3868,27 +3867,15 @@
         "microsoft.aspnetcore.identity.entityframeworkcore.nuspec"
       ]
     },
-<<<<<<< HEAD
-    "Microsoft.AspNetCore.Razor.Language/6.0.24": {
-      "sha512": "kBL6ljTREp/3fk8EKN27mrPy3WTqWUjiqCkKFlCKHUKRO3/9rAasKizX3vPWy4ZTcNsIPmVWUHwjDFmiW4MyNA==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.razor.language/6.0.24",
-=======
     "Microsoft.AspNetCore.Identity.UI/9.0.5": {
       "sha512": "pQgreCvNhMrnigpb1F0vIdPD7bmTRwWORjQOTu4PUJsyLq3YCV8LTllvGtU9kJnlzAnbVpjrEKscSIlU4VTNzg==",
       "type": "package",
       "path": "microsoft.aspnetcore.identity.ui/9.0.5",
->>>>>>> 4913eb35ae660bbde942bd0019ab181c17362c21
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
-<<<<<<< HEAD
-        "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll",
-        "microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
-        "microsoft.aspnetcore.razor.language.nuspec"
-=======
         "build/Microsoft.AspNetCore.Identity.UI.props",
         "build/Microsoft.AspNetCore.Identity.UI.targets",
         "build/Microsoft.AspNetCore.StaticWebAssets.V4.endpoints.targets",
@@ -4001,7 +3988,20 @@
         "staticwebassets/V5/lib/jquery/dist/jquery.slim.js",
         "staticwebassets/V5/lib/jquery/dist/jquery.slim.min.js",
         "staticwebassets/V5/lib/jquery/dist/jquery.slim.min.map"
->>>>>>> 4913eb35ae660bbde942bd0019ab181c17362c21
+      ]
+    },
+    "Microsoft.AspNetCore.Razor.Language/6.0.24": {
+      "sha512": "kBL6ljTREp/3fk8EKN27mrPy3WTqWUjiqCkKFlCKHUKRO3/9rAasKizX3vPWy4ZTcNsIPmVWUHwjDFmiW4MyNA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.razor.language/6.0.24",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll",
+        "microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
+        "microsoft.aspnetcore.razor.language.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
@@ -8126,23 +8126,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Rama2\\.nuget\\packages\\": {},
+    "C:\\Users\\hassa\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
+      "projectUniqueName": "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC\\GYM-MVC.csproj",
       "projectName": "GYM-MVC",
-      "projectPath": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
-      "packagesPath": "C:\\Users\\Rama2\\.nuget\\packages\\",
-      "outputPath": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\",
+      "projectPath": "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC\\GYM-MVC.csproj",
+      "packagesPath": "C:\\Users\\hassa\\.nuget\\packages\\",
+      "outputPath": "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Rama2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hassa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8157,8 +8157,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
-              "projectPath": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
+            "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
+              "projectPath": "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
             }
           }
         }
@@ -8173,7 +8173,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -8209,7 +8209,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

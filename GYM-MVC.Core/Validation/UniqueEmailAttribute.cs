@@ -8,6 +8,7 @@ namespace GYM_MVC.Core.Validation {
     public class UniqueEmailAttribute : ValidationAttribute {
 
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext) {
+            if (value == null) return ValidationResult.Success;
             UserManager<ApplicationUser> _userManager = validationContext.GetService<UserManager<ApplicationUser>>()!;
 
             var result = _userManager.FindByEmailAsync(value!.ToString()!).Result;
