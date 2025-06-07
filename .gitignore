@@ -1,1 +1,26 @@
+## Ignore Visual Studio files
 .vs/
+*.user
+*.suo
+
+## Ignore build results
+bin/
+obj/
+
+## Ignore Rider and ReSharper
+.idea/
+*.DotSettings.user
+
+## Ignore NuGet packages
+*.nupkg
+packages/
+
+## Ignore logs
+*.log
+
+## Ignore temporary files
+*.tmp
+
+## Ignore IIS Express settings
+.vs/config/
+GYM-MVC/appsetting.json

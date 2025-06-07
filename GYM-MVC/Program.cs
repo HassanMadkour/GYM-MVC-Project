@@ -12,7 +12,7 @@ namespace GYM_MVC {
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<GYMContext>();
             builder.Services.AddDbContext<GYMContext>(options => options.UseSqlServer(
                builder.Configuration.GetConnectionString("cs")));
 

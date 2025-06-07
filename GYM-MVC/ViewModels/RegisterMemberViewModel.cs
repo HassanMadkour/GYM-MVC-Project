@@ -10,6 +10,7 @@ namespace GYM_MVC.ViewModels {
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
 
+        [Display(Name = "Marital Status")]
         public string MaterialStatus { get; set; }
 
         [Range(30, 300)]
@@ -24,10 +25,12 @@ namespace GYM_MVC.ViewModels {
         [MaxLength(200)]
         public string Injuries { get; set; }
 
-        [Range(0, 24)]
+        [Range(0, 24), Display(Name = "Sleep Hours")]
         public int SleepHours { get; set; }
 
         [Display(Name = "Available Days")]
         public int AvailableDays { get; set; }
+
+        public List<string> materialStatuseLists = new List<string>() { "Single", "Married" };
     }
 }
