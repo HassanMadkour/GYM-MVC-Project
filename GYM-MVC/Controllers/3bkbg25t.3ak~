@@ -3,7 +3,6 @@ using GYM.Domain.Entities;
 using GYM_MVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers {
@@ -12,17 +11,13 @@ namespace GYM_MVC.Controllers {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> signInManager;
         private IMapper mapper;
-        private IEmailSender emailSender;
 
         public AccountController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IMapper mapper,
-            IEmailSender emailSender
-            ) {
+            IMapper mapper) {
             this._userManager = userManager;
             this.signInManager = signInManager;
             this.mapper = mapper;
-            this.emailSender = emailSender;
         }
 
         [HttpGet]
@@ -62,26 +57,13 @@ namespace GYM_MVC.Controllers {
                 if (result.Succeeded) {
                     Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
                     string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme);
-                    await emailSender.SendEmailAsync(user.Email, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
-
+                    await _userManager.SetEmailAsync(user, user.Email);
+                    await signInManager.SignInAsync(user, false);
                     return View("Index", "Home");
                 }
             }
             ModelState.AddModelError("validation", "Invalid User");
             return RedirectToAction("Register", registerMemberViewModel);
-        }
-
-        public async Task<IActionResult> ConfirmEmail(string userId, string code) {
-            ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
-            if (user == null) {
-                return NotFound();
-            }
-            var result = await _userManager.ConfirmEmailAsync(user, code);
-            if (result.Succeeded) {
-                signInManager.SignInAsync(user, false);
-                return View("Index", "Home");
-            }
-            return View("Error");
         }
 
         [Authorize]
@@ -90,53 +72,12 @@ namespace GYM_MVC.Controllers {
             return View("Login");
         }
 
-        [HttpGet]
         public IActionResult ForgetPassword() {
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ForgetPassword(ForgotPasswordViewModel forgotPasswordViewModel) {
-            if (ModelState.IsValid) {
-                ApplicationUser user = await _userManager.FindByEmailAsync(forgotPasswordViewModel.Email);
-                if (user != null) {
-                    string code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                    string callbackUrl = Url.Action("ResetPassword", "Account", new { email = user.Email, code = code }, Request.Scheme);
-                    await emailSender.SendEmailAsync(forgotPasswordViewModel.Email, "Reset your password", "Please reset your password by clicking this link: <a href=\"" + callbackUrl + "\">Reset</a>");
-                }
-            }
-            return View("Index", "Home");
-        }
-
-        [HttpGet]
-        public IActionResult ResetPassword(string token, string email) {
-            if (token == null || email == null)
-                return RedirectToAction("Index", "Home");
-
-            return View(new ResetPasswordViewModel { Code = token, Email = email });
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model) {
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user == null) {
-                return NotFound();
-            }
-
-            var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
-            if (result.Succeeded) {
-                return RedirectToAction("ResetPasswordConfirmation");
-            }
-
-            foreach (var error in result.Errors) {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
-
-            return View(model);
+        public IActionResult ResetPassword() {
+            return View();
         }
     }
 }
