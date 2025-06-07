@@ -3,6 +3,7 @@ using GYM_MVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GYM_MVC.Controllers {
 
@@ -30,14 +31,15 @@ namespace GYM_MVC.Controllers {
             return View("Login", loginUserViewModel);
         }
 
-        [HttpGet]
+       [HttpGet]
         public IActionResult Register(RegisterMemberViewModel registerMemberViewModel) {
-            return View("Register", registerMemberViewModel);
+            return View("Register",  registerMemberViewModel);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Register(RegisterMemberViewModel registerMemberViewModel) {
             if (ModelState.IsValid) {
+                return View("Register", registerMemberViewModel);
             }
             return RedirectToAction("Register", registerMemberViewModel);
         }

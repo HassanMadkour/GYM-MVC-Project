@@ -1,1 +1,44 @@
+.vs/# Visual Studio
 .vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+
+# Rider / Resharper
+.idea/
+*.DotSettings.user
+
+# VS Code settings
+.vscode/
+
+# NuGet
+*.nupkg
+packages/
+
+# Logs
+*.log
+
+# Temporary
+*.tmp
+*.temp
+
+# ASP.NET secrets & local settings
+**/secrets.json
+appsettings.Development.json
+appsettings.Local.json
+Properties/launchSettings.json
+
+# Media / large files (optional)
+*.mp4
+*.zip
+*.rar
+*.bak
+*.psd
+
+# Test files
+TestResults/
+*.coverage
+*.coveragexml
