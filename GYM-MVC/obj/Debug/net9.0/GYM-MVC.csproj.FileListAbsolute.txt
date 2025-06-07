@@ -877,7 +877,6 @@ F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\bin\Debug\net9.0\GYM-MVC.Core.pdb
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\scopedcss\bundle\GYM-MVC.styles.css
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\scopedcss\projectbundle\GYM-MVC.bundle.scp.css
-F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\compressed\hi8kq7elbq-b9sayid5wm.gz
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\compressed\sqmyuw2wj1-61n19gt1b8.gz
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\compressed\2r4ciob4v2-xtxxf3hu2r.gz
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\compressed\kyt4ovw78n-t1cqhe9u97.gz
@@ -1071,3 +1070,4 @@ F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\bin\Debug\net9.0\ru\Microsoft.CodeAna
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\obj\Debug\net9.0\compressed\hi8kq7elbq-eyh45p3ibi.gz

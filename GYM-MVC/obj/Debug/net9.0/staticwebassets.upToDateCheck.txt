@@ -62,6 +62,7 @@ F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\wwwroot\lib\jquery\dist\jquery.slim.m
 F:\iti\MVC\project\GYM-MVC-Project\GYM-MVC\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\main.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
