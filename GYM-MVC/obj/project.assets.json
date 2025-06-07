@@ -703,15 +703,6 @@
           }
         }
       },
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.Razor.Language/6.0.24": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
-=======
       "Microsoft.AspNetCore.Identity.UI/9.0.5": {
         "type": "package",
         "dependencies": {
@@ -736,7 +727,15 @@
         },
         "buildMultiTargeting": {
           "buildMultiTargeting/Microsoft.AspNetCore.Identity.UI.targets": {}
->>>>>>> 4913eb35ae660bbde942bd0019ab181c17362c21
+        }
+      },
+      "Microsoft.AspNetCore.Razor.Language/6.0.24": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
         }
       },
       "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
@@ -3868,27 +3867,15 @@
         "microsoft.aspnetcore.identity.entityframeworkcore.nuspec"
       ]
     },
-<<<<<<< HEAD
-    "Microsoft.AspNetCore.Razor.Language/6.0.24": {
-      "sha512": "kBL6ljTREp/3fk8EKN27mrPy3WTqWUjiqCkKFlCKHUKRO3/9rAasKizX3vPWy4ZTcNsIPmVWUHwjDFmiW4MyNA==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.razor.language/6.0.24",
-=======
     "Microsoft.AspNetCore.Identity.UI/9.0.5": {
       "sha512": "pQgreCvNhMrnigpb1F0vIdPD7bmTRwWORjQOTu4PUJsyLq3YCV8LTllvGtU9kJnlzAnbVpjrEKscSIlU4VTNzg==",
       "type": "package",
       "path": "microsoft.aspnetcore.identity.ui/9.0.5",
->>>>>>> 4913eb35ae660bbde942bd0019ab181c17362c21
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
-<<<<<<< HEAD
-        "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll",
-        "microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
-        "microsoft.aspnetcore.razor.language.nuspec"
-=======
         "build/Microsoft.AspNetCore.Identity.UI.props",
         "build/Microsoft.AspNetCore.Identity.UI.targets",
         "build/Microsoft.AspNetCore.StaticWebAssets.V4.endpoints.targets",
@@ -4001,7 +3988,20 @@
         "staticwebassets/V5/lib/jquery/dist/jquery.slim.js",
         "staticwebassets/V5/lib/jquery/dist/jquery.slim.min.js",
         "staticwebassets/V5/lib/jquery/dist/jquery.slim.min.map"
->>>>>>> 4913eb35ae660bbde942bd0019ab181c17362c21
+      ]
+    },
+    "Microsoft.AspNetCore.Razor.Language/6.0.24": {
+      "sha512": "kBL6ljTREp/3fk8EKN27mrPy3WTqWUjiqCkKFlCKHUKRO3/9rAasKizX3vPWy4ZTcNsIPmVWUHwjDFmiW4MyNA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.razor.language/6.0.24",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll",
+        "microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
+        "microsoft.aspnetcore.razor.language.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/7.0.0": {

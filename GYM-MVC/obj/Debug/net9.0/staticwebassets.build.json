@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "e633bAbp//cDudizf0MkdTVmb+KogthBdJPhvAIWces=",
+  "Hash": "gyueNgHcRyxthkbQnCXGrPWzGKIm17pM8gazn3MskNg=",
   "Source": "GYM-MVC",
   "BasePath": "_content/GYM-MVC",
   "Mode": "Default",
@@ -563,12 +563,12 @@
       "OriginalItemSpec": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-91j8eh8jhr.gz",
+      "Identity": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
       "SourceId": "GYM-MVC",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/GYM-MVC",
-      "RelativePath": "css/site#[.{fingerprint=91j8eh8jhr}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=n3ue60xp3r}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -577,8 +577,8 @@
       "RelatedAsset": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "9v16k5sivh",
-      "Integrity": "C6m8j1aDCo3HGBmsdTn4IkU+iDdzUqS8ZDOezMt0bYM=",
+      "Fingerprint": "ldmz10tc4f",
+      "Integrity": "9zINiOCqqALI5zPcpopKrrsgzFh2LL43QOXS9GliVFI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\css\\site.css"
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "91j8eh8jhr",
-      "Integrity": "o/tZ+RP5aeiWABKhjn9bFdn0g3l7Ug7CQ0IQKyVnQ0Q=",
+      "Fingerprint": "n3ue60xp3r",
+      "Integrity": "46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2749,13 +2749,13 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.91j8eh8jhr.css",
-      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-91j8eh8jhr.gz",
+      "Route": "css/site.css",
+      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001531393568"
+          "Quality": "0.001293661061"
         }
       ],
       "ResponseHeaders": [
@@ -2765,19 +2765,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "652"
+          "Value": "772"
         },
         {
           "Name": "ETag",
-          "Value": "\"C6m8j1aDCo3HGBmsdTn4IkU+iDdzUqS8ZDOezMt0bYM=\""
+          "Value": "\"9zINiOCqqALI5zPcpopKrrsgzFh2LL43QOXS9GliVFI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 22:38:19 GMT"
+          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -2793,26 +2793,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"o/tZ+RP5aeiWABKhjn9bFdn0g3l7Ug7CQ0IQKyVnQ0Q=\""
+          "Value": "W/\"46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "91j8eh8jhr"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-o/tZ+RP5aeiWABKhjn9bFdn0g3l7Ug7CQ0IQKyVnQ0Q="
+          "Value": "sha256-46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM="
         }
       ]
     },
     {
-      "Route": "css/site.91j8eh8jhr.css",
+      "Route": "css/site.css",
       "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2822,7 +2814,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1560"
+          "Value": "2169"
         },
         {
           "Name": "Content-Type",
@@ -2830,11 +2822,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"o/tZ+RP5aeiWABKhjn9bFdn0g3l7Ug7CQ0IQKyVnQ0Q=\""
+          "Value": "\"46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 22:38:19 GMT"
+          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css.gz",
+      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "772"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9zINiOCqqALI5zPcpopKrrsgzFh2LL43QOXS9GliVFI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9zINiOCqqALI5zPcpopKrrsgzFh2LL43QOXS9GliVFI="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.n3ue60xp3r.css",
+      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001293661061"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "772"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9zINiOCqqALI5zPcpopKrrsgzFh2LL43QOXS9GliVFI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n3ue60xp3r"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.n3ue60xp3r.css",
+      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2169"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2844,7 +2981,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "91j8eh8jhr"
+          "Value": "n3ue60xp3r"
         },
         {
           "Name": "label",
@@ -2852,13 +2989,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-o/tZ+RP5aeiWABKhjn9bFdn0g3l7Ug7CQ0IQKyVnQ0Q="
+          "Value": "sha256-46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM="
         }
       ]
     },
     {
-      "Route": "css/site.91j8eh8jhr.css.gz",
-      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-91j8eh8jhr.gz",
+      "Route": "css/site.n3ue60xp3r.css.gz",
+      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2867,7 +3004,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "652"
+          "Value": "772"
         },
         {
           "Name": "Content-Type",
@@ -2875,11 +3012,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"C6m8j1aDCo3HGBmsdTn4IkU+iDdzUqS8ZDOezMt0bYM=\""
+          "Value": "\"9zINiOCqqALI5zPcpopKrrsgzFh2LL43QOXS9GliVFI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 22:38:19 GMT"
+          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2897,7 +3034,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "91j8eh8jhr"
+          "Value": "n3ue60xp3r"
         },
         {
           "Name": "label",
@@ -2905,144 +3042,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-C6m8j1aDCo3HGBmsdTn4IkU+iDdzUqS8ZDOezMt0bYM="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-91j8eh8jhr.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001531393568"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "652"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"C6m8j1aDCo3HGBmsdTn4IkU+iDdzUqS8ZDOezMt0bYM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 22:38:19 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"o/tZ+RP5aeiWABKhjn9bFdn0g3l7Ug7CQ0IQKyVnQ0Q=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-o/tZ+RP5aeiWABKhjn9bFdn0g3l7Ug7CQ0IQKyVnQ0Q="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1560"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"o/tZ+RP5aeiWABKhjn9bFdn0g3l7Ug7CQ0IQKyVnQ0Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 22:38:19 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-o/tZ+RP5aeiWABKhjn9bFdn0g3l7Ug7CQ0IQKyVnQ0Q="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css.gz",
-      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-91j8eh8jhr.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "652"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"C6m8j1aDCo3HGBmsdTn4IkU+iDdzUqS8ZDOezMt0bYM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 22:38:19 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-C6m8j1aDCo3HGBmsdTn4IkU+iDdzUqS8ZDOezMt0bYM="
+          "Value": "sha256-9zINiOCqqALI5zPcpopKrrsgzFh2LL43QOXS9GliVFI="
         }
       ]
     },
