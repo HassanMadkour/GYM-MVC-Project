@@ -4923,23 +4923,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rahma\\.nuget\\packages\\": {},
+    "C:\\Users\\hassa\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "R:\\MVC\\final project\\GYM-MVC\\GYM-MVC.csproj",
+      "projectUniqueName": "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC\\GYM-MVC.csproj",
       "projectName": "GYM-MVC",
-      "projectPath": "R:\\MVC\\final project\\GYM-MVC\\GYM-MVC.csproj",
-      "packagesPath": "C:\\Users\\rahma\\.nuget\\packages\\",
-      "outputPath": "R:\\MVC\\final project\\GYM-MVC\\obj\\",
+      "projectPath": "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC\\GYM-MVC.csproj",
+      "packagesPath": "C:\\Users\\hassa\\.nuget\\packages\\",
+      "outputPath": "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\rahma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hassa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4948,18 +4948,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "R:\\MVC\\final project\\GYM-MVC.Core\\GYM-MVC.Core.csproj": {
-              "projectPath": "R:\\MVC\\final project\\GYM-MVC.Core\\GYM-MVC.Core.csproj"
+            "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC.Core\\GYM-MVC.Core.csproj": {
+              "projectPath": "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC.Core\\GYM-MVC.Core.csproj"
             },
-            "R:\\MVC\\final project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
-              "projectPath": "R:\\MVC\\final project\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
+            "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
+              "projectPath": "E:\\dotNetProjects\\GYM-MVC\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
             }
           }
         }
