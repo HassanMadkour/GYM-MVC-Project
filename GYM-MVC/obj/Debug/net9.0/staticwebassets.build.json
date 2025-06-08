@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zQ0NesTbSlTBYPKUACZsXhIoRUfpiFbe5AzAh1hG5Cw=",
+  "Hash": "XriUopoD7n91y3h+Wr4G28c3GrH5wYaIsVipgel1TE8=",
   "Source": "GYM-MVC",
   "BasePath": "_content/GYM-MVC",
   "Mode": "Default",
@@ -563,12 +563,12 @@
       "OriginalItemSpec": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
+      "Identity": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-lu823ot8f5.gz",
       "SourceId": "GYM-MVC",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/GYM-MVC",
-      "RelativePath": "css/site#[.{fingerprint=n3ue60xp3r}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=lu823ot8f5}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -577,8 +577,8 @@
       "RelatedAsset": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "811jy3p2od",
-      "Integrity": "BBaahDIxrpu0FuBvhuXELcd9uQc98geYh5IX1McfLHU=",
+      "Fingerprint": "sztxs0dshz",
+      "Integrity": "6H3qzr6Mjp2MU4RQoibH5BGIdVU3pvZB/6/Jo4G/HEk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\css\\site.css"
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "n3ue60xp3r",
-      "Integrity": "46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=",
+      "Fingerprint": "lu823ot8f5",
+      "Integrity": "s1O4psSRcjzOZQEJKJQ5Ws9SicK8Qks8lpbitHlxjkU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2750,12 +2750,12 @@
   "Endpoints": [
     {
       "Route": "css/site.css",
-      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
+      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-lu823ot8f5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001291989664"
+          "Quality": "0.001196172249"
         }
       ],
       "ResponseHeaders": [
@@ -2765,15 +2765,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "773"
+          "Value": "835"
         },
         {
           "Name": "ETag",
-          "Value": "\"BBaahDIxrpu0FuBvhuXELcd9uQc98geYh5IX1McfLHU=\""
+          "Value": "\"6H3qzr6Mjp2MU4RQoibH5BGIdVU3pvZB/6/Jo4G/HEk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
+          "Value": "Sun, 08 Jun 2025 10:12:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2793,13 +2793,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=\""
+          "Value": "W/\"s1O4psSRcjzOZQEJKJQ5Ws9SicK8Qks8lpbitHlxjkU=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM="
+          "Value": "sha256-s1O4psSRcjzOZQEJKJQ5Ws9SicK8Qks8lpbitHlxjkU="
         }
       ]
     },
@@ -2814,7 +2814,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2169"
+          "Value": "2380"
         },
         {
           "Name": "Content-Type",
@@ -2822,11 +2822,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=\""
+          "Value": "\"s1O4psSRcjzOZQEJKJQ5Ws9SicK8Qks8lpbitHlxjkU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
+          "Value": "Sun, 08 Jun 2025 10:12:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2836,13 +2836,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM="
+          "Value": "sha256-s1O4psSRcjzOZQEJKJQ5Ws9SicK8Qks8lpbitHlxjkU="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
+      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-lu823ot8f5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2851,7 +2851,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "773"
+          "Value": "835"
         },
         {
           "Name": "Content-Type",
@@ -2859,11 +2859,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BBaahDIxrpu0FuBvhuXELcd9uQc98geYh5IX1McfLHU=\""
+          "Value": "\"6H3qzr6Mjp2MU4RQoibH5BGIdVU3pvZB/6/Jo4G/HEk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
+          "Value": "Sun, 08 Jun 2025 10:12:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2881,18 +2881,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-BBaahDIxrpu0FuBvhuXELcd9uQc98geYh5IX1McfLHU="
+          "Value": "sha256-6H3qzr6Mjp2MU4RQoibH5BGIdVU3pvZB/6/Jo4G/HEk="
         }
       ]
     },
     {
-      "Route": "css/site.n3ue60xp3r.css",
-      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
+      "Route": "css/site.lu823ot8f5.css",
+      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-lu823ot8f5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001291989664"
+          "Quality": "0.001196172249"
         }
       ],
       "ResponseHeaders": [
@@ -2902,15 +2902,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "773"
+          "Value": "835"
         },
         {
           "Name": "ETag",
-          "Value": "\"BBaahDIxrpu0FuBvhuXELcd9uQc98geYh5IX1McfLHU=\""
+          "Value": "\"6H3qzr6Mjp2MU4RQoibH5BGIdVU3pvZB/6/Jo4G/HEk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
+          "Value": "Sun, 08 Jun 2025 10:12:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2930,13 +2930,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=\""
+          "Value": "W/\"s1O4psSRcjzOZQEJKJQ5Ws9SicK8Qks8lpbitHlxjkU=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "n3ue60xp3r"
+          "Value": "lu823ot8f5"
         },
         {
           "Name": "label",
@@ -2944,12 +2944,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM="
+          "Value": "sha256-s1O4psSRcjzOZQEJKJQ5Ws9SicK8Qks8lpbitHlxjkU="
         }
       ]
     },
     {
-      "Route": "css/site.n3ue60xp3r.css",
+      "Route": "css/site.lu823ot8f5.css",
       "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2959,7 +2959,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2169"
+          "Value": "2380"
         },
         {
           "Name": "Content-Type",
@@ -2967,11 +2967,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM=\""
+          "Value": "\"s1O4psSRcjzOZQEJKJQ5Ws9SicK8Qks8lpbitHlxjkU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
+          "Value": "Sun, 08 Jun 2025 10:12:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2981,7 +2981,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "n3ue60xp3r"
+          "Value": "lu823ot8f5"
         },
         {
           "Name": "label",
@@ -2989,13 +2989,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-46W4bWlAnPRKSYryVXqSNZK4bnJC7tg9EYNRooAfSqM="
+          "Value": "sha256-s1O4psSRcjzOZQEJKJQ5Ws9SicK8Qks8lpbitHlxjkU="
         }
       ]
     },
     {
-      "Route": "css/site.n3ue60xp3r.css.gz",
-      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-n3ue60xp3r.gz",
+      "Route": "css/site.lu823ot8f5.css.gz",
+      "AssetFile": "F:\\iti\\MVC\\project\\GYM-MVC-Project\\GYM-MVC\\obj\\Debug\\net9.0\\compressed\\hi8kq7elbq-lu823ot8f5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3004,7 +3004,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "773"
+          "Value": "835"
         },
         {
           "Name": "Content-Type",
@@ -3012,11 +3012,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BBaahDIxrpu0FuBvhuXELcd9uQc98geYh5IX1McfLHU=\""
+          "Value": "\"6H3qzr6Mjp2MU4RQoibH5BGIdVU3pvZB/6/Jo4G/HEk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 07 Jun 2025 23:49:15 GMT"
+          "Value": "Sun, 08 Jun 2025 10:12:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3034,7 +3034,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "n3ue60xp3r"
+          "Value": "lu823ot8f5"
         },
         {
           "Name": "label",
@@ -3042,7 +3042,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-BBaahDIxrpu0FuBvhuXELcd9uQc98geYh5IX1McfLHU="
+          "Value": "sha256-6H3qzr6Mjp2MU4RQoibH5BGIdVU3pvZB/6/Jo4G/HEk="
         }
       ]
     },
