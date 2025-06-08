@@ -192,6 +192,9 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj": {
+                "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj"
+              },
               "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
                 "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
               }

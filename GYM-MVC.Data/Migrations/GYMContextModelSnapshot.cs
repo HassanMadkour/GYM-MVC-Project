@@ -102,7 +102,7 @@ namespace GYM_MVC.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EntryDate")
+                    b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -146,7 +146,7 @@ namespace GYM_MVC.Data.Migrations
                     b.Property<string>("AvailableDays")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EntryDate")
+                    b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("Height")
@@ -199,7 +199,7 @@ namespace GYM_MVC.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<DateTime>("EntryDate")
+                    b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -241,7 +241,7 @@ namespace GYM_MVC.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("EntryDate")
+                    b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")

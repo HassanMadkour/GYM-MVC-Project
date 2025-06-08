@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GYM-MVC.Core\GYM-MVC.Core.csproj" />
     <ProjectReference Include="..\GYM-MVC.Data\GYM-MVC.Data.csproj" />
   </ItemGroup>
 
