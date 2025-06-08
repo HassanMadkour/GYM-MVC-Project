@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>GYM_MVC</RootNamespace>
   </PropertyGroup>
@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GYM-MVC.Core\GYM-MVC.Core.csproj" />
     <ProjectReference Include="..\GYM-MVC.Data\GYM-MVC.Data.csproj" />
   </ItemGroup>
 

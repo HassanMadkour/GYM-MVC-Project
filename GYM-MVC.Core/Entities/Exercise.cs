@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GYM.Domain.Entities {
-
     public enum DayOfWeek {
         Sunday,
         Monday,
@@ -12,11 +11,9 @@ namespace GYM.Domain.Entities {
         Friday,
         Saturday
     }
-
-    public class Exercise : BaseEntity {
-        public int Id { get; set; }
-
-        [MaxLength(50)]
+    public class Exercise : BaseEntity
+    {
+        [Required,MaxLength(50)]
         public string Name { get; set; }
 
         [Range(1, 100)]
@@ -31,8 +28,7 @@ namespace GYM.Domain.Entities {
         public DayOfWeek DayOfWeek { get; set; }
 
         [ForeignKey("WorkoutPlan")]
-        public int WorkoutPlanId { get; set; }
-
+        public int? WorkoutPlanId { get; set; }
         public virtual WorkoutPlan WorkoutPlan { get; set; }
     }
 }
