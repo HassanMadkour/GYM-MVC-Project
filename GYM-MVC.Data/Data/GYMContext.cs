@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GYM_MVC.Data.Data
 {
-    public class GYMContext : IdentityDbContext<ApplicationUser>
+    public class GYMContext : IdentityDbContext<ApplicationUser,IdentityRole<int>,int>
     {
         public GYMContext(DbContextOptions<GYMContext> options) : base(options)
         {

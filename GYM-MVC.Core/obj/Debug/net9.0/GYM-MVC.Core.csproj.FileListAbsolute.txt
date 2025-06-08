@@ -24,3 +24,16 @@ C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM
 C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\refint\GYM-MVC.Core.dll
 C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.pdb
 C:\Users\CM\Desktop\New folder\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\ref\GYM-MVC.Core.dll
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\bin\Debug\net9.0\GYM-MVC.Core.deps.json
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\bin\Debug\net9.0\GYM-MVC.Core.dll
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\bin\Debug\net9.0\GYM-MVC.Core.pdb
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.csproj.AssemblyReference.cache
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.GeneratedMSBuildEditorConfig.editorconfig
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.AssemblyInfoInputs.cache
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.AssemblyInfo.cs
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.csproj.CoreCompileInputs.cache
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.sourcelink.json
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.dll
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\refint\GYM-MVC.Core.dll
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.pdb
+F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\ref\GYM-MVC.Core.dll
