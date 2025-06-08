@@ -35,7 +35,7 @@ namespace GYM_MVC.Controllers {
         public async Task<IActionResult> LoginTheUser(LoginUserViewModel loginUserViewModel) {
             if (ModelState.IsValid) {
                 ApplicationUser user = await _userManager.FindByNameAsync(loginUserViewModel.UserName);
-                if (user != null) {
+                if (user != null && user.EmailConfirmed) {
                     bool result = await _userManager.CheckPasswordAsync(user, loginUserViewModel.Password);
                     if (result) {
                         await signInManager.SignInAsync(user, loginUserViewModel.RememberMe);
@@ -43,7 +43,7 @@ namespace GYM_MVC.Controllers {
                     }
                 }
             }
-            ModelState.AddModelError("validation", "Invalid User");
+            ModelState.AddModelError(string.Empty, "Invalid User");
             return View("Login", loginUserViewModel);
         }
 
@@ -63,13 +63,13 @@ namespace GYM_MVC.Controllers {
                     Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
                     string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme);
                     await emailSender.SendEmailAsync(user.Email, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
-
-                    return View("Index", "Home");
+                    return View("confirmEmail", "Account");
+                } else {
+                    foreach (var error in result.Errors) {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
             }
-
-            ModelState.AddModelError(string.Empty, "Invalid User");
-
             return View("Register", registerMemberViewModel);
         }
 
@@ -81,7 +81,7 @@ namespace GYM_MVC.Controllers {
             var result = await _userManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded) {
                 signInManager.SignInAsync(user, false);
-                return View("Index", "Home");
+                return RedirectToAction("Index", "Home");
             }
             return View("Error");
         }
@@ -107,23 +107,25 @@ namespace GYM_MVC.Controllers {
                     await emailSender.SendEmailAsync(forgotPasswordViewModel.Email, "Reset your password", "Please reset your password by clicking this link: <a href=\"" + callbackUrl + "\">Reset</a>");
                 }
             }
-            return View("Index", "Home");
+            return View("confirmEmail");
         }
 
         [HttpGet]
-        public IActionResult ResetPassword(string token, string email) {
-            if (token == null || email == null)
+        public IActionResult ResetPassword(string code, string email) {
+            if (code == null || email == null)
                 return RedirectToAction("Index", "Home");
 
-            return View(new ResetPasswordViewModel { Code = token, Email = email });
+            return View(new ResetPasswordViewModel { Code = code, Email = email });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model) {
-            if (!ModelState.IsValid)
-                return View(model);
+            if (!ModelState.IsValid) {
+                ModelState.AddModelError(string.Empty, ModelState.Values.First().Errors.First().ErrorMessage);
 
+                return View(model);
+            }
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null) {
                 return NotFound();
@@ -131,7 +133,7 @@ namespace GYM_MVC.Controllers {
 
             var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
             if (result.Succeeded) {
-                return RedirectToAction("ResetPasswordConfirmation");
+                return RedirectToAction("Index", "Home");
             }
 
             foreach (var error in result.Errors) {

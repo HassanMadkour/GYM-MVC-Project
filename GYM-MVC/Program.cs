@@ -13,7 +13,7 @@ namespace GYM_MVC {
         public static void Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
 
-         
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
@@ -25,7 +25,8 @@ namespace GYM_MVC {
                     options.Password.RequireNonAlphanumeric = true;
                     options.Password.RequiredLength = 6;
                 }
-                ).AddEntityFrameworkStores<GYMContext>();
+                ).AddEntityFrameworkStores<GYMContext>().AddDefaultTokenProviders();
+            builder.Services.Configure<EmailConfiguration>(builder.Configuration.GetSection("EmailConfiguration"));
             builder.Services.AddTransient<IEmailSender, EmailSender>();
             builder.Services.AddDbContext<GYMContext>(options => options.UseSqlServer(
                builder.Configuration.GetConnectionString("cs")));
@@ -48,7 +49,7 @@ namespace GYM_MVC {
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Account}/{action=Register}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

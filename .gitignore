@@ -346,3 +346,4 @@ FodyWeavers.xsd
 
 obj/
 bin/
+GYM-MVC/appsettings.json

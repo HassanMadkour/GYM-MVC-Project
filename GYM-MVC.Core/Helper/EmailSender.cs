@@ -1,22 +1,33 @@
-﻿using Microsoft.AspNetCore.Identity.UI.Services;
+﻿using GYM_MVC.Core.Helper;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Options;
+using System.Net;
 using System.Net.Mail;
 
-namespace GYM_MVC.Core.Helper {
+public class EmailSender : IEmailSender {
+    private readonly EmailConfiguration _emailConfig;
 
-    public class EmailSender : IEmailSender {
+    public EmailSender(IOptions<EmailConfiguration> emailConfig) {
+        _emailConfig = emailConfig.Value;
+    }
 
-        public Task SendEmailAsync(string receiverEmail, string subject, string htmlMessage) {
-            var stmpClient = new SmtpClient("stmp.gmail.com") {
-                Port = 587,
-                Credentials = new System.Net.NetworkCredential("Email", "password"),
-                EnableSsl = true
-            };
-            var mailMesseage = new MailMessage("Email", receiverEmail) {
+    public async Task SendEmailAsync(string email, string subject, string htmlMessage) {
+        using (var client = new SmtpClient(_emailConfig.SmtpServer, _emailConfig.SmtpPort)) {
+            client.EnableSsl = _emailConfig.EnableSsl;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential(
+                _emailConfig.SmtpUsername,
+                _emailConfig.SmtpPassword);
+
+            var mailMessage = new MailMessage {
+                From = new MailAddress(_emailConfig.FromAddress, _emailConfig.FromName),
                 Subject = subject,
                 Body = htmlMessage,
                 IsBodyHtml = true
             };
-            return stmpClient.SendMailAsync(mailMesseage);
+            mailMessage.To.Add(email);
+
+            await client.SendMailAsync(mailMessage);
         }
     }
 }

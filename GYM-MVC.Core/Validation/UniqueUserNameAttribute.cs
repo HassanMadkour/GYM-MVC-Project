@@ -13,7 +13,7 @@ namespace GYM_MVC.Core.Validation {
 
             var result = _userManager.FindByNameAsync(value!.ToString()).Result;
 
-            if (result != null)
+            if (result == null)
                 return ValidationResult.Success;
             return new ValidationResult(" UserName already exists");
         }
