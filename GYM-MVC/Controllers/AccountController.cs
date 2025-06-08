@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GYM_MVC.Controllers {
 
@@ -68,8 +67,10 @@ namespace GYM_MVC.Controllers {
                     return View("Index", "Home");
                 }
             }
-            ModelState.AddModelError("validation", "Invalid User");
-            return RedirectToAction("Register", registerMemberViewModel);
+
+            ModelState.AddModelError(string.Empty, "Invalid User");
+
+            return View("Register", registerMemberViewModel);
         }
 
         public async Task<IActionResult> ConfirmEmail(string userId, string code) {
