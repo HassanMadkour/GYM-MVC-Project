@@ -1,4 +1,7 @@
 using GYM.Domain.Entities;
+using GYM_MVC.Core.Helper;
+using GYM_MVC.Core.IUnitOfWorks;
+using GYM_MVC.Core.MapperConf;
 using GYM_MVC.Data.Data;
 using GYM_MVC.Data.UnitOfWorks;
 using Microsoft.AspNetCore.Identity;
@@ -6,13 +9,15 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace GYM_MVC {
+
     public class Program {
+
         public static void Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>(
                 (options) => {
                     options.SignIn.RequireConfirmedEmail = true;
                     options.Password.RequireDigit = true;

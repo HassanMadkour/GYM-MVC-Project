@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GYM.Domain.Entities;
+using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,20 +14,26 @@ namespace GYM_MVC.Controllers {
         private SignInManager<ApplicationUser> signInManager;
         private IMapper mapper;
         private IEmailSender emailSender;
+        private readonly IUnitOfWork unitOfWork;
 
         public AccountController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IMapper mapper,
-            IEmailSender emailSender
+            IEmailSender emailSender,
+            IUnitOfWork unitOfWork
             ) {
             this._userManager = userManager;
             this.signInManager = signInManager;
             this.mapper = mapper;
             this.emailSender = emailSender;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public IActionResult Login() {
+            if (User.Identity.IsAuthenticated) {
+                return RedirectToAction("Index", "Home");
+            }
             return View("Login");
         }
 
@@ -60,10 +67,13 @@ namespace GYM_MVC.Controllers {
                 Member member = mapper.Map<RegisterMemberViewModel, Member>(registerMemberViewModel);
                 IdentityResult result = _userManager.CreateAsync(user, registerMemberViewModel.Password).Result;
                 if (result.Succeeded) {
+                    member.Id = user.Id;
+                    await unitOfWork.MemberRepo.Add(member);
+                    await unitOfWork.Save();
                     Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
                     string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme);
                     await emailSender.SendEmailAsync(user.Email, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
-                    return View("confirmEmail", "Account");
+                    return View("confirmEmail");
                 } else {
                     foreach (var error in result.Errors) {
                         ModelState.AddModelError(string.Empty, error.Description);
@@ -73,8 +83,8 @@ namespace GYM_MVC.Controllers {
             return View("Register", registerMemberViewModel);
         }
 
-        public async Task<IActionResult> ConfirmEmail(string userId, string code) {
-            ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
+        public async Task<IActionResult> ConfirmEmail(int userId, string code) {
+            ApplicationUser user = _userManager.FindByIdAsync(userId.ToString()).Result;
             if (user == null) {
                 return NotFound();
             }
