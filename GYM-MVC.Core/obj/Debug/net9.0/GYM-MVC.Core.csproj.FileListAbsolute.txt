@@ -37,3 +37,16 @@ F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GY
 F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\refint\GYM-MVC.Core.dll
 F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.pdb
 F:\My ITI\MVC\EvaluationProject\GYM-MVC-Project\GYM-MVC.Core\obj\Debug\net9.0\ref\GYM-MVC.Core.dll
+R:\MVC\final project\GYM-MVC.Core\bin\Debug\net9.0\GYM-MVC.Core.deps.json
+R:\MVC\final project\GYM-MVC.Core\bin\Debug\net9.0\GYM-MVC.Core.dll
+R:\MVC\final project\GYM-MVC.Core\bin\Debug\net9.0\GYM-MVC.Core.pdb
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.csproj.AssemblyReference.cache
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.GeneratedMSBuildEditorConfig.editorconfig
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.AssemblyInfoInputs.cache
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.AssemblyInfo.cs
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.csproj.CoreCompileInputs.cache
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.sourcelink.json
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.dll
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\refint\GYM-MVC.Core.dll
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\GYM-MVC.Core.pdb
+R:\MVC\final project\GYM-MVC.Core\obj\Debug\net9.0\ref\GYM-MVC.Core.dll

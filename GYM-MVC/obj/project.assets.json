@@ -4923,23 +4923,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Users\\rahma\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
+      "projectUniqueName": "R:\\MVC\\final project\\GYM-MVC\\GYM-MVC.csproj",
       "projectName": "GYM-MVC",
-      "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC\\GYM-MVC.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC\\obj\\",
+      "projectPath": "R:\\MVC\\final project\\GYM-MVC\\GYM-MVC.csproj",
+      "packagesPath": "C:\\Users\\rahma\\.nuget\\packages\\",
+      "outputPath": "R:\\MVC\\final project\\GYM-MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rahma\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4948,17 +4948,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj": {
-              "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Core\\GYM-MVC.Core.csproj"
+            "R:\\MVC\\final project\\GYM-MVC.Core\\GYM-MVC.Core.csproj": {
+              "projectPath": "R:\\MVC\\final project\\GYM-MVC.Core\\GYM-MVC.Core.csproj"
             },
-            "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
-              "projectPath": "F:\\My ITI\\MVC\\EvaluationProject\\GYM-MVC-Project\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
+            "R:\\MVC\\final project\\GYM-MVC.Data\\GYM-MVC.Data.csproj": {
+              "projectPath": "R:\\MVC\\final project\\GYM-MVC.Data\\GYM-MVC.Data.csproj"
             }
           }
         }
@@ -4973,7 +4974,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -5005,7 +5006,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
