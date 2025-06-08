@@ -1,5 +1,7 @@
 using GYM.Domain.Entities;
+using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.Data.Data;
+using GYM_MVC.Data.UnitOfWorks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +17,8 @@ namespace GYM_MVC
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<GYMContext>(options => options.UseSqlServer(
                builder.Configuration.GetConnectionString("cs")));
+
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();
 
