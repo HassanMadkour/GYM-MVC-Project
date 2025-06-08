@@ -235,3 +235,5 @@ Generated_Code/
 
 # Backup & report files from converting old projects
 _Upg_
+appsettings.json
+appsettings.Development.json
