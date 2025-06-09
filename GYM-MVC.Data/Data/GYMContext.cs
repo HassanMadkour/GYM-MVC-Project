@@ -1,4 +1,5 @@
 ﻿using GYM.Domain.Entities;
+using GYM_MVC.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace GYM_MVC.Data.Data
         public DbSet<Trainer> Trainers { get; set; }
         public DbSet<Exercise> Exercise { get; set; }
         public DbSet<WorkoutPlan> Workouts { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

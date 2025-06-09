@@ -29,7 +29,7 @@ namespace GYM_MVC {
                 ).AddEntityFrameworkStores<GYMContext>().AddDefaultTokenProviders();
             builder.Services.Configure<EmailConfiguration>(builder.Configuration.GetSection("EmailConfiguration"));
             builder.Services.AddTransient<IEmailSender, EmailSender>();
-            builder.Services.AddDbContext<GYMContext>(options => options.UseSqlServer(
+            builder.Services.AddDbContext<GYMContext>(options => options.UseLazyLoadingProxies().UseSqlServer(
                builder.Configuration.GetConnectionString("cs")));
             builder.Services.AddAutoMapper(typeof(MapperConfig));
 

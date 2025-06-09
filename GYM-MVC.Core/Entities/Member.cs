@@ -29,6 +29,8 @@ namespace GYM.Domain.Entities {
         public int SleepHours { get; set; }
 
         public string AvailableDays { get; set; }
+        public string ImagePath {  get; set; }
+        public bool IsApproved { get; set; }=false;
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
@@ -38,6 +40,6 @@ namespace GYM.Domain.Entities {
         [ForeignKey("TrainerId")]
         public virtual Trainer Trainer { get; set; }
 
-        public virtual WorkoutPlan WorkoutPlan { get; set; }
+        public virtual ICollection<WorkoutPlan> WorkoutPlan { get; set; }
     }
 }
