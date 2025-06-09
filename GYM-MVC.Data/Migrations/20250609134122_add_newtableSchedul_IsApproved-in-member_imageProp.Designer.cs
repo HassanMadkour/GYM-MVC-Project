@@ -4,6 +4,7 @@ using GYM_MVC.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GYM_MVC.Data.Migrations
 {
     [DbContext(typeof(GYMContext))]
-    partial class GYMContextModelSnapshot : ModelSnapshot
+    [Migration("20250609134122_add_newtableSchedul_IsApproved-in-member_imageProp")]
+    partial class add_newtableSchedul_IsApprovedinmember_imageProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -296,7 +299,9 @@ namespace GYM_MVC.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MemberId");
+                    b.HasIndex("MemberId")
+                        .IsUnique()
+                        .HasFilter("[MemberId] IS NOT NULL");
 
                     b.HasIndex("TrainerId");
 
@@ -505,8 +510,8 @@ namespace GYM_MVC.Data.Migrations
             modelBuilder.Entity("GYM.Domain.Entities.WorkoutPlan", b =>
                 {
                     b.HasOne("GYM.Domain.Entities.Member", "Member")
-                        .WithMany("WorkoutPlan")
-                        .HasForeignKey("MemberId");
+                        .WithOne("WorkoutPlan")
+                        .HasForeignKey("GYM.Domain.Entities.WorkoutPlan", "MemberId");
 
                     b.HasOne("GYM.Domain.Entities.Trainer", "Trainer")
                         .WithMany("WorkoutPlans")
