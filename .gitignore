@@ -344,6 +344,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-obj/
-bin/
+GYM-MVC/obj/
+GYM-MVC/bin/
 GYM-MVC/appsettings.json

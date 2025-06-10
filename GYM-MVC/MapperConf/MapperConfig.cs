@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GYM.Domain.Entities;
-using GYM_MVC.ViewModels;
+using GYM_MVC.ViewModels.AccountViewModels;
+using GYM_MVC.ViewModels.TrainerViewModels;
 
 namespace GYM_MVC.Core.MapperConf {
 
@@ -33,6 +34,9 @@ namespace GYM_MVC.Core.MapperConf {
             CreateMap<LoginUserViewModel, ApplicationUser>().AfterMap((src, dist) => {
                 dist.UserName = src.UserName;
             });
+            CreateMap<Trainer, DisplayTrainerVM>().ReverseMap();
+            CreateMap<Trainer, CreateTrainerVM>().ReverseMap();
+            CreateMap<Trainer, EditTrainerVM>().ReverseMap();
         }
     }
 }
