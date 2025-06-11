@@ -24,6 +24,6 @@ namespace GYM.Domain.Entities {
         [ForeignKey("TrainerId")]
         public virtual Trainer Trainer { get; set; }
 
-        public virtual ICollection<Exercise> Exercises { get; set; }
+        public virtual ICollection<Exercise> Exercises { get; set; } = new List<Exercise>();
     }
 }

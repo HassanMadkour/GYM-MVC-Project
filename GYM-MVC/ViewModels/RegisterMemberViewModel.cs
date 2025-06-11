@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GYM.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace GYM_MVC.ViewModels {
-
+   
     public class RegisterMemberViewModel : RegisterUserViewModel {
 
         [Display(Name = "Your Name")]
@@ -11,7 +12,7 @@ namespace GYM_MVC.ViewModels {
         public DateTime BirthDate { get; set; }
 
         [Display(Name = "Marital Status")]
-        public string MaterialStatus { get; set; }
+        public MaritalStatus MaterialStatus { get; set; }
 
         [Range(30, 300)]
         public decimal Weight { get; set; }
