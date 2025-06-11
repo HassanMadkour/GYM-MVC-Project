@@ -1,7 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GYM_MVC.Core.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GYM.Domain.Entities {
+
+    public enum MaritalStatus
+    {
+        Single ,
+        Married 
+       
+    }
 
     public class Member : BaseEntity {
 
@@ -11,7 +19,7 @@ namespace GYM.Domain.Entities {
         [Range(12, 70)]
         public int Age { get; set; }
 
-        public string? MaritalStatus { get; set; }
+        public MaritalStatus MaritalStatus { get; set; }
 
         [Range(30, 300)]
         public decimal Weight { get; set; }
@@ -31,6 +39,11 @@ namespace GYM.Domain.Entities {
         public string AvailableDays { get; set; }
         public string ImagePath {  get; set; }
         public bool IsApproved { get; set; }=false;
+        
+        public int? MembershipId { get; set; }
+
+        [ForeignKey("MembershipId")]
+        public virtual Membership Membership { get; set; }
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
@@ -40,6 +53,6 @@ namespace GYM.Domain.Entities {
         [ForeignKey("TrainerId")]
         public virtual Trainer Trainer { get; set; }
 
-        public virtual ICollection<WorkoutPlan> WorkoutPlan { get; set; }
+        public virtual ICollection<WorkoutPlan> WorkoutPlan { get; set; }=new List<WorkoutPlan>();
     }
 }
