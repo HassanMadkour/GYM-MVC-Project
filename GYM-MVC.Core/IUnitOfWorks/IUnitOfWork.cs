@@ -12,5 +12,7 @@ namespace GYM_MVC.Core.IUnitOfWorks {
         public IWorkoutPlanRepo WorkoutPlanRepo { get; }
 
         public IScheduleRepo ScheduleRepo { get; }
+
+        public IMembershipRepo membershipRepo { get; }
     }
 }

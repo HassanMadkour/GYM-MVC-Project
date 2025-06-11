@@ -12,6 +12,7 @@ namespace GYM_MVC.Data.UnitOfWorks {
         private IExcerciseRepo excerciseRepo;
         private IWorkoutPlanRepo workoutPlanRepo;
         private IScheduleRepo scheduleRepo;
+        private IMembershipRepo membershipRepo;
 
         public UnitOfWork(GYMContext context) {
             this.context = context;
@@ -56,6 +57,14 @@ namespace GYM_MVC.Data.UnitOfWorks {
                 if (scheduleRepo is null)
                     scheduleRepo = new SecheduleRepo(context);
                 return scheduleRepo;
+            }
+        }
+
+        public IMembershipRepo MembershipRepo {
+            get {
+                if (membershipRepo is null)
+                    membershipRepo = new MembershipRepo(context);
+                return membershipRepo;
             }
         }
     }
