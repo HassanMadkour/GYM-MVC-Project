@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GYM.Domain.Entities
-{
-    public enum DayOfWeek
-    {
+namespace GYM.Domain.Entities {
+    public enum DayOfWeek {
         Sunday,
         Monday,
         Tuesday,
@@ -22,12 +15,16 @@ namespace GYM.Domain.Entities
     {
         [Required,MaxLength(50)]
         public string Name { get; set; }
+
         [Range(1, 100)]
         public int Repetitions { get; set; }
+
         [Range(1, 10)]
         public int Sets { get; set; }
+
         [Range(10, 300)]
-        public int RestTime { get; set; } 
+        public int RestTime { get; set; }
+
         public DayOfWeek DayOfWeek { get; set; }
 
         [ForeignKey("WorkoutPlan")]

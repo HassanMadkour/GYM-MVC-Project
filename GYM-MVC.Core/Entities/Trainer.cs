@@ -21,11 +21,12 @@ namespace GYM.Domain.Entities
 
         [Range(6000, 50000)]
         public decimal Salary { get; set; }
-   
+        public string ImagePath { get; set; }
+
         [ForeignKey("Id")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
-        public virtual ICollection<Member> Members { get; set; }
-        public virtual ICollection<WorkoutPlan> WorkoutPlans { get; set; }
+        public virtual ICollection<Member> Members { get; set; }= new List<Member>();
+        public virtual ICollection<WorkoutPlan> WorkoutPlans { get; set; } = new List<WorkoutPlan>();
     }
 }

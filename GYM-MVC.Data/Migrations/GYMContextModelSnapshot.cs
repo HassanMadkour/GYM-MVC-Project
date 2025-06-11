@@ -18,6 +18,9 @@ namespace GYM_MVC.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -138,7 +141,10 @@ namespace GYM_MVC.Data.Migrations
             modelBuilder.Entity("GYM.Domain.Entities.Member", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -156,15 +162,24 @@ namespace GYM_MVC.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Injuries")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("MaritalStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MaritalStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MembershipId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -180,12 +195,21 @@ namespace GYM_MVC.Data.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Weight")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MembershipId");
+
                     b.HasIndex("TrainerId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Members");
                 });
@@ -201,6 +225,9 @@ namespace GYM_MVC.Data.Migrations
 
                     b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -244,6 +271,14 @@ namespace GYM_MVC.Data.Migrations
                     b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("GeneralInfo")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("InjuryInfo")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -266,13 +301,76 @@ namespace GYM_MVC.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MemberId")
-                        .IsUnique()
-                        .HasFilter("[MemberId] IS NOT NULL");
+                    b.HasIndex("MemberId");
 
                     b.HasIndex("TrainerId");
 
                     b.ToTable("Workouts");
+                });
+
+            modelBuilder.Entity("GYM_MVC.Core.Entities.Membership", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DurationInDays")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Memberships");
+                });
+
+            modelBuilder.Entity("GYM_MVC.Core.Entities.Schedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClassName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DayOfWeek")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<TimeOnly>("Time")
+                        .HasColumnType("time");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Schedules");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
@@ -419,17 +517,21 @@ namespace GYM_MVC.Data.Migrations
 
             modelBuilder.Entity("GYM.Domain.Entities.Member", b =>
                 {
-                    b.HasOne("GYM.Domain.Entities.ApplicationUser", "ApplicationUser")
-                        .WithOne("Member")
-                        .HasForeignKey("GYM.Domain.Entities.Member", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("GYM_MVC.Core.Entities.Membership", "Membership")
+                        .WithMany("Members")
+                        .HasForeignKey("MembershipId");
 
                     b.HasOne("GYM.Domain.Entities.Trainer", "Trainer")
                         .WithMany("Members")
                         .HasForeignKey("TrainerId");
 
+                    b.HasOne("GYM.Domain.Entities.ApplicationUser", "ApplicationUser")
+                        .WithOne("Member")
+                        .HasForeignKey("GYM.Domain.Entities.Member", "UserId");
+
                     b.Navigation("ApplicationUser");
+
+                    b.Navigation("Membership");
 
                     b.Navigation("Trainer");
                 });
@@ -448,8 +550,8 @@ namespace GYM_MVC.Data.Migrations
             modelBuilder.Entity("GYM.Domain.Entities.WorkoutPlan", b =>
                 {
                     b.HasOne("GYM.Domain.Entities.Member", "Member")
-                        .WithOne("WorkoutPlan")
-                        .HasForeignKey("GYM.Domain.Entities.WorkoutPlan", "MemberId");
+                        .WithMany("WorkoutPlan")
+                        .HasForeignKey("MemberId");
 
                     b.HasOne("GYM.Domain.Entities.Trainer", "Trainer")
                         .WithMany("WorkoutPlans")
@@ -533,6 +635,11 @@ namespace GYM_MVC.Data.Migrations
             modelBuilder.Entity("GYM.Domain.Entities.WorkoutPlan", b =>
                 {
                     b.Navigation("Exercises");
+                });
+
+            modelBuilder.Entity("GYM_MVC.Core.Entities.Membership", b =>
+                {
+                    b.Navigation("Members");
                 });
 #pragma warning restore 612, 618
         }

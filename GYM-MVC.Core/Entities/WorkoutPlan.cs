@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GYM.Domain.Entities
-{
-    public class WorkoutPlan : BaseEntity
-    {
+namespace GYM.Domain.Entities {
+    public class WorkoutPlan : BaseEntity {
+
         [Required, MaxLength(100)]
         public string Name { get; set; }
         [Required, MaxLength(500)]
@@ -18,7 +12,10 @@ namespace GYM.Domain.Entities
         public DateTime StartDate { get; set; }
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
-
+        [MaxLength(200)]
+        public string GeneralInfo {  get; set; }
+        [MaxLength (200)]
+        public string InjuryInfo {  get; set; }
         public int? MemberId { get; set; }
         [ForeignKey("MemberId")]
         public virtual Member Member { get; set; }
@@ -27,6 +24,6 @@ namespace GYM.Domain.Entities
         [ForeignKey("TrainerId")]
         public virtual Trainer Trainer { get; set; }
 
-        public virtual ICollection<Exercise> Exercises { get; set; }
+        public virtual ICollection<Exercise> Exercises { get; set; } = new List<Exercise>();
     }
 }
