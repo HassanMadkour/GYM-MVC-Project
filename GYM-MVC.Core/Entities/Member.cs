@@ -45,7 +45,7 @@ namespace GYM.Domain.Entities {
         [ForeignKey("MembershipId")]
         public virtual Membership Membership { get; set; }
 
-        [ForeignKey("UserId")]
+        [ForeignKey("Id")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public int? TrainerId { get; set; }
