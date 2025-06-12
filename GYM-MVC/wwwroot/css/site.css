@@ -52,8 +52,8 @@ html, body {
 
 
 body {
-    margin-bottom: 60px;
-    padding-top: 70px;
+    margin-bottom: 0px;
+    padding-top: 0px;
 }
 nav.navbar {
     z-index: 1000;

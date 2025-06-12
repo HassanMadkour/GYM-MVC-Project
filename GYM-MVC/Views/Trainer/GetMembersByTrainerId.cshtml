@@ -1,0 +1,37 @@
+﻿@using GYM_MVC.ViewModels
+@using GYM_MVC.ViewModels.TrainerViewModels
+
+@model List<MemberByTrainerIdVM>
+@{
+    ViewBag.Title = "Members List";
+}
+
+<h2>My Members</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" style="width:100%; border-collapse:collapse;">
+    <thead style="background-color: #f0f0f0;">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Injuries</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.Name</td>
+                <td>@member.Age</td>
+                <td>@member.Injuries</td>
+                <td>
+                    <a href="/Trainer/ViewMember/@member.Id" style="background-color:#007bff; color:white; padding:6px 12px; text-decoration:none; border-radius:4px;">
+                        View Details
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

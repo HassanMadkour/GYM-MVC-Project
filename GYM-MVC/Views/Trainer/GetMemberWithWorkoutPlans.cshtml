@@ -1,0 +1,110 @@
+﻿@using GYM_MVC.ViewModels
+@using GYM_MVC.ViewModels.TrainerViewModels
+
+
+@model DisplayMemberWithWorkoutPlansVM ;
+
+@{
+    // ViewBag.Title = "Member Details";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Member: @Model?.Name</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Model?.ImagePath" class="img-fluid rounded shadow-sm" alt="Member Photo" />
+        </div>
+
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">Age:</dt>
+                <dd class="col-sm-8">@Model?.Age</dd>
+
+                <dt class="col-sm-4">Weight:</dt>
+                <dd class="col-sm-8">@Model?.Weight kg</dd>
+
+                <dt class="col-sm-4">Height:</dt>
+                <dd class="col-sm-8">@Model?.Height cm</dd>
+
+                <dt class="col-sm-4">Marital Status:</dt>
+                <dd class="col-sm-8">@Model?.MaritalStatus</dd>
+
+                <dt class="col-sm-4">Illnesses:</dt>
+                <dd class="col-sm-8">@Model?.Illnesses ?? "None"</dd>
+
+                <dt class="col-sm-4">Injuries:</dt>
+                <dd class="col-sm-8">@Model?.Injuries ?? "None"</dd>
+
+                <dt class="col-sm-4">Sleep Hours:</dt>
+                <dd class="col-sm-8">@Model?.SleepHours hrs/day</dd>
+
+                <dt class="col-sm-4">Available Days:</dt>
+                <dd class="col-sm-8">@Model?.AvailableDays</dd>
+
+
+
+            </dl>
+        </div>
+    </div>
+
+    <hr class="my-4" />
+
+    @if (Model?.WorkoutPlan?.Any() == true)
+    {
+        <h3>Workout Plans</h3>
+
+        @foreach (var plan in Model?.WorkoutPlan)
+        {
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">@plan.Name</h5>
+                    <p class="card-text">@plan.Description</p>
+
+                    <p><strong>Start:</strong> @plan.StartDate.ToShortDateString()</p>
+                    <p><strong>End:</strong> @plan.EndDate.ToShortDateString()</p>
+
+                    @if (plan.Exercises?.Count > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-sm">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Reps</th>
+                                        <th>Sets</th>
+                                        <th>Rest Time</th>
+                                        <th>Day</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var ex in plan.Exercises)
+                                    {
+                                        <tr>
+                                            <td>@ex.Name</td>
+                                            <td>@ex.Repetitions</td>
+                                            <td>@ex.Sets</td>
+                                            <td>@ex.RestTime sec</td>
+                                            <td>@ex.DayOfWeek</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No exercises added to this plan.</p>
+
+                    }
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No workout plans assigned to this member.</p>
+
+    }
+    <a class="btn btn-primary" asp-controller="WorkoutPlan" asp-action="Create" asp-route-memberId="@Model?.Id" >Add Plan</a>
+</div>

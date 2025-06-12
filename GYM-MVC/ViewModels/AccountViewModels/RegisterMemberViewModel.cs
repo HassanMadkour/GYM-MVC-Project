@@ -1,8 +1,8 @@
 ﻿using GYM.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace GYM_MVC.ViewModels {
-   
+namespace GYM_MVC.ViewModels.AccountViewModels {
+
     public class RegisterMemberViewModel : RegisterUserViewModel {
 
         [Display(Name = "Your Name")]
@@ -21,10 +21,10 @@ namespace GYM_MVC.ViewModels {
         public decimal Height { get; set; }
 
         [MaxLength(200)]
-        public string? Illnesses { get; set; }
+        public string Illnesses { get; set; }
 
         [MaxLength(200)]
-        public string? Injuries { get; set; }
+        public string Injuries { get; set; }
 
         [Range(0, 24), Display(Name = "Sleep Hours")]
         public int SleepHours { get; set; }
