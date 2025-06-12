@@ -18,6 +18,7 @@ namespace GYM_MVC.Data.Data
         public DbSet<Exercise> Exercise { get; set; }
         public DbSet<WorkoutPlan> Workouts { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<Membership> Memberships { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -4,6 +4,7 @@ using GYM_MVC.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GYM_MVC.Data.Migrations
 {
     [DbContext(typeof(GYMContext))]
-    partial class GYMContextModelSnapshot : ModelSnapshot
+    [Migration("20250611005319_AddMembershipTableAndModifyMaritalStatusToEnum")]
+    partial class AddMembershipTableAndModifyMaritalStatusToEnum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,7 +144,10 @@ namespace GYM_MVC.Data.Migrations
             modelBuilder.Entity("GYM.Domain.Entities.Member", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -192,6 +198,9 @@ namespace GYM_MVC.Data.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Weight")
                         .HasColumnType("decimal(18,2)");
 
@@ -200,6 +209,10 @@ namespace GYM_MVC.Data.Migrations
                     b.HasIndex("MembershipId");
 
                     b.HasIndex("TrainerId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Members");
                 });
@@ -507,12 +520,6 @@ namespace GYM_MVC.Data.Migrations
 
             modelBuilder.Entity("GYM.Domain.Entities.Member", b =>
                 {
-                    b.HasOne("GYM.Domain.Entities.ApplicationUser", "ApplicationUser")
-                        .WithOne("Member")
-                        .HasForeignKey("GYM.Domain.Entities.Member", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("GYM_MVC.Core.Entities.Membership", "Membership")
                         .WithMany("Members")
                         .HasForeignKey("MembershipId");
@@ -520,6 +527,10 @@ namespace GYM_MVC.Data.Migrations
                     b.HasOne("GYM.Domain.Entities.Trainer", "Trainer")
                         .WithMany("Members")
                         .HasForeignKey("TrainerId");
+
+                    b.HasOne("GYM.Domain.Entities.ApplicationUser", "ApplicationUser")
+                        .WithOne("Member")
+                        .HasForeignKey("GYM.Domain.Entities.Member", "UserId");
 
                     b.Navigation("ApplicationUser");
 
