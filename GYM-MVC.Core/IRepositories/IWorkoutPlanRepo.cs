@@ -9,5 +9,7 @@ namespace GYM_MVC.Core.IRepositories
 {
     public interface IWorkoutPlanRepo : IBaseRepo<WorkoutPlan>
     {
+     List<WorkoutPlan> GetWorkoutPlansByMemberId(int memberId);
     }
+    
 }

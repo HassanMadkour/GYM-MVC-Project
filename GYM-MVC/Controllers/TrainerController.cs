@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
+using GYM_MVC.Data.UnitOfWorks;
 using GYM_MVC.ViewModels.TrainerViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -98,7 +99,7 @@ namespace GYM_MVC.Controllers
             if (id is null || !await UnitOfWork.TrainerRepo.Contains(t => t.Id == id))
                 return NotFound("Trainer is Not Exist!!");
             var trainer =await  UnitOfWork.TrainerRepo.GetById(id.Value);
-            return View(trainer);
+            return View(mapper.Map<DisplayTrainerVM>(trainer));
 
         }
         [HttpPost,ActionName("Delete")]
@@ -111,6 +112,24 @@ namespace GYM_MVC.Controllers
             await UnitOfWork.Save();
             return RedirectToAction(nameof(GetAllTrainees));
 
+        }
+
+        public async Task<IActionResult> GetMembersByTrainerId(int? id)
+        {
+            //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
+            //    return NotFound();
+            List<Member> membersfromDb = UnitOfWork.MemberRepo.GetMembersByTrainerId(id.Value);
+
+            return View(mapper.Map<List<MemberByTrainerIdVM>>(membersfromDb));
+        }
+        
+        public async Task<IActionResult> GetMemberWithWorkoutPlans(int? id)
+        {
+            //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
+            //    return NotFound();
+            var member = await UnitOfWork.MemberRepo.GetById(id.Value);
+            return View(mapper.Map<DisplayMemberWithWorkoutPlansVM>(member));
+              
         }
 
     } 

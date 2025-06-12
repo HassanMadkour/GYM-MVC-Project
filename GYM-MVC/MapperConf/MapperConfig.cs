@@ -2,6 +2,7 @@
 using GYM.Domain.Entities;
 using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.TrainerViewModels;
+using GYM_MVC.ViewModels.WorkoutPlansViewModels;
 
 namespace GYM_MVC.Core.MapperConf {
 
@@ -37,6 +38,16 @@ namespace GYM_MVC.Core.MapperConf {
             CreateMap<Trainer, DisplayTrainerVM>().ReverseMap();
             CreateMap<Trainer, CreateTrainerVM>().ReverseMap();
             CreateMap<Trainer, EditTrainerVM>().ReverseMap();
+            CreateMap<Member, MemberByTrainerIdVM>().ReverseMap();
+            CreateMap<Member, DisplayMemberWithWorkoutPlansVM>().ReverseMap();
+            CreateMap<WorkoutPlan, DisplayWorkoutPlanVM>().AfterMap((src, dist) =>
+            {
+                dist.MemberName = src.Member.Name;
+                dist.TrainerName = src.Trainer.Name;
+            }).ReverseMap();
+            CreateMap<WorkoutPlan, CreateWorkoutPlanVM>().ReverseMap();
+            CreateMap<WorkoutPlan, EditWorkoutPlanVM>().ReverseMap();
+            
         }
     }
 }

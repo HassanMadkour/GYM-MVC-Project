@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IRepositories;
 using GYM_MVC.Data.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GYM_MVC.Data.Repositories
 {
@@ -15,5 +16,11 @@ namespace GYM_MVC.Data.Repositories
         {
         }
 
+        public List<Member> GetMembersByTrainerId(int trainerId)
+        {
+            return context.Members
+                .Where(m => m.TrainerId == trainerId).Distinct()
+                .ToList();
+        }
     }
 }
