@@ -1,34 +1,40 @@
 ﻿@using GYM_MVC.ViewModels.AccountViewModels
+
+@model LoginUserViewModel
 @{
     ViewData["Title"] = "Login";
-    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+    Layout = "_AuthLayout";
 }
-@model LoginUserViewModel
 
-<div class="login-page">
-    <div class="login-box">
-        <h2 class="mb-4 text-center">Login</h2>
-        <form asp-action="LoginTheUser">
-            <div asp-validation-summary="ModelOnly" class="text-danger text-center"></div>
+}
 
-            <div class="mb-3">
-                <label asp-for="UserName" class="form-label">User Name</label>
-                <input asp-for="UserName" class="form-control" placeholder="Enter your username" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
+<div class="auth-card">
+    <h1 class="auth-title">Welcome Back</h1>
+    <p class="auth-subtitle">Sign in to your account to continue</p>
 
-            <div class="mb-3">
-                <label asp-for="Password" class="form-label">Password</label>
-                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
+    <form asp-action="LoginTheUser">
+        <div asp-validation-summary="ModelOnly" class="validation-summary-errors"></div>
 
-            <a href="ForgetPassword"> Forget Password</a>
+        <div class="form-group">
+            <label asp-for="UserName" class="form-label">Username</label>
+            <input asp-for="UserName" class="form-control" placeholder="Enter your username" />
+            <span asp-validation-for="UserName" class="field-validation-error"></span>
+        </div>
 
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary">Login</button>
-                <a asp-action="Register" class="btn btn-outline-secondary">Register</a>
-            </div>
-        </form>
+        <div class="form-group">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+            <span asp-validation-for="Password" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <a asp-action="ForgetPassword" class="auth-links">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+
+    <div class="auth-links">
+        Don't have an account? <a asp-action="Register">Sign up</a>
     </div>
 </div>
