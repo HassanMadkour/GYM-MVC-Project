@@ -1,0 +1,39 @@
+﻿@model IEnumerable<GYM.Domain.Entities.Member>
+
+@{
+    Layout = null;
+
+    ViewData["Title"] = "All Members";
+}
+
+<h2>All Members</h2>
+
+<a href="@Url.Action("Create", "Member")" class="btn btn-primary mb-3">Add Member</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Available days</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.Name</td>
+                <td>@member.AvailableDays</td>
+                <td>@member.Age</td>
+                <td>
+                    <a href="@Url.Action("Details", "Member", new { id = member.Id })" class="btn btn-sm btn-info">Details</a>
+                    <a href="@Url.Action("Edit", "Member", new { id = member.Id })" class="btn btn-sm btn-warning">Edit</a>
+                    <form asp-action="Delete" asp-route-id="@member.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

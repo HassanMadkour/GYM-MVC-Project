@@ -1,8 +1,288 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
-}
+    ViewData["Title"] = "ForceGym";
+    var trainers = new[]
+        {
+        new { Name = "Sarah Johnson", Role = "CrossFit Specialist", ImageUrl = "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" },
+        new { Name = "John Doe", Role = "Yoga Expert", ImageUrl = "https://images.pexels.com/photos/903171/pexels-photo-903171.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" },
+        new { Name = "Emily Smith", Role = "Zumba Coach", ImageUrl = "https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" },
+        new { Name = "James Brown", Role = "Strength Trainer", ImageUrl = "https://images.pexels.com/photos/718786/pexels-photo-718786.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" }
+    };
+    var classSchedule = new[]
+{
+    new {
+        Time = "6:00 AM",
+        Monday = "CrossFit",
+        Tuesday = "HIIT",
+        Wednesday = "CrossFit",
+        Thursday = "HIIT",
+        Friday = "CrossFit",
+        Saturday = "Bootcamp",
+        Sunday = "-"
+    },
+    new {
+        Time = "8:00 AM",
+        Monday = "Yoga",
+        Tuesday = "Spin",
+        Wednesday = "Yoga",
+        Thursday = "Spin",
+        Friday = "Yoga",
+        Saturday = "Spin",
+        Sunday = "Yoga"
+    },
+    new {
+        Time = "12:00 PM",
+        Monday = "Pilates",
+        Tuesday = "Zumba",
+        Wednesday = "Pilates",
+        Thursday = "Zumba",
+        Friday = "Pilates",
+        Saturday = "-",
+        Sunday = "-"
+    },
+    new {
+        Time = "5:00 PM",
+        Monday = "Strength",
+        Tuesday = "Cardio",
+        Wednesday = "Strength",
+        Thursday = "Cardio",
+        Friday = "Strength",
+        Saturday = "-",
+        Sunday = "-"
+    },
+    new {
+        Time = "7:00 PM",
+        Monday = "Boxing",
+        Tuesday = "Kickboxing",
+        Wednesday = "Boxing",
+        Thursday = "Kickboxing",
+        Friday = "Boxing",
+        Saturday = "-",
+        Sunday = "-"
+    }
+};
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+}
+<section class="hero-section">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+            </div>
+            <div class="carousel-item">
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+            </div>
+            <div class="carousel-item">
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');"></div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content animate">
+                <h1 class="display-3 fw-bold text-white mb-4">Transform Your <span class="text-primary">Body</span></h1>
+                <p class="lead text-white mb-5">Join the most elite fitness community in the city and start your transformation journey today with our expert trainers and state-of-the-art facilities.</p>
+                <div class="d-flex gap-3">
+                    <a href="#join" class="btn btn-primary btn-lg rounded-pill px-4 py-3">Join Now</a>
+                    <a href="#schedule" class="btn btn-outline-light btn-lg rounded-pill px-4 py-3">View Schedule</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-4 animate delay-1">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell fa-3x"></i>
+                    </div>
+                    <h3 class="h4 mb-3">Modern Equipment</h3>
+                    <p class="mb-0">Cutting-edge fitness equipment from leading brands to maximize your workout efficiency.</p>
+                </div>
+            </div>
+            <div class="col-md-4 animate delay-2">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie fa-3x"></i>
+                    </div>
+                    <h3 class="h4 mb-3">Expert Trainers</h3>
+                    <p class="mb-0">Certified professionals with years of experience to guide you through your fitness journey.</p>
+                </div>
+            </div>
+            <div class="col-md-4 animate delay-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat fa-3x"></i>
+                    </div>
+                    <h3 class="h4 mb-3">Personalized Plans</h3>
+                    <p class="mb-0">Custom workout and nutrition plans tailored to your specific goals and body type.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="schedule" class="py-5">
+    <div class="container py-5">
+        <h2 class="text-center section-title">Class Schedule</h2>
+        <p class="text-center lead mb-5">Plan your workout week with our comprehensive class timetable</p>
+
+        <div class="table-responsive animate">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var row in classSchedule)
+                    {
+                        <tr>
+                            <td>@row.Time</td>
+                            <td>@row.Monday</td>
+                            <td>@row.Tuesday</td>
+                            <td>@row.Wednesday</td>
+                            <td>@row.Thursday</td>
+                            <td>@row.Friday</td>
+                            <td>@row.Saturday</td>
+                            <td>@row.Sunday</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="text-center mt-4">
+            <p class="text-muted">* All classes are 60 minutes unless otherwise noted</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-5 animate">
+                <div class="owner-img-placeholder">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+            </div>
+            <div class="col-lg-7 animate delay-1">
+                <h2 class="section-title mb-4">Meet Our Founder</h2>
+                <h3 class="text-dark mb-3">Captain Ahmed El Sonbaty</h3>
+                <p class="lead">A former professional athlete and certified fitness trainer with over 15 years of experience in the fitness industry.</p>
+                <p>
+                    Captain Ahmed founded <strong>Force Gym</strong> in Shibin El Kom with the vision of creating a community-driven fitness center that blends modern training techniques with personalized care. His deep passion for health and dedication to helping others reach their goals have made Force Gym one of the most trusted and respected gyms in the region.
+                </p>
+                <div class="d-flex gap-3 mt-4">
+                    <a href="#" class="btn btn-primary px-4 py-2">Read Full Story</a>
+                    <a href="#trainers" class="btn btn-outline-dark px-4 py-2">Meet Our Team</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Trainers Section -->
+<section id="trainers" class="py-5 bg-dark text-light">
+    <div class="container py-5">
+        <h2 class="text-center section-title text-white">Meet Our Trainers</h2>
+        <p class="text-center lead mb-5">Our certified professionals will help you achieve your fitness goals</p>
+            <div class="row g-4">
+                @foreach (var trainer in trainers)
+                {
+                    <div class="col-lg-3 col-md-6 animate">
+                        <div class="trainer-card bg-white rounded shadow text-dark text-center p-4 h-100">
+                            <div class="img-wrapper mx-auto mb-3">
+                                <img src="@trainer.ImageUrl"
+                                     alt="@trainer.Name"
+                                     class="rounded-circle bg-white p-1"
+                                     style="width: 150px; height: 150px; object-fit: cover;" />
+                            </div>
+                            <h4 class="mb-1">@trainer.Name</h4>
+                            <p class="text-primary mb-2">@trainer.Role</p>
+                            <p>Expertise and experience description here.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-dark me-2"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="text-dark"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="location" class="py-5">
+    <div class="container py-5">
+        <h2 class="text-center section-title">Our Location</h2>
+        <p class="text-center lead mb-5">Visit us at our state-of-the-art facility</p>
+
+        <div class="row g-4">
+            <div class="col-lg-6 animate">
+                <div class="location-info">
+                    <h4 class="mb-4">PowerFit Gym</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-map-marker-alt me-3 text"></i>
+                            <span>123 Fitness Avenue, shibin elkom, monofia</span>
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-phone me-3 text"></i>
+                            <span>01234567890</span>
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-envelope me-3 text"></i>
+                            <span>info@Forcegym.com</span>
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-clock me-3 text"></i>
+                            <div>
+                                <p class="mb-1">Monday-Friday: 6:00 AM - 10:00 PM</p>
+                                <p class="mb-1">Saturday: 8:00 AM - 8:00 PM</p>
+                                <p class="mb-0">Sunday: 8:00 AM - 6:00 PM</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 animate delay-1">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3432.9448384108843!2d30.55918407557628!3d30.55905459666045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14587e60b3cd2c01%3A0x38dd7a9ed753eec9!2z2YXYtdmG2Lkg2KfZhNmF2K_Yp9iqINin2YTYr9in2LHYp9iq!5e0!3m2!1sen!2seg!4v1717836907382!5m2!1sen!2seg"
+                            width="100%"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

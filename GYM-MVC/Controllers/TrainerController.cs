@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class TrainerController : Controller
     {
         IUnitOfWork UnitOfWork;
@@ -29,7 +30,6 @@ namespace GYM_MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Create(CreateTrainerVM trainerVM)
         {
             if (ModelState.IsValid)
@@ -39,7 +39,6 @@ namespace GYM_MVC.Controllers
                     string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "Trainers");
                     string fileName = Guid.NewGuid() + Path.GetExtension(trainerVM.ImageFile.FileName);
                     string filePath = Path.Combine(uploadsFolder, fileName);
-
 
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
@@ -62,8 +61,6 @@ namespace GYM_MVC.Controllers
                 return NotFound("Trainer is Not Exist!!");
             var trainer = await UnitOfWork.TrainerRepo.GetById(id.Value);
             return View(mapper.Map<EditTrainerVM>(trainer));
-
-            
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -79,7 +76,6 @@ namespace GYM_MVC.Controllers
                     string fileName = Guid.NewGuid() + Path.GetExtension(trainerVM.ImageFile.FileName);
                     string filePath = Path.Combine(uploadsFolder, fileName);
 
-
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         await trainerVM.ImageFile.CopyToAsync(fileStream);
@@ -91,7 +87,6 @@ namespace GYM_MVC.Controllers
                 return RedirectToAction(nameof(GetAllTrainees));
             }
             return View(trainerVM);
-
         }
 
         public async Task<IActionResult> Delete(int? id)
@@ -100,7 +95,6 @@ namespace GYM_MVC.Controllers
                 return NotFound("Trainer is Not Exist!!");
             var trainer =await  UnitOfWork.TrainerRepo.GetById(id.Value);
             return View(mapper.Map<DisplayTrainerVM>(trainer));
-
         }
         [HttpPost,ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -111,7 +105,6 @@ namespace GYM_MVC.Controllers
             UnitOfWork.TrainerRepo.Delete(id.Value);
             await UnitOfWork.Save();
             return RedirectToAction(nameof(GetAllTrainees));
-
         }
 
         public async Task<IActionResult> GetMembersByTrainerId(int? id)
@@ -122,15 +115,13 @@ namespace GYM_MVC.Controllers
 
             return View(mapper.Map<List<MemberByTrainerIdVM>>(membersfromDb));
         }
-        
+
         public async Task<IActionResult> GetMemberWithWorkoutPlans(int? id)
         {
             //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
             //    return NotFound();
             var member = await UnitOfWork.MemberRepo.GetById(id.Value);
             return View(mapper.Map<DisplayMemberWithWorkoutPlansVM>(member));
-              
         }
-
-    } 
+    }
 }
