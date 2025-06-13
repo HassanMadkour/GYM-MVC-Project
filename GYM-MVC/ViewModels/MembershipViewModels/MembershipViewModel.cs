@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace GYM_MVC.ViewModels.MembershipViewModels {
-
     public class MembershipViewModel {
         public SelectList MembershipType { get; set; }
 

@@ -2,6 +2,8 @@
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.AccountViewModels;
+using GYM_MVC.ViewModels.MembershipViewModels;
+using GYM_MVC.ViewModels.TrainerViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -56,7 +58,15 @@ namespace GYM_MVC.Controllers {
 
         [HttpGet]
         public IActionResult Register() {
-            return View("Register");
+            var model = new RegisterMemberViewModel
+            {
+                AvailableTrainers = unitOfWork.TrainerRepo.GetAll()
+              .Select(t => mapper.Map<DisplayTrainerVM>(t)).ToList(),
+                //should make member ship repo
+                AvailableMemberships = unitOfWork.MemberRepo.GetAll()
+              .Select(m => mapper.Map<MembershipViewModel>(m)).ToList()
+            };
+            return View("Register", model);
         }
 
         [HttpPost]

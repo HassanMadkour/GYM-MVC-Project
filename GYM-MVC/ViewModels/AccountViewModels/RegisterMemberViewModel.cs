@@ -1,4 +1,6 @@
 ﻿using GYM.Domain.Entities;
+using GYM_MVC.ViewModels.TrainerViewModels;
+using GYM_MVC.ViewModels.MembershipViewModels;
 using System.ComponentModel.DataAnnotations;
 
 namespace GYM_MVC.ViewModels.AccountViewModels {
@@ -33,5 +35,10 @@ namespace GYM_MVC.ViewModels.AccountViewModels {
         public int AvailableDays { get; set; }
 
         public List<string> materialStatuseLists = new List<string>() { "Single", "Married" };
+        public int SelectedTrainerId { get; set; }
+        public List<DisplayTrainerVM> AvailableTrainers { get; set; }= new ();
+
+        public int SelectedMembershipId { get; set; }
+        public List<MembershipViewModel> AvailableMemberships { get; set; } = new();
     }
 }
