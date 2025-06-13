@@ -1,4 +1,5 @@
 ﻿namespace GYM_MVC.ViewModels.MembershipViewModels {
-    public class DisplayMembershipViewModel {
+
+    public class DisplayMembershipViewModel : MembershipViewModel {
     }
 }

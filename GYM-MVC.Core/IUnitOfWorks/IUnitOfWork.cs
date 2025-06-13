@@ -13,6 +13,6 @@ namespace GYM_MVC.Core.IUnitOfWorks {
 
         public IScheduleRepo ScheduleRepo { get; }
 
-        public IMembershipRepo membershipRepo { get; }
+        public IMembershipRepo MembershipRepo { get; }
     }
 }

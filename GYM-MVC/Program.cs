@@ -1,5 +1,6 @@
 using GYM.Domain.Entities;
 using GYM_MVC.Core.Helper;
+using GYM_MVC.Core.IRepositories;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.Core.MapperConf;
 using GYM_MVC.Data.Data;
@@ -10,7 +11,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace GYM_MVC {
+
     public class Program {
+
         public static void Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
 

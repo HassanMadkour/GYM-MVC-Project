@@ -9,5 +9,9 @@ namespace GYM_MVC.Core.Helper {
                 .Cast<TEnum>()
                 .Select(e => new { Value = e, Text = e.ToString() }), "Value", "Text");
         }
+
+        public static TEnum ToEnum<TEnum>(string value) where TEnum : struct, Enum {
+            return (TEnum)Enum.Parse(typeof(TEnum), value);
+        }
     }
 }
