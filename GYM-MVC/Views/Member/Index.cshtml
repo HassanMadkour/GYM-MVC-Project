@@ -1,39 +1,63 @@
-﻿@model IEnumerable<GYM.Domain.Entities.Member>
-
+﻿@model IEnumerable<GYM_MVC.ViewModels.MemberViewModels.MemberViewModel>
 @{
-    Layout = null;
-
-    ViewData["Title"] = "All Members";
+    ViewData["Title"] = "Members";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<div class="container-fluid">
 
-<h2>All Members</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Members</h2>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add Member
+        </a>
+    </div>
 
-<a href="@Url.Action("Create", "Member")" class="btn btn-primary mb-3">Add Member</a>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Available days</th>
-            <th>Age</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var member in Model)
-        {
+    <table class="table table-hover table-bordered text-center">
+        <thead class="table-dark">
             <tr>
-                <td>@member.Name</td>
-                <td>@member.AvailableDays</td>
-                <td>@member.Age</td>
-                <td>
-                    <a href="@Url.Action("Details", "Member", new { id = member.Id })" class="btn btn-sm btn-info">Details</a>
-                    <a href="@Url.Action("Edit", "Member", new { id = member.Id })" class="btn btn-sm btn-warning">Edit</a>
-                    <form asp-action="Delete" asp-route-id="@member.Id" method="post" style="display:inline;">
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                    </form>
-                </td>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Marital</th>
+                <th>Weight&nbsp;(kg)</th>
+                <th>Height&nbsp;(cm)</th>
+                <th>Approved</th>
+                <th class="w-25">Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+                <tr>
+                    <td>@m.Name</td>
+                    <td>@m.Age</td>
+                    <td>@m.MaritalStatus</td>
+                    <td>@m.Weight</td>
+                    <td>@m.Height</td>
+                    <td>
+                        @if (m.IsApproved)
+                        {
+                            <span class="badge bg-success">Yes</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">No</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@m.Id" class="btn btn-sm btn-info me-1">
+                            <i class="fas fa-edit"></i> Details
+                        </a>
+
+                        <form asp-action="Delete" asp-route-id="@m.Id" method="post"
+                              class="d-inline"
+                              onsubmit="return confirm('Delete this member?');">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

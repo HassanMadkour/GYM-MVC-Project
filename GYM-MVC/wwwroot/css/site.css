@@ -1,4 +1,4 @@
-﻿:root {
+﻿﻿:root {
     --primary: #ff6b6b;
     --primary-dark: #ff4757;
     --dark: #2f3542;
@@ -9,22 +9,26 @@
     --warning: #ff7f50;
     --danger: #ff4757;
 }
+
 body {
     font-family: 'Montserrat', sans-serif;
     color: #333;
     line-height: 1.6;
     overflow-x: hidden;
 }
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
 }
+
 .section-title {
     position: relative;
     display: inline-block;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
 }
+
     .section-title::after {
         content: '';
         position: absolute;
@@ -36,15 +40,18 @@ h1, h2, h3, h4, h5, h6 {
         background: var(--primary);
         border-radius: 2px;
     }
+
 .btn {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
 }
-.join{
-    background-color:var(--dark);
+
+.join {
+    background-color: var(--dark);
 }
+
 .btn-primary {
     background-color: var(--primary);
     border-color: var(--primary);
@@ -54,6 +61,7 @@ h1, h2, h3, h4, h5, h6 {
         background-color: var(--primary-dark);
         border-color: var(--primary-dark);
     }
+
 .btn-outline-light:hover {
     color: var(--dark);
 }
@@ -133,6 +141,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
+
 .hero-slide {
     position: absolute;
     top: 0;
@@ -275,9 +284,11 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(-10deg) scale(1.1);
     background: rgba(255, 107, 107, 0.2);
 }
+
 .hero-section .text-primary {
     color: var(--primary) !important;
 }
+
 .feature-card {
     background: white;
     border-radius: 10px;
@@ -667,6 +678,7 @@ footer {
         background: var(--primary);
         transform: translateY(-3px);
     }
+
 @media (max-width: 575.98px) {
     .hero-section h1 {
         font-size: 2rem;
