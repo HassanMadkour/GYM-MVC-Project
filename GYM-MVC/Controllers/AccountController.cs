@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
-using GYM_MVC.ViewModels;
+using GYM_MVC.ViewModels.AccountViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
