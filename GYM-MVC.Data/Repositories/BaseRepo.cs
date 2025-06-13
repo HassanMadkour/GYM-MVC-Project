@@ -13,7 +13,7 @@ namespace GYM_MVC.Data.Repositories
 {
     public class BaseRepo<T> : IBaseRepo<T> where T : BaseEntity
     {
-        protected GYMContext context;
+        public GYMContext context;
         protected DbSet<T> dbSet;
         public BaseRepo(GYMContext _context)
         {

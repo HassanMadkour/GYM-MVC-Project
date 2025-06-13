@@ -1,31 +1,117 @@
-html {
-  font-size: 14px;
+﻿html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.register-page {
+    padding-top: 80px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px); 
+    background: url('/images/main.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
 }
+
+.blur-overlay {
+    background: rgba(255, 255, 255);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 0px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    color: #000;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+    .blur-overlay input,
+    .blur-overlay label,
+    .blur-overlay h1 {
+        color: #000;
+        font-size: 16px;
+    }
+
+
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+}
+nav.navbar {
+    z-index: 1000;
+  //  position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* خط بسيط تحته */
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
 }
+.blur-overlay input {
+    color: #000 !important;
+    background-color: transparent;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200vh;
+    background: url('/images/login-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding: 20px;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px 60px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 800px;
+    color: #000;
+}
+
+    .login-box h2 {
+        color: #000;
+        font-weight: bold;
+    }
+
+    .login-box input::placeholder {
+        color: #aaa;
+        font-weight: bold;
+    }
+
+    .login-box label {
+        font-size: 16px;
+        font-weight: bold;
+    }
+

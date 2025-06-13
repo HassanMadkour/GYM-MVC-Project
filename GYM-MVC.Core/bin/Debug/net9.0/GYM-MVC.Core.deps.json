@@ -9,7 +9,8 @@
       "GYM-MVC.Core/1.0.0": {
         "dependencies": {
           "AutoMapper": "14.0.0",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.5"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.5",
+          "Microsoft.AspNetCore.Identity.UI": "9.0.5"
         },
         "runtime": {
           "GYM-MVC.Core.dll": {}
@@ -52,6 +53,18 @@
         },
         "runtime": {
           "lib/net9.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {
+            "assemblyVersion": "9.0.5.0",
+            "fileVersion": "9.0.525.22904"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Identity.UI/9.0.5": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Embedded": "9.0.5",
+          "Microsoft.Extensions.Identity.Stores": "9.0.5"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Identity.UI.dll": {
             "assemblyVersion": "9.0.5.0",
             "fileVersion": "9.0.525.22904"
           }
@@ -147,6 +160,28 @@
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.525.21509"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/9.0.5": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.5"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.525.21509"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Embedded/9.0.5": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.5"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.FileProviders.Embedded.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.525.22904"
           }
         }
       },
@@ -256,6 +291,13 @@
       "path": "microsoft.aspnetcore.identity.entityframeworkcore/9.0.5",
       "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.9.0.5.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Identity.UI/9.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pQgreCvNhMrnigpb1F0vIdPD7bmTRwWORjQOTu4PUJsyLq3YCV8LTllvGtU9kJnlzAnbVpjrEKscSIlU4VTNzg==",
+      "path": "microsoft.aspnetcore.identity.ui/9.0.5",
+      "hashPath": "microsoft.aspnetcore.identity.ui.9.0.5.nupkg.sha512"
+    },
     "Microsoft.EntityFrameworkCore/9.0.5": {
       "type": "package",
       "serviceable": true,
@@ -318,6 +360,20 @@
       "sha512": "sha512-cjnRtsEAzU73aN6W7vkWy8Phj5t3Xm78HSqgrbh/O4Q9SK/yN73wZVa21QQY6amSLQRQ/M8N+koGnY6PuvKQsw==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.5",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.9.0.5.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/9.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LLm+e8lvD+jOI+blHRSxPqywPaohOTNcVzQv548R1UpkEiNB2D+zf3RrqxBdB1LDPicRMTnfiaKJovxF8oX1bQ==",
+      "path": "microsoft.extensions.fileproviders.abstractions/9.0.5",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.9.0.5.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Embedded/9.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tgYXJtPa72hYrQuw+pqJvvhUOOQtZuk5jhRZINxIgR0cXwe4bLCQhCGffN+Ad4+AIQOlz4YyOc+GX+unsHc9Kg==",
+      "path": "microsoft.extensions.fileproviders.embedded/9.0.5",
+      "hashPath": "microsoft.extensions.fileproviders.embedded.9.0.5.nupkg.sha512"
     },
     "Microsoft.Extensions.Identity.Core/9.0.5": {
       "type": "package",
