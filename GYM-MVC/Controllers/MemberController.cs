@@ -1,21 +1,33 @@
 ﻿using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
+using GYM_MVC.ViewModels.MemberViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace GYM_MVC.Controllers {
+namespace GYM_MVC.Controllers
+{
+    public class MemberController : Controller
+    {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _env;
 
-    //[Authorize(Roles = "Admin")]
-    public class MemberController : Controller {
-        private readonly IUnitOfWork unitOfWork;
-
-        public MemberController(IUnitOfWork unitOfWork) {
-            this.unitOfWork = unitOfWork;
+        public MemberController(IUnitOfWork unitOfWork, IWebHostEnvironment env)
+        {
+            _unitOfWork = unitOfWork;
+            _env = env;
         }
 
-        //public IActionResult Index()
-        //{
-        //    return RedirectToAction(nameof(GetAll));
-        //}
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var members = _unitOfWork.MemberRepo.GetAll()
+                .Select(MapToViewModel)
+                .ToList();
 
         [HttpGet]
         public IActionResult Index() {
@@ -24,49 +36,130 @@ namespace GYM_MVC.Controllers {
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(int id) {
-            var member = await unitOfWork.MemberRepo.GetById(id);
+        public async Task<IActionResult> Details(int id)
+        {
+            var member = await _unitOfWork.MemberRepo.GetById(id);
             if (member == null) return NotFound();
-            return View(member);
+
+            var vm = MapToViewModel(member);
+            return View(vm);
         }
 
         [HttpGet]
-        public IActionResult Create() {
-            return View();
-        }
+        public IActionResult Create() => View();
 
-        [HttpPost]
-        public async Task<IActionResult> Create(Member member) {
-            if (!ModelState.IsValid) return View(member);
-            await unitOfWork.MemberRepo.Add(member);
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(MemberViewModel vm)
+        {
+            if (!ModelState.IsValid) return View(vm);
+
+            var member = new Member();
+            MapToEntity(vm, member);
+
+            if (vm.ImageFile != null && vm.ImageFile.Length > 0)
+                member.ImagePath = await SaveImageAsync(vm.ImageFile);
+
+            await _unitOfWork.MemberRepo.Add(member);
+            await _unitOfWork.Save(); // Save changes to DB
+
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Edit(int id) {
-            var member = await unitOfWork.MemberRepo.GetById(id);
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(MemberViewModel vm)
+        {
+            if (!ModelState.IsValid) return View("Details", vm);
+
+            var member = await _unitOfWork.MemberRepo.GetById(vm.Id);
             if (member == null) return NotFound();
-            return View(member);
-        }
 
-        [HttpPut]
-        public IActionResult Edit(Member member) {
-            if (!ModelState.IsValid) return View(member);
-            unitOfWork.MemberRepo.Update(member);
+            MapToEntity(vm, member);
+
+            if (vm.ImageFile != null && vm.ImageFile.Length > 0)
+            {
+                if (!string.IsNullOrWhiteSpace(member.ImagePath))
+                {
+                    var oldPath = Path.Combine(_env.WebRootPath, member.ImagePath.TrimStart('/'));
+                    if (System.IO.File.Exists(oldPath)) System.IO.File.Delete(oldPath);
+                }
+
+                member.ImagePath = await SaveImageAsync(vm.ImageFile);
+            }
+
+            _unitOfWork.MemberRepo.Update(member);
+            await _unitOfWork.Save(); // Save changes to DB
+
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpDelete]
-        public IActionResult Delete(int id) {
-            unitOfWork.MemberRepo.Delete(id);
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            _unitOfWork.MemberRepo.Delete(id);
+            await _unitOfWork.Save(); // Save changes to DB
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpDelete]
-        public IActionResult DeleteRange(List<int> memberIds) {
-            var members = unitOfWork.MemberRepo.GetAll().Where(m => memberIds.Contains(m.Id)).ToList();
-            unitOfWork.MemberRepo.DeleteRange(members);
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteRange(List<int> memberIds)
+        {
+            var members = _unitOfWork.MemberRepo
+                          .GetAll()
+                          .Where(m => memberIds.Contains(m.Id))
+                          .ToList();
+
+            _unitOfWork.MemberRepo.DeleteRange(members);
+            await _unitOfWork.Save(); // Save changes to DB
+
             return RedirectToAction(nameof(Index));
+        }
+
+        private static MemberViewModel MapToViewModel(Member m) => new()
+        {
+            Id = m.Id,
+            Name = m.Name,
+            Age = m.Age,
+            MaritalStatus = m.MaritalStatus,
+            Weight = m.Weight,
+            Height = m.Height,
+            Illnesses = m.Illnesses,
+            Injuries = m.Injuries,
+            SleepHours = m.SleepHours,
+            AvailableDays = m.AvailableDays,
+            ImagePath = m.ImagePath,
+            IsApproved = m.IsApproved,
+            MembershipId = m.MembershipId,
+            TrainerId = m.TrainerId
+        };
+
+        private static void MapToEntity(MemberViewModel vm, Member m)
+        {
+            m.Name = vm.Name;
+            m.Age = vm.Age;
+            m.MaritalStatus = vm.MaritalStatus;
+            m.Weight = vm.Weight;
+            m.Height = vm.Height;
+            m.Illnesses = vm.Illnesses;
+            m.Injuries = vm.Injuries;
+            m.SleepHours = vm.SleepHours;
+            m.AvailableDays = vm.AvailableDays;
+            m.IsApproved = vm.IsApproved;
+            m.MembershipId = vm.MembershipId;
+            m.TrainerId = vm.TrainerId;
+        }
+
+        private async Task<string> SaveImageAsync(Microsoft.AspNetCore.Http.IFormFile file)
+        {
+            var folder = Path.Combine(_env.WebRootPath, "images", "members");
+            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var path = Path.Combine(folder, fileName);
+
+            await using var stream = new FileStream(path, FileMode.Create);
+            await file.CopyToAsync(stream);
+
+            return $"/images/members/{fileName}";
         }
     }
 }

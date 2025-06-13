@@ -17,7 +17,7 @@ namespace GYM_MVC.Controllers
             this.UnitOfWork = unitOfWork;
             this.mapper = mapper;
         }
-        public IActionResult GetAllTrainees()
+        public IActionResult GetAll()
         {
             var trainers = UnitOfWork.TrainerRepo.GetAll().ToList();
 
@@ -50,7 +50,7 @@ namespace GYM_MVC.Controllers
                     trainerVM.ImagePath = @$"/uploads/Trainers/DefaultImage.jpg";
                 await UnitOfWork.TrainerRepo.Add(mapper.Map<Trainer>(trainerVM));
                 await UnitOfWork.Save();
-                return RedirectToAction(nameof(GetAllTrainees));
+                return RedirectToAction(nameof(GetAll));
             }
             return View(trainerVM);
         }
@@ -84,7 +84,7 @@ namespace GYM_MVC.Controllers
                 }
                 UnitOfWork.TrainerRepo.Update(mapper.Map<Trainer>(trainerVM));
                 await UnitOfWork.Save();
-                return RedirectToAction(nameof(GetAllTrainees));
+                return RedirectToAction(nameof(GetAll));
             }
             return View(trainerVM);
         }
@@ -104,7 +104,7 @@ namespace GYM_MVC.Controllers
                 return NotFound("Trainer is Not Exist!!");
             UnitOfWork.TrainerRepo.Delete(id.Value);
             await UnitOfWork.Save();
-            return RedirectToAction(nameof(GetAllTrainees));
+            return RedirectToAction(nameof(GetAll));
         }
 
         public async Task<IActionResult> GetMembersByTrainerId(int? id)

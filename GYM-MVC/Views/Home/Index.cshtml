@@ -1,13 +1,13 @@
-﻿@{
-    ViewData["Title"] = "ForceGym";
-    var trainers = new[]
-        {
+﻿﻿@{
+ViewData["Title"] = "ForceGym";
+var trainers = new[]
+    {
         new { Name = "Sarah Johnson", Role = "CrossFit Specialist", ImageUrl = "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" },
         new { Name = "John Doe", Role = "Yoga Expert", ImageUrl = "https://images.pexels.com/photos/903171/pexels-photo-903171.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" },
         new { Name = "Emily Smith", Role = "Zumba Coach", ImageUrl = "https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" },
         new { Name = "James Brown", Role = "Strength Trainer", ImageUrl = "https://images.pexels.com/photos/718786/pexels-photo-718786.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" }
     };
-    var classSchedule = new[]
+var classSchedule = new[]
 {
     new {
         Time = "6:00 AM",
@@ -170,7 +170,6 @@
             </table>
         </div>
 
-
         <div class="text-center mt-4">
             <p class="text-muted">* All classes are 60 minutes unless otherwise noted</p>
         </div>
@@ -201,41 +200,37 @@
     </div>
 </section>
 
-
-
-
 <!-- Trainers Section -->
 <section id="trainers" class="py-5 bg-dark text-light">
     <div class="container py-5">
         <h2 class="text-center section-title text-white">Meet Our Trainers</h2>
         <p class="text-center lead mb-5">Our certified professionals will help you achieve your fitness goals</p>
-            <div class="row g-4">
-                @foreach (var trainer in trainers)
-                {
-                    <div class="col-lg-3 col-md-6 animate">
-                        <div class="trainer-card bg-white rounded shadow text-dark text-center p-4 h-100">
-                            <div class="img-wrapper mx-auto mb-3">
-                                <img src="@trainer.ImageUrl"
-                                     alt="@trainer.Name"
-                                     class="rounded-circle bg-white p-1"
-                                     style="width: 150px; height: 150px; object-fit: cover;" />
-                            </div>
-                            <h4 class="mb-1">@trainer.Name</h4>
-                            <p class="text-primary mb-2">@trainer.Role</p>
-                            <p>Expertise and experience description here.</p>
-                            <div class="social-links mt-3">
-                                <a href="#" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="text-dark me-2"><i class="fab fa-facebook"></i></a>
-                                <a href="#" class="text-dark"><i class="fab fa-linkedin"></i></a>
-                            </div>
+        <div class="row g-4">
+            @foreach (var trainer in trainers)
+            {
+                <div class="col-lg-3 col-md-6 animate">
+                    <div class="trainer-card bg-white rounded shadow text-dark text-center p-4 h-100">
+                        <div class="img-wrapper mx-auto mb-3">
+                            <img src="@trainer.ImageUrl"
+                                 alt="@trainer.Name"
+                                 class="rounded-circle bg-white p-1"
+                                 style="width: 150px; height: 150px; object-fit: cover;" />
+                        </div>
+                        <h4 class="mb-1">@trainer.Name</h4>
+                        <p class="text-primary mb-2">@trainer.Role</p>
+                        <p>Expertise and experience description here.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-dark me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-dark"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
     </div>
+    </div>
 </section>
-
 
 <section id="location" class="py-5">
     <div class="container py-5">
@@ -285,4 +280,3 @@
         </div>
     </div>
 </section>
-

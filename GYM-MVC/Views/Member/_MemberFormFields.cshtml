@@ -1,0 +1,68 @@
+﻿@model GYM_MVC.ViewModels.MemberViewModels.MemberViewModel
+
+<div class="col-md-6">
+    <label asp-for="Name" class="form-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+
+<div class="col-md-3">
+    <label asp-for="Age" class="form-label"></label>
+    <input asp-for="Age" class="form-control" />
+    <span asp-validation-for="Age" class="text-danger"></span>
+</div>
+
+<div class="col-md-3">
+    <label asp-for="MaritalStatus" class="form-label"></label>
+    <select asp-for="MaritalStatus" class="form-select"
+            asp-items="Html.GetEnumSelectList<GYM.Domain.Entities.MaritalStatus>()">
+    </select>
+</div>
+
+<div class="col-md-3">
+    <label asp-for="Weight" class="form-label"></label>
+    <input asp-for="Weight" class="form-control" step="0.1" />
+    <span asp-validation-for="Weight" class="text-danger"></span>
+</div>
+
+<div class="col-md-3">
+    <label asp-for="Height" class="form-label"></label>
+    <input asp-for="Height" class="form-control" step="0.1" />
+    <span asp-validation-for="Height" class="text-danger"></span>
+</div>
+
+<div class="col-md-6">
+    <label asp-for="Illnesses" class="form-label"></label>
+    <input asp-for="Illnesses" class="form-control" />
+</div>
+
+<div class="col-md-6">
+    <label asp-for="Injuries" class="form-label"></label>
+    <input asp-for="Injuries" class="form-control" />
+</div>
+
+<div class="col-md-3">
+    <label asp-for="SleepHours" class="form-label"></label>
+    <input asp-for="SleepHours" class="form-control" />
+</div>
+
+<div class="col-md-9">
+    <label asp-for="AvailableDays" class="form-label"></label>
+    <input asp-for="AvailableDays" class="form-control"
+           placeholder="e.g. Sun,Tue,Thu" />
+</div>
+
+<div class="col-md-6">
+    <label asp-for="ImageFile" class="form-label"></label>
+    <input asp-for="ImageFile" class="form-control" type="file" />
+    @if (Model != null && !string.IsNullOrWhiteSpace(Model.ImagePath))
+    {
+        <img src="@Model.ImagePath" alt="Member Image" width="150" />
+    }
+
+</div>
+
+<div class="col-md-3">
+    <label asp-for="IsApproved" class="form-check-label d-block mb-2"></label>
+    <input asp-for="IsApproved" class="form-check-input" />
+</div>
