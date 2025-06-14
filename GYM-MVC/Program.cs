@@ -1,8 +1,10 @@
 using GYM.Domain.Entities;
 using GYM_MVC.Core.Helper;
+using GYM_MVC.Core.IRepositories;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.Core.MapperConf;
 using GYM_MVC.Data.Data;
+using GYM_MVC.Data.Repositories;
 using GYM_MVC.Data.UnitOfWorks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -34,6 +36,9 @@ namespace GYM_MVC {
             builder.Services.AddAutoMapper(typeof(MapperConfig));
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<ITrainerRepo, TrainerRepo>();
+            builder.Services.AddScoped<IExcerciseRepo, ExcerciseRepo>();
+            builder.Services.AddScoped<IMemberRepo, MemberRepo>();
 
             var app = builder.Build();
 

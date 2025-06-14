@@ -1,0 +1,16 @@
+﻿@model GYM_MVC.ViewModels.MemberViewModels.MemberViewModel
+
+@{
+    ViewData["Title"] = "Add Member";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-4 text-center">Add Member</h2>
+
+<form asp-action="Create" enctype="multipart/form-data" class="row g-3">
+    <partial name="_MemberFormFields" model="Model" />
+    <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary px-5">Save</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+    </div>
+</form>

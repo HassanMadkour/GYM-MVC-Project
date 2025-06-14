@@ -49,10 +49,5 @@ namespace GYM_MVC.Data.Repositories
         public async Task<bool> Any() => await dbSet.AnyAsync();
         public async Task<int> Count() => await dbSet.CountAsync();
         public async Task<int> Count(Expression<Func<T, bool>> crieteria) => await dbSet.CountAsync(crieteria);
-
-
-
-
-
     }
 }

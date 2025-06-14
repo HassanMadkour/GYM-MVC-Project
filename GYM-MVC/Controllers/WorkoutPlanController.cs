@@ -31,7 +31,6 @@ namespace GYM_MVC.Controllers
         }
         public IActionResult Create(int memberId)
         {
-           
             var allMembers = unitOfWork.MemberRepo.GetAll().ToList();
             ViewBag.MemberId = memberId;
             ViewBag.MembersList = new SelectList(allMembers, "Id", "Name", memberId);
@@ -60,7 +59,6 @@ namespace GYM_MVC.Controllers
             return View(createWorkoutPlan);
         }
 
-
         public async Task<IActionResult> Edit(int? id)
         {
             if (id is null || !await unitOfWork.WorkoutPlanRepo.Contains(wp => wp.Id == id))
@@ -75,7 +73,7 @@ namespace GYM_MVC.Controllers
         {
             if (id is null || editWorkoutPlanVM.Id != id)
                 return NotFound();
-            
+
             if(ModelState.IsValid)
             {
                 unitOfWork.WorkoutPlanRepo.Update(mapper.Map<WorkoutPlan>(editWorkoutPlanVM));
@@ -83,12 +81,11 @@ namespace GYM_MVC.Controllers
                 return RedirectToAction("GetMemberWithWorkoutPlans", "Trainer", new { Id = editWorkoutPlanVM.MemberId });
             }
             return View(editWorkoutPlanVM);
-
         }
 
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id is null || !await unitOfWork.WorkoutPlanRepo.Contains(wp => wp.Id == id)) 
+            if (id is null || !await unitOfWork.WorkoutPlanRepo.Contains(wp => wp.Id == id))
                  return NotFound();
             
             var workoutPlan = await unitOfWork.WorkoutPlanRepo.GetById(id.Value);
@@ -106,6 +103,5 @@ namespace GYM_MVC.Controllers
             await unitOfWork.Save();
             return RedirectToAction("GetMemberWithWorkoutPlans", "Trainer", new { Id = memberId });
         }
-
     }
 }

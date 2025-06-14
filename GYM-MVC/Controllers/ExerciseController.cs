@@ -3,9 +3,11 @@ using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.ExerciseViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GYM_MVC.Controllers
 {
+    //[Authorize(Roles ="Admin")]
     public class ExerciseController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -103,5 +105,5 @@ namespace GYM_MVC.Controllers
 
         }
 
-    }
+        }
 }

@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using GYM.Domain.Entities;
+using GYM_MVC.Core.Entities;
+using GYM_MVC.ViewModels;
+using GYM_MVC.ViewModels.ScheduleViewModels;
 using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.ExerciseViewModels;
 using GYM_MVC.ViewModels.TrainerViewModels;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
 
 namespace GYM_MVC.Core.MapperConf {
-
     public class MapperConfig : Profile {
-
         public MapperConfig() {
             //CreateMap<ApplicationUser, RegisterMemberViewModel>().AfterMap((src, dist) => {
             //    dist.Password = src
@@ -36,6 +37,11 @@ namespace GYM_MVC.Core.MapperConf {
             CreateMap<LoginUserViewModel, ApplicationUser>().AfterMap((src, dist) => {
                 dist.UserName = src.UserName;
             });
+
+            CreateMap<CreateScheduleViewModel, Schedule>().ReverseMap();
+
+            CreateMap<Schedule, ScheduleViewModel>().ReverseMap();
+            CreateMap<Member, MemberViewModel>().ReverseMap();
             CreateMap<Trainer, DisplayTrainerVM>().ReverseMap();
             CreateMap<Trainer, CreateTrainerVM>().ReverseMap();
             CreateMap<Trainer, EditTrainerVM>().ReverseMap();
