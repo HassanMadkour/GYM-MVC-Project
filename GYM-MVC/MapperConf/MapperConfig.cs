@@ -66,6 +66,10 @@ namespace GYM_MVC.Core.MapperConf {
                     dist.Type = EnumHelper.ToEnum<MembershipType>(src.SelectedMembershipType);
                     dist.Id = src.Id;
                 }
+                ).ReverseMap().AfterMap(
+                   (src, dist) => {
+                       dist.SelectedMembershipType = src.Type.ToString();
+                   }
                 );
         }
     }

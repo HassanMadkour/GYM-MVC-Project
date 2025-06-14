@@ -31,5 +31,13 @@ namespace GYM_MVC.Controllers {
             await unitOfWork.Save();
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Update(int id) {
+            Membership membership = await unitOfWork.MembershipRepo.GetById(id);
+            UpdateMembershipViewModel model = mapper.Map<UpdateMembershipViewModel>(membership);
+            model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
+            return View(model);
+        }
     }
 }
