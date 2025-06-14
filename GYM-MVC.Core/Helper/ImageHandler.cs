@@ -2,11 +2,24 @@
 
 namespace GYM_MVC.Core.Helper {
 
-    public enum UploadImageStatus {
-        Success,
-        FormatError,
-        SizeError,
-        Error,
+    public abstract class UploadImageStatus {
+        public string Message { get; set; }
+    }
+
+    public class UploadImageError : UploadImageStatus {
+
+        public UploadImageError(string message) {
+            Message = message;
+        }
+    }
+
+    public class UploadImageSuccess : UploadImageStatus {
+        public string FileName { get; set; }
+
+        public UploadImageSuccess(string FileName) {
+            Message = "Image uploaded successfully";
+            this.FileName = FileName;
+        }
     }
 
     public class ImageHandler {
@@ -16,22 +29,24 @@ namespace GYM_MVC.Core.Helper {
                 var allowedSize = 5 * 1024 * 1024;
 
                 if (image.Length > allowedSize)
-                    return UploadImageStatus.SizeError;
+                    return new UploadImageError("Image size must be less than 5MB");
+
                 var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
                 var extension = Path.GetExtension(image.FileName).ToLower();
 
                 if (!allowedExtensions.Contains(extension))
-                    return UploadImageStatus.FormatError;
+                    return new UploadImageError("Only .jpg, .jpeg, .png, .gif are allowed");
 
-                var fileName = $"{DateTime.Now}{extension}";
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+                var safeFileName = $"{DateTime.Now:yyyyMMdd_HHmmssfff}{extension}";
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", safeFileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create)) {
                     await image.CopyToAsync(stream);
                 }
-                return UploadImageStatus.Success;
+
+                return new UploadImageSuccess(safeFileName);
             } catch (Exception) {
-                return UploadImageStatus.Error;
+                return new UploadImageError("Image upload failed");
             }
         }
     }

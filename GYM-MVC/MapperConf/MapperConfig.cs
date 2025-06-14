@@ -17,7 +17,7 @@ namespace GYM_MVC.Core.MapperConf {
             //CreateMap<ApplicationUser, RegisterMemberViewModel>().AfterMap((src, dist) => {
             //    dist.Password = src
             //});
-            CreateMap<RegisterMemberViewModel, ApplicationUser>().AfterMap((src, dist) => {
+            CreateMap<RegisterUserViewModel, ApplicationUser>().AfterMap((src, dist) => {
                 dist.PasswordHash = src.Password;
                 dist.UserName = src.Name;
                 dist.Email = src.Email;
@@ -25,7 +25,7 @@ namespace GYM_MVC.Core.MapperConf {
             });
 
             CreateMap<RegisterMemberViewModel, Member>().AfterMap((src, dist) => {
-                dist.Name = src.Name;
+                dist.Name = src.MemberName;
                 dist.Age = DateTime.Today.Year - src.BirthDate.Year;
                 dist.AvailableDays = src.AvailableDays.ToString();
                 dist.MaritalStatus = src.MaterialStatus;
@@ -35,6 +35,7 @@ namespace GYM_MVC.Core.MapperConf {
                 dist.Injuries = src.Injuries ?? "";
                 dist.SleepHours = src.SleepHours;
             });
+            CreateMap<RegisterTrainerViewModel, Trainer>().ReverseMap();
             CreateMap<Member, RegisterMemberViewModel>().AfterMap((src, dist) => {
             });
             CreateMap<LoginUserViewModel, ApplicationUser>().AfterMap((src, dist) => {

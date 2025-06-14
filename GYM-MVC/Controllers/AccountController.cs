@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GYM.Domain.Entities;
+using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.MembershipViewModels;
@@ -69,15 +70,8 @@ namespace GYM_MVC.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Register() {
-            var model = new RegisterMemberViewModel {
-                AvailableTrainers = unitOfWork.TrainerRepo.GetAll()
-              .Select(t => mapper.Map<DisplayTrainerVM>(t)).ToList(),
-
-                AvailableMemberships = unitOfWork.MembershipRepo.GetAll()
-              .Select(m => mapper.Map<DisplayMembershipViewModel>(m)).ToList()
-            };
-            return View("Register", model);
+        public IActionResult RegisterTrainer() {
+            return View();
         }
 
         [HttpPost]
@@ -91,9 +85,7 @@ namespace GYM_MVC.Controllers {
                     member.Id = user.Id;
                     await unitOfWork.MemberRepo.Add(member);
                     await unitOfWork.Save();
-                    Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme);
-                    await emailSender.SendEmailAsync(user.Email!, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
+                    await SendEmailConfirmation(user);
                     return View("confirmEmail");
                 } else {
                     foreach (var error in result.Errors) {
@@ -102,6 +94,38 @@ namespace GYM_MVC.Controllers {
                 }
             }
             return View("Register", registerMemberViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterTheTrainer(RegisterTrainerViewModel registerTrainerViewModel) {
+            if (ModelState.IsValid) {
+                ApplicationUser user = mapper.Map<RegisterTrainerViewModel, ApplicationUser>(registerTrainerViewModel);
+                Trainer trainer = mapper.Map<RegisterTrainerViewModel, Trainer>(registerTrainerViewModel);
+
+                if (registerTrainerViewModel.Image != null) {
+                    UploadImageStatus status = await ImageHandler.UploadImage(registerTrainerViewModel.Image);
+                    if (status is UploadImageError) {
+                        ModelState.AddModelError(string.Empty, status.Message);
+                        return View("RegisterTrainer", registerTrainerViewModel);
+                    }
+                    trainer.ImagePath = ((UploadImageSuccess)status).FileName;
+                }
+
+                IdentityResult result = _userManager.CreateAsync(user, registerTrainerViewModel.Password).Result;
+                if (result.Succeeded) {
+                    trainer.Id = user.Id;
+                    await unitOfWork.TrainerRepo.Add(trainer);
+                    await unitOfWork.Save();
+                    await SendEmailConfirmation(user);
+                    return View("confirmEmail");
+                } else {
+                    foreach (var error in result.Errors) {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+            return View("RegisterTrainer", registerTrainerViewModel);
         }
 
         public async Task<IActionResult> ConfirmEmail(int userId, string code) {
@@ -172,6 +196,13 @@ namespace GYM_MVC.Controllers {
             }
 
             return View(model);
+        }
+
+        //--------------------------
+        private async Task SendEmailConfirmation(ApplicationUser user) {
+            Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
+            string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme);
+            await emailSender.SendEmailAsync(user.Email!, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
         }
     }
 }

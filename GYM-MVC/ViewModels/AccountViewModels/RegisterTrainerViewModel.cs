@@ -5,7 +5,7 @@ namespace GYM_MVC.ViewModels.AccountViewModels {
     public class RegisterTrainerViewModel : RegisterUserViewModel {
 
         [Required, MaxLength(30), Display(Name = "Full Name")]
-        public string Name { get; set; }
+        public string TrainerName { get; set; }
 
         [MaxLength(100)]
         public string Specialty { get; set; }
@@ -16,6 +16,6 @@ namespace GYM_MVC.ViewModels.AccountViewModels {
         [Range(6000, 50000)]
         public decimal Salary { get; set; }
 
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }
