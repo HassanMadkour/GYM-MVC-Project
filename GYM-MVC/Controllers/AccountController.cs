@@ -61,7 +61,19 @@ namespace GYM_MVC.Controllers {
             var model = new RegisterMemberViewModel {
                 AvailableTrainers = unitOfWork.TrainerRepo.GetAll()
               .Select(t => mapper.Map<DisplayTrainerVM>(t)).ToList(),
-                //should make member ship repo
+
+                AvailableMemberships = unitOfWork.MembershipRepo.GetAll()
+              .Select(m => mapper.Map<DisplayMembershipViewModel>(m)).ToList()
+            };
+            return View("Register", model);
+        }
+
+        [HttpGet]
+        public IActionResult Register() {
+            var model = new RegisterMemberViewModel {
+                AvailableTrainers = unitOfWork.TrainerRepo.GetAll()
+              .Select(t => mapper.Map<DisplayTrainerVM>(t)).ToList(),
+
                 AvailableMemberships = unitOfWork.MembershipRepo.GetAll()
               .Select(m => mapper.Map<DisplayMembershipViewModel>(m)).ToList()
             };
