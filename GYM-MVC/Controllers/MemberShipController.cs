@@ -29,7 +29,7 @@ namespace GYM_MVC.Controllers {
             if (!ModelState.IsValid) return View(model);
             await unitOfWork.MembershipRepo.Add(mapper.Map<Membership>(model));
             await unitOfWork.Save();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -46,7 +46,7 @@ namespace GYM_MVC.Controllers {
             if (!ModelState.IsValid) return View(model);
             unitOfWork.MembershipRepo.Update(mapper.Map<Membership>(model));
             await unitOfWork.Save();
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("index");
         }
 
         [HttpGet]
@@ -54,21 +54,20 @@ namespace GYM_MVC.Controllers {
             return View(mapper.Map<List<DisplayMembershipViewModel>>(unitOfWork.MembershipRepo.GetAll()));
         }
 
-        [HttpDelete]
         public async Task<IActionResult> Delete(int id) {
-            unitOfWork.MembershipRepo.Delete(id);
-            await unitOfWork.Save();
-            return RedirectToAction("index");
+            var membership = await unitOfWork.MembershipRepo.GetById(id);
+            if (membership == null)
+                return NotFound();
+
+            return View(mapper.Map<DisplayMembershipViewModel>(membership));
         }
 
-        [HttpDelete]
         public async Task<IActionResult> DeleteConfirmed(int id) {
             unitOfWork.MembershipRepo.Delete(id);
             await unitOfWork.Save();
             return RedirectToAction("index");
         }
 
-        [HttpDelete]
         public async Task<IActionResult> DeleteRange(List<DisplayMembershipViewModel> models) {
             unitOfWork.MembershipRepo.DeleteRange(mapper.Map<List<Membership>>(models));
             await unitOfWork.Save();

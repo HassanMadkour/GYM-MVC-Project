@@ -1,0 +1,34 @@
+﻿
+@model DisplayMembershipViewModel
+
+@{
+    ViewData["Title"] = "Delete Membership";
+}
+<br />
+<br />
+<br />
+<div class="container mt-5">
+    <div class="alert alert-warning shadow-sm">
+        <h4 class="alert-heading">Are you sure you want to delete this membership?</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">Type</dt>
+            <dd class="col-sm-8">@Model.SelectedMembershipType</dd>
+
+            <dt class="col-sm-4">Price</dt>
+            <dd class="col-sm-8">@Model.Price</dd>
+
+            <dt class="col-sm-4">Duration (days)</dt>
+            <dd class="col-sm-8">@Model.DurationInDays</dd>
+
+            <dt class="col-sm-4">Description</dt>
+            <dd class="col-sm-8">@Model.Description</dd>
+        </dl>
+
+        <form asp-action="DeleteConfirmed" method="post">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
