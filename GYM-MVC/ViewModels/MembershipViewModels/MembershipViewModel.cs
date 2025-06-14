@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GYM_MVC.ViewModels.MembershipViewModels {
 
     public class MembershipViewModel {
-        public SelectList? MembershipTypeList { get; set; }
+        public string SelectedMembershipType { get; set; }
 
         [Range(10, 20000)]
         public decimal Price { get; set; }
