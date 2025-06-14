@@ -88,9 +88,9 @@
 <div class="d-flex justify-content-center gap-3 my-4">
     <a asp-action="Create" asp-route-workoutPlanId="@workoutPlanId" class="btn btn-primary px-4">Add New Exercise</a>
 
-    <form asp-controller="WorkoutPlan" asp-action="ViewWorkoutPlan" asp-route-workoutPlanId="@workoutPlanId" method="get">
-        <button type="submit" class="btn btn-success px-4">Finish Workout Plan</button>
-    </form>
+    @* <form asp-controller="WorkoutPlan" asp-action="ViewWorkoutPlan" asp-route-workoutPlanId="@workoutPlanId" method="get"> *@
+    <a class="btn btn-success px-4" asp-controller="Trainer" asp-action="GetMemberWithWorkoutPlans" asp-route-id=@Model.FirstOrDefault()?.MemberId>Finish Workout Plan</a>
+    @* </form> *@
 </div>
 
 @section Scripts {

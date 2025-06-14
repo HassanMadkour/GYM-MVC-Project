@@ -1,7 +1,11 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
 using GYM.Domain.Entities;
+using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.AccountViewModels;
+using GYM_MVC.ViewModels.MembershipViewModels;
+using GYM_MVC.ViewModels.TrainerViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -31,9 +35,9 @@ namespace GYM_MVC.Controllers {
 
         [HttpGet]
         public IActionResult Login() {
-            if (User.Identity.IsAuthenticated) {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (User.Identity.IsAuthenticated) {
+            //    return RedirectToAction("Index", "Home");
+            //}
             return View("Login");
         }
 
@@ -45,8 +49,18 @@ namespace GYM_MVC.Controllers {
                 if (user != null && user.EmailConfirmed) {
                     bool result = await _userManager.CheckPasswordAsync(user, loginUserViewModel.Password);
                     if (result) {
+                        
                         await signInManager.SignInAsync(user, loginUserViewModel.RememberMe);
-                        return RedirectToAction("Index", "Home");
+                        switch (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value)
+                        {
+                            case "Member":
+                                return RedirectToAction("Index", "Home");
+                            case "Trainer":
+                                return RedirectToAction("GetMembersByTrainerId", "Trainer", new { Id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value });
+                            case "Admin":
+                                return RedirectToAction("Dashboard", "Admin");
+                        }
+                       
                     }
                 }
             }
@@ -56,7 +70,19 @@ namespace GYM_MVC.Controllers {
 
         [HttpGet]
         public IActionResult Register() {
-            return View("Register");
+            var model = new RegisterMemberViewModel {
+                AvailableTrainers = unitOfWork.TrainerRepo.GetAll()
+              .Select(t => mapper.Map<DisplayTrainerVM>(t)).ToList(),
+
+                AvailableMemberships = unitOfWork.MembershipRepo.GetAll()
+              .Select(m => mapper.Map<DisplayMembershipViewModel>(m)).ToList()
+            };
+            return View("Register", model);
+        }
+
+        [HttpGet]
+        public IActionResult RegisterTrainer() {
+            return View();
         }
 
         [HttpPost]
@@ -66,13 +92,13 @@ namespace GYM_MVC.Controllers {
                 ApplicationUser user = mapper.Map<RegisterMemberViewModel, ApplicationUser>(registerMemberViewModel);
                 Member member = mapper.Map<RegisterMemberViewModel, Member>(registerMemberViewModel);
                 IdentityResult result = _userManager.CreateAsync(user, registerMemberViewModel.Password).Result;
-                if (result.Succeeded) {
+                var resultOfRole = await _userManager.AddToRoleAsync(user, "Member");
+
+                if (result.Succeeded && resultOfRole.Succeeded) {
                     member.Id = user.Id;
                     await unitOfWork.MemberRepo.Add(member);
                     await unitOfWork.Save();
-                    Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme);
-                    await emailSender.SendEmailAsync(user.Email, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
+                    await SendEmailConfirmation(user);
                     return View("confirmEmail");
                 } else {
                     foreach (var error in result.Errors) {
@@ -81,6 +107,39 @@ namespace GYM_MVC.Controllers {
                 }
             }
             return View("Register", registerMemberViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterTheTrainer(RegisterTrainerViewModel registerTrainerViewModel) {
+            if (ModelState.IsValid) {
+                ApplicationUser user = mapper.Map<RegisterTrainerViewModel, ApplicationUser>(registerTrainerViewModel);
+                Trainer trainer = mapper.Map<RegisterTrainerViewModel, Trainer>(registerTrainerViewModel);
+
+                if (registerTrainerViewModel.Image != null) {
+                    UploadImageStatus status = await ImageHandler.UploadImage(registerTrainerViewModel.Image, "Trainer");
+                    if (status is UploadImageError) {
+                        ModelState.AddModelError(string.Empty, status.Message);
+                        return View("RegisterTrainer", registerTrainerViewModel);
+                    }
+                    trainer.ImagePath = ((UploadImageSuccess)status).FileName;
+                }
+
+                IdentityResult result = _userManager.CreateAsync(user, registerTrainerViewModel.Password).Result;
+                var resultOfRole = await _userManager.AddToRoleAsync(user, "Trainer");
+                if (result.Succeeded && resultOfRole.Succeeded) {
+                    trainer.Id = user.Id;
+                    await unitOfWork.TrainerRepo.Add(trainer);
+                    await unitOfWork.Save();
+                    await SendEmailConfirmation(user);
+                    return View("confirmEmail");
+                } else {
+                    foreach (var error in result.Errors) {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+            return View("RegisterTrainer", registerTrainerViewModel);
         }
 
         public async Task<IActionResult> ConfirmEmail(int userId, string code) {
@@ -151,6 +210,13 @@ namespace GYM_MVC.Controllers {
             }
 
             return View(model);
+        }
+
+        //--------------------------
+        private async Task SendEmailConfirmation(ApplicationUser user) {
+            Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
+            string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme);
+            await emailSender.SendEmailAsync(user.Email!, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
         }
     }
 }

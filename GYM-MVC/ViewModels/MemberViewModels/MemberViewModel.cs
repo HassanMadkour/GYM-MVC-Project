@@ -1,12 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
-using GYM.Domain.Entities;
+﻿using GYM.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace GYM_MVC.ViewModels.MemberViewModels
-{
-    public class MemberViewModel
-    {
+namespace GYM_MVC.ViewModels.MemberViewModels {
+
+    public class MemberViewModel {
         public int Id { get; set; }
 
         [Required, MaxLength(50)]
@@ -45,6 +42,7 @@ namespace GYM_MVC.ViewModels.MemberViewModels
         public int? TrainerId { get; set; }
 
         public string ImagePath { get; set; }
+
         [Display(Name = "Profile Image")]
         public IFormFile ImageFile { get; set; }
     }

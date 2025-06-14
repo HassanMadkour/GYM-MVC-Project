@@ -88,10 +88,10 @@ var classSchedule = new[]
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 hero-content animate">
-                <h1 class="display-3 fw-bold text-white mb-4">Transform Your <span class="text-primary">Body</span></h1>
-                <p class="lead text-white mb-5">Join the most elite fitness community in the city and start your transformation journey today with our expert trainers and state-of-the-art facilities.</p>
+                <h1 class="display-3 fw-bold mb-4 text-white">Transform Your <span class="text-primary">Body</span></h1>
+                <p class="lead mb-5 text-white">Join the most elite fitness community in the city and start your transformation journey today with our expert trainers and state-of-the-art facilities.</p>
                 <div class="d-flex gap-3">
-                    <a href="#join" class="btn btn-primary btn-lg rounded-pill px-4 py-3">Join Now</a>
+                    <a asp-action="Register" asp-controller="Account" class="btn btn-primary btn-lg rounded-pill px-4 py-3">Join Now</a>
                     <a href="#schedule" class="btn btn-outline-light btn-lg rounded-pill px-4 py-3">View Schedule</a>
                 </div>
             </div>
@@ -99,7 +99,7 @@ var classSchedule = new[]
     </div>
 </section>
 
-<section class="py-5 bg-light">
+<section class="bg-light py-5">
     <div class="container py-5">
         <div class="row g-4">
             <div class="col-md-4 animate delay-1">
@@ -135,11 +135,11 @@ var classSchedule = new[]
 
 <section id="schedule" class="py-5">
     <div class="container py-5">
-        <h2 class="text-center section-title">Class Schedule</h2>
-        <p class="text-center lead mb-5">Plan your workout week with our comprehensive class timetable</p>
+        <h2 class="section-title text-center">Class Schedule</h2>
+        <p class="lead mb-5 text-center">Plan your workout week with our comprehensive class timetable</p>
 
         <div class="table-responsive animate">
-            <table class="table table-bordered table-hover">
+            <table class="table-bordered table-hover table">
                 <thead class="table-dark">
                     <tr>
                         <th>Time</th>
@@ -170,13 +170,13 @@ var classSchedule = new[]
             </table>
         </div>
 
-        <div class="text-center mt-4">
+        <div class="mt-4 text-center">
             <p class="text-muted">* All classes are 60 minutes unless otherwise noted</p>
         </div>
     </div>
 </section>
 
-<section class="py-5 bg-light">
+<section class="bg-light py-5">
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-5 animate">
@@ -191,7 +191,7 @@ var classSchedule = new[]
                 <p>
                     Captain Ahmed founded <strong>Force Gym</strong> in Shibin El Kom with the vision of creating a community-driven fitness center that blends modern training techniques with personalized care. His deep passion for health and dedication to helping others reach their goals have made Force Gym one of the most trusted and respected gyms in the region.
                 </p>
-                <div class="d-flex gap-3 mt-4">
+                <div class="d-flex mt-4 gap-3">
                     <a href="#" class="btn btn-primary px-4 py-2">Read Full Story</a>
                     <a href="#trainers" class="btn btn-outline-dark px-4 py-2">Meet Our Team</a>
                 </div>
@@ -201,15 +201,15 @@ var classSchedule = new[]
 </section>
 
 <!-- Trainers Section -->
-<section id="trainers" class="py-5 bg-dark text-light">
+<section id="trainers" class="bg-dark text-light py-5">
     <div class="container py-5">
-        <h2 class="text-center section-title text-white">Meet Our Trainers</h2>
-        <p class="text-center lead mb-5">Our certified professionals will help you achieve your fitness goals</p>
+        <h2 class="section-title text-center text-white">Meet Our Trainers</h2>
+        <p class="lead mb-5 text-center">Our certified professionals will help you achieve your fitness goals</p>
         <div class="row g-4">
             @foreach (var trainer in trainers)
             {
                 <div class="col-lg-3 col-md-6 animate">
-                    <div class="trainer-card bg-white rounded shadow text-dark text-center p-4 h-100">
+                    <div class="trainer-card text-dark h-100 rounded bg-white p-4 text-center shadow">
                         <div class="img-wrapper mx-auto mb-3">
                             <img src="@trainer.ImageUrl"
                                  alt="@trainer.Name"
@@ -234,8 +234,8 @@ var classSchedule = new[]
 
 <section id="location" class="py-5">
     <div class="container py-5">
-        <h2 class="text-center section-title">Our Location</h2>
-        <p class="text-center lead mb-5">Visit us at our state-of-the-art facility</p>
+        <h2 class="section-title text-center">Our Location</h2>
+        <p class="lead mb-5 text-center">Visit us at our state-of-the-art facility</p>
 
         <div class="row g-4">
             <div class="col-lg-6 animate">
@@ -243,19 +243,19 @@ var classSchedule = new[]
                     <h4 class="mb-4">PowerFit Gym</h4>
                     <ul class="list-unstyled">
                         <li class="mb-3">
-                            <i class="fas fa-map-marker-alt me-3 text"></i>
+                            <i class="fas fa-map-marker-alt text me-3"></i>
                             <span>123 Fitness Avenue, shibin elkom, monofia</span>
                         </li>
                         <li class="mb-3">
-                            <i class="fas fa-phone me-3 text"></i>
+                            <i class="fas fa-phone text me-3"></i>
                             <span>01234567890</span>
                         </li>
                         <li class="mb-3">
-                            <i class="fas fa-envelope me-3 text"></i>
+                            <i class="fas fa-envelope text me-3"></i>
                             <span>info@Forcegym.com</span>
                         </li>
                         <li class="mb-3">
-                            <i class="fas fa-clock me-3 text"></i>
+                            <i class="fas fa-clock text me-3"></i>
                             <div>
                                 <p class="mb-1">Monday-Friday: 6:00 AM - 10:00 PM</p>
                                 <p class="mb-1">Saturday: 8:00 AM - 8:00 PM</p>

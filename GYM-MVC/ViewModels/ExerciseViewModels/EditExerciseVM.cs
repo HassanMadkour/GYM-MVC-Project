@@ -21,5 +21,6 @@ namespace GYM_MVC.ViewModels.ExerciseViewModels
         public DayOfWeek DayOfWeek { get; set; }
 
         public int? WorkoutPlanId { get; set; }
+        public int? MemberId { get; set; }
     }
 }

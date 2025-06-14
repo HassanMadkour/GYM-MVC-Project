@@ -17,10 +17,14 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">For<span>ce</span></a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-brand fs-6" asp-area="" asp-controller="Home" asp-action="Index">Hello @User.Identity.Name</a>
+                }
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-collapse collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -36,7 +40,14 @@
                             <a class="nav-link" href="#footer">Contact</a>
                         </li>
                         <li class="nav-item ms-lg-3">
-                            <a class="btn btn-primary rounded-pill" href="#join">Join Now</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a class="btn btn-primary rounded-pill" asp-action="Logout" asp-controller="Account">Logout</a>
+                            }else
+                            {
+                             <a class="btn btn-primary rounded-pill"  asp-action="Login" asp-controller="Account">Login</a>
+
+                            }
                         </li>
                     </ul>
                 </div>
@@ -50,16 +61,16 @@
         </main>
     </div>
 
-    <footer class="bg-dark text-white pt-5 pb-4 gap-2" id="footer">
+    <footer class="bg-dark gap-2 pb-4 pt-5 text-white" id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h5 class="text-uppercase mb-4">Force Gym</h5>
                     <p>Your premier fitness destination with state-of-the-art facilities and expert trainers to help you achieve your fitness goals.</p>
                     <div class="social-links mt-4">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3 text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3 text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-3 text-white"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
@@ -83,10 +94,10 @@
             </div>
             <hr class="mb-4">
             <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start">
+                <div class="col-md-6 text-md-start text-center">
                     <p class="mb-0">&copy; @DateTime.Now.Year Force Gym. All rights reserved.</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
+                <div class="col-md-6 text-md-end text-center">
                     <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> for fitness enthusiasts</p>
                 </div>
             </div>
