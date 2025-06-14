@@ -2,6 +2,7 @@
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.TrainerViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers {
@@ -95,6 +96,7 @@ namespace GYM_MVC.Controllers {
             return RedirectToAction(nameof(GetAll));
         }
 
+        [Authorize(Roles = "Trainer")]
         public IActionResult GetMembersByTrainerId(int? id) {
             //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
             //    return NotFound();
@@ -103,6 +105,7 @@ namespace GYM_MVC.Controllers {
             return View(mapper.Map<List<MemberByTrainerIdVM>>(membersfromDb));
         }
 
+        [Authorize(Roles = "Trainer")]
         public async Task<IActionResult> GetMemberWithWorkoutPlans(int? id) {
             //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
             //    return NotFound();

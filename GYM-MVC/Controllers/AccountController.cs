@@ -81,7 +81,9 @@ namespace GYM_MVC.Controllers {
                 ApplicationUser user = mapper.Map<RegisterMemberViewModel, ApplicationUser>(registerMemberViewModel);
                 Member member = mapper.Map<RegisterMemberViewModel, Member>(registerMemberViewModel);
                 IdentityResult result = _userManager.CreateAsync(user, registerMemberViewModel.Password).Result;
-                if (result.Succeeded) {
+                var resultOfRole = await _userManager.AddToRoleAsync(user, "Member");
+
+                if (result.Succeeded && resultOfRole.Succeeded) {
                     member.Id = user.Id;
                     await unitOfWork.MemberRepo.Add(member);
                     await unitOfWork.Save();
@@ -104,7 +106,7 @@ namespace GYM_MVC.Controllers {
                 Trainer trainer = mapper.Map<RegisterTrainerViewModel, Trainer>(registerTrainerViewModel);
 
                 if (registerTrainerViewModel.Image != null) {
-                    UploadImageStatus status = await ImageHandler.UploadImage(registerTrainerViewModel.Image);
+                    UploadImageStatus status = await ImageHandler.UploadImage(registerTrainerViewModel.Image, "Trainer");
                     if (status is UploadImageError) {
                         ModelState.AddModelError(string.Empty, status.Message);
                         return View("RegisterTrainer", registerTrainerViewModel);
@@ -113,7 +115,8 @@ namespace GYM_MVC.Controllers {
                 }
 
                 IdentityResult result = _userManager.CreateAsync(user, registerTrainerViewModel.Password).Result;
-                if (result.Succeeded) {
+                var resultOfRole = await _userManager.AddToRoleAsync(user, "Trainer");
+                if (result.Succeeded && resultOfRole.Succeeded) {
                     trainer.Id = user.Id;
                     await unitOfWork.TrainerRepo.Add(trainer);
                     await unitOfWork.Save();

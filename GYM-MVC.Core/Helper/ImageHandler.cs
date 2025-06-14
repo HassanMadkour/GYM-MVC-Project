@@ -24,7 +24,7 @@ namespace GYM_MVC.Core.Helper {
 
     public class ImageHandler {
 
-        public static async Task<UploadImageStatus> UploadImage(IFormFile image) {
+        public static async Task<UploadImageStatus> UploadImage(IFormFile image, string prefix = "") {
             try {
                 var allowedSize = 5 * 1024 * 1024;
 
@@ -38,13 +38,15 @@ namespace GYM_MVC.Core.Helper {
                     return new UploadImageError("Only .jpg, .jpeg, .png, .gif are allowed");
 
                 var safeFileName = $"{DateTime.Now:yyyyMMdd_HHmmssfff}{extension}";
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", safeFileName);
+
+                var filePath = Path.Combine($"wwwroot/images/{prefix}", safeFileName);
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
                 using (var stream = new FileStream(filePath, FileMode.Create)) {
                     await image.CopyToAsync(stream);
                 }
 
-                return new UploadImageSuccess(safeFileName);
+                return new UploadImageSuccess($"/images/{prefix}/{safeFileName}");
             } catch (Exception) {
                 return new UploadImageError("Image upload failed");
             }
