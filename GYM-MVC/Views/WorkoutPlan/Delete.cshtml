@@ -63,6 +63,6 @@
     
     <form asp-action="Delete">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-controller="Trainer" asp-action="GetMemberWithWorkoutPlans">Back to List</a>
+        <a asp-controller="Trainer" asp-action="GetMemberWithWorkoutPlans" asp-route-id=@Model.MemberId>Back to List</a>
     </form>
 </div>
