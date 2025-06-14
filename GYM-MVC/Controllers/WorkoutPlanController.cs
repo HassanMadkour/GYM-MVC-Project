@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.Execution;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.Data.UnitOfWorks;
@@ -32,6 +33,7 @@ namespace GYM_MVC.Controllers
         {
            
             var allMembers = unitOfWork.MemberRepo.GetAll().ToList();
+            ViewBag.MemberId = memberId;
             ViewBag.MembersList = new SelectList(allMembers, "Id", "Name", memberId);
             return View();
         }
@@ -42,15 +44,19 @@ namespace GYM_MVC.Controllers
         {
             if (createWorkoutPlan is null)
                 return NotFound();
-            createWorkoutPlan.TrainerId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            createWorkoutPlan.TrainerId = 6;// int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             if(ModelState.IsValid)
             {
                 var workOutPlan = mapper.Map<WorkoutPlan>(createWorkoutPlan);
                 await unitOfWork.WorkoutPlanRepo.Add(workOutPlan);
                 await unitOfWork.Save();
-                return RedirectToAction("GetMemberWithWorkoutPlans", "Trainer",new {Id = createWorkoutPlan.MemberId});
+                return RedirectToAction( "Index","Exercise" ,new {WorkOutPlanId = workOutPlan.Id});
+                // return RedirectToAction("GetMemberWithWorkoutPlans", "Trainer",new {Id = createWorkoutPlan.MemberId});
 
             }
+            var allMembers = unitOfWork.MemberRepo.GetAll().ToList();
+            ViewBag.MemberId = createWorkoutPlan.MemberId;
+            ViewBag.MembersList = new SelectList(allMembers, "Id", "Name", createWorkoutPlan.MemberId);
             return View(createWorkoutPlan);
         }
 
@@ -60,7 +66,7 @@ namespace GYM_MVC.Controllers
             if (id is null || !await unitOfWork.WorkoutPlanRepo.Contains(wp => wp.Id == id))
                 return NotFound();
             var workOutPlan = unitOfWork.WorkoutPlanRepo.GetById(id.Value);
-            return View(mapper.Map<EditWorkoutPlanVM>(workOutPlan));
+            return View(mapper.Map<EditWorkoutPlanVM>(workOutPlan.Result));
         }
 
         [HttpPost]
@@ -84,6 +90,7 @@ namespace GYM_MVC.Controllers
         {
             if (id is null || !await unitOfWork.WorkoutPlanRepo.Contains(wp => wp.Id == id)) 
                  return NotFound();
+            
             var workoutPlan = await unitOfWork.WorkoutPlanRepo.GetById(id.Value);
             return View(mapper.Map<DisplayWorkoutPlanVM>(workoutPlan));
         }

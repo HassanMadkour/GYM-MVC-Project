@@ -43,17 +43,17 @@ namespace GYM_MVC {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthorization(); 
 
-            app.MapStaticAssets();
+            //app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Account}/{action=Register}/{id?}")
-                .WithStaticAssets();
+                pattern: "{controller=Account}/{action=Register}/{id?}");
+             //   .WithStaticAssets();
 
             app.Run();
         }

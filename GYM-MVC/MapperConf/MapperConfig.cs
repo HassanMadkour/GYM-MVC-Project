@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.ViewModels.AccountViewModels;
+using GYM_MVC.ViewModels.ExerciseViewModels;
 using GYM_MVC.ViewModels.TrainerViewModels;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
 
@@ -47,7 +48,8 @@ namespace GYM_MVC.Core.MapperConf {
             }).ReverseMap();
             CreateMap<WorkoutPlan, CreateWorkoutPlanVM>().ReverseMap();
             CreateMap<WorkoutPlan, EditWorkoutPlanVM>().ReverseMap();
-            
+            CreateMap<Exercise, EditExerciseVM>().ReverseMap();
+            CreateMap<Exercise, ExerciseVM>().ReverseMap();
         }
     }
 }
