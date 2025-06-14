@@ -48,5 +48,37 @@ namespace GYM_MVC.Controllers {
             await unitOfWork.Save();
             return RedirectToAction("index", "Home");
         }
+
+        [HttpGet]
+        public IActionResult Index() {
+            return View(mapper.Map<List<DisplayMembershipViewModel>>(unitOfWork.MembershipRepo.GetAll()));
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id) {
+            unitOfWork.MembershipRepo.Delete(id);
+            await unitOfWork.Save();
+            return RedirectToAction("index");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteConfirmed(int id) {
+            unitOfWork.MembershipRepo.Delete(id);
+            await unitOfWork.Save();
+            return RedirectToAction("index");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteRange(List<DisplayMembershipViewModel> models) {
+            unitOfWork.MembershipRepo.DeleteRange(mapper.Map<List<Membership>>(models));
+            await unitOfWork.Save();
+            return RedirectToAction("index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id) {
+            Membership membership = await unitOfWork.MembershipRepo.GetById(id);
+            return View(mapper.Map<DisplayMembershipViewModel>(membership));
+        }
     }
 }
