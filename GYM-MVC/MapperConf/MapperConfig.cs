@@ -71,6 +71,11 @@ namespace GYM_MVC.Core.MapperConf {
                        dist.SelectedMembershipType = src.Type.ToString();
                    }
                 );
+            CreateMap<Membership, DisplayMembershipViewModel>().AfterMap(
+                (src, dist) => {
+                    dist.SelectedMembershipType = src.Type.ToString();
+                }
+                );
         }
     }
 }
