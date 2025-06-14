@@ -39,5 +39,14 @@ namespace GYM_MVC.Controllers {
             model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
             return View(model);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateMembershipViewModel model) {
+            model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
+            if (!ModelState.IsValid) return View(model);
+            unitOfWork.MembershipRepo.Update(mapper.Map<Membership>(model));
+            await unitOfWork.Save();
+            return RedirectToAction("index", "Home");
+        }
     }
 }
