@@ -1,7 +1,7 @@
-﻿using GYM.Domain.Entities;
-using GYM_MVC.Core.IRepositories;
-using GYM_MVC.Data.Repositories;
-using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using GYM.Domain.Entities;
+using GYM_MVC.Core.IUnitOfWorks;
+using GYM_MVC.ViewModels.ExerciseViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -10,62 +10,99 @@ namespace GYM_MVC.Controllers
     //[Authorize(Roles ="Admin")]
     public class ExerciseController : Controller
     {
-        private readonly IExcerciseRepo _repo;
-        public ExerciseController(IExcerciseRepo repo)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+
+        public ExerciseController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _repo = repo;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
+        }
+        [HttpGet]
+        public IActionResult Index(int WorkoutPlanId)
+        {
+            var ExcerciseRepo = _unitOfWork.ExcerciseRepo.GetExercisesByWorkoutPlanId(WorkoutPlanId);
+            ViewBag.WorkoutPlanId = WorkoutPlanId;
+            var GetAllExercises = _mapper.Map<List<EditExerciseVM>>(ExcerciseRepo.Result);
+
+            return View(GetAllExercises ?? new List<EditExerciseVM>());
         }
 
-        public IActionResult GetAll()
+        public IActionResult Create(int WorkoutPlanId)
         {
-            var exercises = _repo.GetAll();
-            return View(exercises);
+            //ViewBag.DaysOfWeek = EnumHelper.ToSelectList<DayOfWeek>();
+
+            var model = new ExerciseVM
+            {
+                WorkoutPlanId = WorkoutPlanId
+            };
+
+            return View(model);
         }
-        public IActionResult Details(int id)
-        {
-            var exercise = _repo.GetById(id);
-            if (exercise == null) return NotFound();
-            return View(exercise);
-        }
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
+
+
+
         [HttpPost]
-        public async Task<IActionResult> Create(Exercise ex)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(ExerciseVM exerciseVM)
         {
-            if (!ModelState.IsValid) return View(ex);
-            await _repo.Add(ex);
-            return RedirectToAction(nameof(GetAll));
+            if (!ModelState.IsValid) return View(exerciseVM);
+
+            var exercise = _mapper.Map<Exercise>(exerciseVM);
+
+            await _unitOfWork.ExcerciseRepo.Add(exercise);
+            await _unitOfWork.Save();
+
+            return RedirectToAction(nameof(Index));
         }
-        [HttpGet]
+
+
         public async Task<IActionResult> Edit(int id)
         {
-            var exercise = await _repo.GetById(id);
+           // ViewBag.DaysOfWeek = EnumHelper.ToSelectList<DayOfWeek>();
+            var exercise = await _unitOfWork.ExcerciseRepo.GetById(id);
             if (exercise == null) return NotFound();
-            return View(exercise);
+            var exerciseVM = _mapper.Map<EditExerciseVM>(exercise);
+            return View("Edit", exerciseVM);
         }
+
         [HttpPost]
-        public IActionResult Edit(Exercise ex)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, EditExerciseVM NewExercise)
         {
-            if (!ModelState.IsValid) return View(ex);
-            _repo.Update(ex);
-            return RedirectToAction(nameof(GetAll));
-        }
-        [HttpPost]
-        public IActionResult Delete(int id) { 
-            var exercise = _repo.GetById(id);
+            if (!ModelState.IsValid) return View("Edit");
+
+            var exercise = await _unitOfWork.ExcerciseRepo.GetById(id);
             if (exercise == null) return NotFound();
-            _repo.Delete(id);
-            return RedirectToAction(nameof(GetAll));
+
+            _mapper.Map(NewExercise, exercise);
+            _unitOfWork.ExcerciseRepo.Update(exercise);
+            await _unitOfWork.Save();
+
+            return RedirectToAction(nameof(Index)); ///put here action after create excercise
         }
-        [HttpPost]
-        public async Task<IActionResult> DeleteRange(List<Exercise> exercises)
+
+        public async Task<IActionResult> Delete(int id)
         {
-            if (exercises == null || !exercises.Any()) return NotFound();
-            _repo.DeleteRange(exercises);
-            return RedirectToAction(nameof(GetAll));
+            var exercise = await _unitOfWork.ExcerciseRepo.GetById(id);
+            if (exercise == null) return NotFound();
+
+            return View(DeleteConfirmed(id));
+        }
+
+
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            _unitOfWork.ExcerciseRepo.Delete(id);
+            await _unitOfWork.Save();
+
+            TempData["SuccessMessage"] = "Deleted successfully ";
+
+            return RedirectToAction("Index");
+
         }
 
         }
