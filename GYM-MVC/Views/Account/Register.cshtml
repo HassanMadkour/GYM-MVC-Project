@@ -135,11 +135,11 @@
                                 <input type="radio" asp-for="SelectedMembershipId" value="@membership.Id" id="membership-@membership.Id" class="membership-radio" />
                                 <label for="membership-@membership.Id">
                                     <div class="membership-header">
-                                        <h4>@membership.Type</h4>
+                                        <h4>@membership.SelectedMembershipType</h4>
                                   
                                     </div>
                                     <div class="membership-price">
-                                        $@membership.Price<span>/@membership.DurationInDays</span>
+                                        $@membership.Price
                                     </div>
                                     <div class="membership-features">
                              
