@@ -57,7 +57,7 @@ namespace GYM_MVC {
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Account}/{action=Register}/{id?}")
+                pattern: "{controller=Membership}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

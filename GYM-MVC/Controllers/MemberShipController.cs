@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers {
 
-    public class MemberShipController : Controller {
+    public class MembershipController : Controller {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
 
-        public MemberShipController(IUnitOfWork unitOfWork, IMapper mapper) {
+        public MembershipController(IUnitOfWork unitOfWork, IMapper mapper) {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
