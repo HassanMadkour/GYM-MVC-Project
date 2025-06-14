@@ -49,7 +49,7 @@ namespace GYM_MVC.Controllers
                 var workOutPlan = mapper.Map<WorkoutPlan>(createWorkoutPlan);
                 await unitOfWork.WorkoutPlanRepo.Add(workOutPlan);
                 await unitOfWork.Save();
-                return RedirectToAction( "Index","Exercise" ,new {WorkOutPlanId = workOutPlan.Id});
+                return RedirectToAction( "Index","Exercise" ,new {WorkoutPlanId = workOutPlan.Id});
                 // return RedirectToAction("GetMemberWithWorkoutPlans", "Trainer",new {Id = createWorkoutPlan.MemberId});
 
             }

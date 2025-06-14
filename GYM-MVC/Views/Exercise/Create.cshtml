@@ -46,7 +46,7 @@
                         </select>
                         <span asp-validation-for="DayOfWeek" class="text-danger"></span>
                     </div>
-
+                    <input type="hidden" asp-for="WorkoutPlanId" value="@Model.WorkoutPlanId" />
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary w-45">Create</button>
                         <a asp-action="Index" class="btn btn-outline-secondary w-45">Back</a>

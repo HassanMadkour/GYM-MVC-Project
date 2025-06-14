@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using GYM.Domain.Entities;
+using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.ExerciseViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using DayOfWeek = GYM.Domain.Entities.DayOfWeek;
 
 namespace GYM_MVC.Controllers
 {
@@ -30,7 +32,7 @@ namespace GYM_MVC.Controllers
 
         public IActionResult Create(int WorkoutPlanId)
         {
-            //ViewBag.DaysOfWeek = EnumHelper.ToSelectList<DayOfWeek>();
+            ViewBag.DaysOfWeek = EnumHelper.ToSelectList<DayOfWeek>();
 
             var model = new ExerciseVM
             {
@@ -46,20 +48,24 @@ namespace GYM_MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ExerciseVM exerciseVM)
         {
-            if (!ModelState.IsValid) return View(exerciseVM);
+            if (!ModelState.IsValid) 
+            {
+                ViewBag.DaysOfWeek = EnumHelper.ToSelectList<DayOfWeek>();
+                return View(exerciseVM);
+            }
 
             var exercise = _mapper.Map<Exercise>(exerciseVM);
 
             await _unitOfWork.ExcerciseRepo.Add(exercise);
             await _unitOfWork.Save();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index) , new { WorkoutPlanId = exercise.WorkoutPlanId});
         }
 
 
         public async Task<IActionResult> Edit(int id)
         {
-           // ViewBag.DaysOfWeek = EnumHelper.ToSelectList<DayOfWeek>();
+            ViewBag.DaysOfWeek = EnumHelper.ToSelectList<DayOfWeek>();
             var exercise = await _unitOfWork.ExcerciseRepo.GetById(id);
             if (exercise == null) return NotFound();
             var exerciseVM = _mapper.Map<EditExerciseVM>(exercise);
