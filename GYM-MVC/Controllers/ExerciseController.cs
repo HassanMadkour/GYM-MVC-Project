@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using DayOfWeek = GYM.Domain.Entities.DayOfWeek;
 
-namespace GYM_MVC.Controllers
-{
+namespace GYM_MVC.Controllers {
+
     //[Authorize(Roles ="Admin")]
     public class ExerciseController : Controller
     {
@@ -110,6 +110,5 @@ namespace GYM_MVC.Controllers
             return RedirectToAction("Index");
 
         }
-
-        }
+    }
 }

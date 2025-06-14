@@ -20,8 +20,4 @@
 		<ProjectReference Include="..\GYM-MVC.Data\GYM-MVC.Data.csproj" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Membership\" />
-  </ItemGroup>
-
 </Project>

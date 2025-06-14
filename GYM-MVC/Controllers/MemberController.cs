@@ -1,23 +1,15 @@
 ﻿using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.MemberViewModels;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace GYM_MVC.Controllers
-{
-    public class MemberController : Controller
-    {
+namespace GYM_MVC.Controllers {
+
+    public class MemberController : Controller {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _env;
 
-        public MemberController(IUnitOfWork unitOfWork, IWebHostEnvironment env)
-        {
+        public MemberController(IUnitOfWork unitOfWork, IWebHostEnvironment env) {
             _unitOfWork = unitOfWork;
             _env = env;
         }
@@ -37,8 +29,7 @@ namespace GYM_MVC.Controllers
         //}
 
         [HttpGet]
-        public async Task<IActionResult> Details(int id)
-        {
+        public async Task<IActionResult> Details(int id) {
             var member = await _unitOfWork.MemberRepo.GetById(id);
             if (member == null) return NotFound();
 
@@ -50,8 +41,7 @@ namespace GYM_MVC.Controllers
         public IActionResult Create() => View();
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MemberViewModel vm)
-        {
+        public async Task<IActionResult> Create(MemberViewModel vm) {
             if (!ModelState.IsValid) return View(vm);
 
             var member = new Member();
@@ -67,8 +57,7 @@ namespace GYM_MVC.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(MemberViewModel vm)
-        {
+        public async Task<IActionResult> Edit(MemberViewModel vm) {
             if (!ModelState.IsValid) return View("Details", vm);
 
             var member = await _unitOfWork.MemberRepo.GetById(vm.Id);
@@ -76,10 +65,8 @@ namespace GYM_MVC.Controllers
 
             MapToEntity(vm, member);
 
-            if (vm.ImageFile != null && vm.ImageFile.Length > 0)
-            {
-                if (!string.IsNullOrWhiteSpace(member.ImagePath))
-                {
+            if (vm.ImageFile != null && vm.ImageFile.Length > 0) {
+                if (!string.IsNullOrWhiteSpace(member.ImagePath)) {
                     var oldPath = Path.Combine(_env.WebRootPath, member.ImagePath.TrimStart('/'));
                     if (System.IO.File.Exists(oldPath)) System.IO.File.Delete(oldPath);
                 }
@@ -94,16 +81,14 @@ namespace GYM_MVC.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
-        {
+        public async Task<IActionResult> Delete(int id) {
             _unitOfWork.MemberRepo.Delete(id);
             await _unitOfWork.Save(); // Save changes to DB
             return RedirectToAction(nameof(Index));
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteRange(List<int> memberIds)
-        {
+        public async Task<IActionResult> DeleteRange(List<int> memberIds) {
             var members = _unitOfWork.MemberRepo
                           .GetAll()
                           .Where(m => memberIds.Contains(m.Id))
@@ -115,8 +100,7 @@ namespace GYM_MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private static MemberViewModel MapToViewModel(Member m) => new()
-        {
+        private static MemberViewModel MapToViewModel(Member m) => new() {
             Id = m.Id,
             Name = m.Name,
             Age = m.Age,
@@ -133,8 +117,7 @@ namespace GYM_MVC.Controllers
             TrainerId = m.TrainerId
         };
 
-        private static void MapToEntity(MemberViewModel vm, Member m)
-        {
+        private static void MapToEntity(MemberViewModel vm, Member m) {
             m.Name = vm.Name;
             m.Age = vm.Age;
             m.MaritalStatus = vm.MaritalStatus;
@@ -149,8 +132,7 @@ namespace GYM_MVC.Controllers
             m.TrainerId = vm.TrainerId;
         }
 
-        private async Task<string> SaveImageAsync(Microsoft.AspNetCore.Http.IFormFile file)
-        {
+        private async Task<string> SaveImageAsync(Microsoft.AspNetCore.Http.IFormFile file) {
             var folder = Path.Combine(_env.WebRootPath, "images", "members");
             if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
