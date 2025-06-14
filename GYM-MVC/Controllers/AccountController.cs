@@ -58,13 +58,12 @@ namespace GYM_MVC.Controllers {
 
         [HttpGet]
         public IActionResult Register() {
-            var model = new RegisterMemberViewModel
-            {
+            var model = new RegisterMemberViewModel {
                 AvailableTrainers = unitOfWork.TrainerRepo.GetAll()
               .Select(t => mapper.Map<DisplayTrainerVM>(t)).ToList(),
                 //should make member ship repo
-                AvailableMemberships = unitOfWork.MemberRepo.GetAll()
-              .Select(m => mapper.Map<MembershipViewModel>(m)).ToList()
+                AvailableMemberships = unitOfWork.MembershipRepo.GetAll()
+              .Select(m => mapper.Map<DisplayMembershipViewModel>(m)).ToList()
             };
             return View("Register", model);
         }
@@ -82,7 +81,7 @@ namespace GYM_MVC.Controllers {
                     await unitOfWork.Save();
                     Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
                     string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme);
-                    await emailSender.SendEmailAsync(user.Email, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
+                    await emailSender.SendEmailAsync(user.Email!, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
                     return View("confirmEmail");
                 } else {
                     foreach (var error in result.Errors) {
