@@ -35,6 +35,7 @@ namespace GYM_MVC.Core.MapperConf {
                 dist.Illnesses = src.Illnesses ?? "";
                 dist.Injuries = src.Injuries ?? "";
                 dist.SleepHours = src.SleepHours;
+                dist.TrainerId = src.SelectedTrainerId;
             });
             CreateMap<RegisterTrainerViewModel, Trainer>().ReverseMap();
             CreateMap<Member, RegisterMemberViewModel>().AfterMap((src, dist) => {
