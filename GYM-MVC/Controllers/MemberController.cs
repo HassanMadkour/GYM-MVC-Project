@@ -15,11 +15,18 @@ namespace GYM_MVC.Controllers {
         }
 
         [HttpGet]
-        [HttpGet]
-        public IActionResult Index() {
-            var members = _unitOfWork.MemberRepo.GetAll();
+        public IActionResult Index()
+        {
+            var members = _unitOfWork.MemberRepo.GetAll()
+                .Select(MapToViewModel)
+                .ToList();
             return View(members);
         }
+        //[HttpGet]
+        //public IActionResult Index() {
+        //    var members = _unitOfWork.MemberRepo.GetAll();
+        //    return View(members);
+        //}
 
         [HttpGet]
         public async Task<IActionResult> Details(int id) {

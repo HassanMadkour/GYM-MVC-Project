@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.IUnitOfWorks;
@@ -34,9 +35,9 @@ namespace GYM_MVC.Controllers {
 
         [HttpGet]
         public IActionResult Login() {
-            if (User.Identity.IsAuthenticated) {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (User.Identity.IsAuthenticated) {
+            //    return RedirectToAction("Index", "Home");
+            //}
             return View("Login");
         }
 
@@ -48,8 +49,18 @@ namespace GYM_MVC.Controllers {
                 if (user != null && user.EmailConfirmed) {
                     bool result = await _userManager.CheckPasswordAsync(user, loginUserViewModel.Password);
                     if (result) {
+                        
                         await signInManager.SignInAsync(user, loginUserViewModel.RememberMe);
-                        return RedirectToAction("Index", "Home");
+                        switch (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value)
+                        {
+                            case "Member":
+                                return RedirectToAction("Index", "Home");
+                            case "Trainer":
+                                return RedirectToAction("GetMembersByTrainerId", "Trainer", new { Id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value });
+                            case "Admin":
+                                return RedirectToAction("Dashboard", "Admin");
+                        }
+                       
                     }
                 }
             }

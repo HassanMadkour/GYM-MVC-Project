@@ -6,6 +6,7 @@ using GYM_MVC.ViewModels;
 using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.MembershipViewModels;
 using GYM_MVC.ViewModels.ScheduleViewModels;
+using GYM_MVC.ViewModels.ExerciseViewModels;
 using GYM_MVC.ViewModels.TrainerViewModels;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
 
@@ -34,6 +35,7 @@ namespace GYM_MVC.Core.MapperConf {
                 dist.Illnesses = src.Illnesses ?? "";
                 dist.Injuries = src.Injuries ?? "";
                 dist.SleepHours = src.SleepHours;
+                dist.TrainerId = src.SelectedTrainerId;
             });
             CreateMap<RegisterTrainerViewModel, Trainer>().ReverseMap();
             CreateMap<Member, RegisterMemberViewModel>().AfterMap((src, dist) => {
@@ -77,6 +79,11 @@ namespace GYM_MVC.Core.MapperConf {
                     dist.SelectedMembershipType = src.Type.ToString();
                 }
                 );
+            CreateMap<Exercise, EditExerciseVM>().AfterMap((src, dest) =>
+            {
+                dest.MemberId = src.WorkoutPlan.MemberId;
+            }).ReverseMap();
+            CreateMap<Exercise, ExerciseVM>().ReverseMap();
         }
     }
 }

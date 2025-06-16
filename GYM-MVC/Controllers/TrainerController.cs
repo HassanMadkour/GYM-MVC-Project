@@ -96,7 +96,7 @@ namespace GYM_MVC.Controllers {
             return RedirectToAction(nameof(GetAll));
         }
 
-        [Authorize(Roles = "Trainer")]
+        //[Authorize(Roles = "Trainer")]
         public IActionResult GetMembersByTrainerId(int? id) {
             //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
             //    return NotFound();
@@ -105,7 +105,7 @@ namespace GYM_MVC.Controllers {
             return View(mapper.Map<List<MemberByTrainerIdVM>>(membersfromDb));
         }
 
-        [Authorize(Roles = "Trainer")]
+        //[Authorize(Roles = "Trainer")]
         public async Task<IActionResult> GetMemberWithWorkoutPlans(int? id) {
             //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
             //    return NotFound();

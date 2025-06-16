@@ -5,7 +5,7 @@
 @model DisplayMemberWithWorkoutPlansVM ;
 
 @{
-    // ViewBag.Title = "Member Details";
+    ViewData["Title"] = "Member Details";
 }
 
 <div class="container mt-4">
@@ -91,12 +91,16 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        
                     }
                     else
                     {
                         <p class="text-muted">No exercises added to this plan.</p>
 
                     }
+                    <a asp-action="Edit" asp-controller="WorkoutPlan" asp-route-id=@plan.Id>Edit</a>
+                    <a asp-action="Delete" asp-controller="WorkoutPlan" asp-route-id=@plan.Id>Delete</a>
                 </div>
             </div>
         }
