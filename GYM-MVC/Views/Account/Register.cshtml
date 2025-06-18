@@ -1,47 +1,40 @@
 ﻿@using GYM_MVC.ViewModels.AccountViewModels
-
 @model RegisterMemberViewModel
 @{
     ViewData["Title"] = "Register";
-    Layout = "_AuthLayout"; 
+    Layout = "_AuthLayout";
 }
 
-<div class="auth-card">
-    <h1 class="auth-title">Create Your Account</h1>
-    <p class="auth-subtitle">Join our fitness community today</p>
+<div class="split-container">
+    <!-- Left Side - Personal & Health Info -->
+    <div class="split-left">
+        <form asp-action="RegisterTheMember" class="register-form">
+            <div class="form-header">
+                <h1 class="register-title">Create Your Account</h1>
+                <p class="register-subtitle">Join our fitness community today</p>
+            </div>
 
-    <form asp-action="RegisterTheMember">
-        <div asp-validation-summary="ModelOnly" class="validation-summary-errors"></div>
-
-        <!-- Personal Information Section -->
-        <div class="form-section">
-            <h3 class="section-title">Personal Information</h3>
-            <div class="row">
-                <div class="col-md-6">
+            <div class="form-section">
+                <h3 class="section-title">Personal Information</h3>
+                <div class="form-grid">
                     <div class="form-group">
                         <label asp-for="MemberName" class="form-label">Full Name</label>
                         <input asp-for="MemberName" class="form-control" placeholder="Enter your full name" />
                         <span asp-validation-for="MemberName" class="field-validation-error"></span>
                     </div>
-                </div>
-                <div class="col-md-6">
+
                     <div class="form-group">
                         <label asp-for="BirthDate" class="form-label">Birth Date</label>
                         <input asp-for="BirthDate" type="date" class="form-control" />
                         <span asp-validation-for="BirthDate" class="field-validation-error"></span>
                     </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
                         <input asp-for="PhoneNumber" class="form-control" placeholder="Enter your phone number" />
                         <span asp-validation-for="PhoneNumber" class="field-validation-error"></span>
                     </div>
-                </div>
-                <div class="col-md-6">
+
                     <div class="form-group">
                         <label asp-for="MaterialStatus" class="form-label">Marital Status</label>
                         <select asp-for="MaterialStatus" class="form-control">
@@ -54,57 +47,54 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Health Information Section -->
-        <div class="form-section">
-            <h3 class="section-title">Health Information</h3>
-            <div class="row">
-                <div class="col-md-6">
+            <div class="form-section">
+                <h3 class="section-title">Health Information</h3>
+                <div class="form-grid">
                     <div class="form-group">
                         <label asp-for="Weight" class="form-label">Weight (kg)</label>
                         <input asp-for="Weight" class="form-control" placeholder="Enter your weight" />
                         <span asp-validation-for="Weight" class="field-validation-error"></span>
                     </div>
-                </div>
-                <div class="col-md-6">
+
                     <div class="form-group">
                         <label asp-for="Height" class="form-label">Height (cm)</label>
                         <input asp-for="Height" class="form-control" placeholder="Enter your height" />
                         <span asp-validation-for="Height" class="field-validation-error"></span>
                     </div>
+
+                    <div class="form-group full-width">
+                        <label asp-for="Illnesses" class="form-label">Any Illnesses (if applicable)</label>
+                        <input asp-for="Illnesses" class="form-control" placeholder="List any illnesses" />
+                        <span asp-validation-for="Illnesses" class="field-validation-error"></span>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label asp-for="Injuries" class="form-label">Any Injuries (if applicable)</label>
+                        <input asp-for="Injuries" class="form-control" placeholder="List any injuries" />
+                        <span asp-validation-for="Injuries" class="field-validation-error"></span>
+                    </div>
                 </div>
             </div>
+        </form>
+    </div>
 
-            <div class="form-group">
-                <label asp-for="Illnesses" class="form-label">Any Illnesses (if applicable)</label>
-                <input asp-for="Illnesses" class="form-control" placeholder="List any illnesses" />
-                <span asp-validation-for="Illnesses" class="field-validation-error"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Injuries" class="form-label">Any Injuries (if applicable)</label>
-                <input asp-for="Injuries" class="form-control" placeholder="List any injuries" />
-                <span asp-validation-for="Injuries" class="field-validation-error"></span>
-            </div>
-        </div>
-        <!-- Trainer Selection Section -->
-        <div class="form-section">
-            <h3 class="section-title">Select Your Trainer</h3>
-            <div class="trainer-selection">
-                <div class="row">
-                    @if (Model?.AvailableTrainers != null)
-                    {
-                        foreach (var trainer in Model.AvailableTrainers)
+    <div class="split-right">
+        <form asp-action="RegisterTheMember" class="register-form">
+            <div class="form-section">
+                <h3 class="section-title">Select Your Trainer</h3>
+                <div class="trainer-selection">
+                    <div class="trainer-grid">
+                        @if (Model?.AvailableTrainers != null)
                         {
-                            <div class="col-md-4 mb-3">
+                            foreach (var trainer in Model.AvailableTrainers)
+                            {
                                 <label for="trainer-@trainer.Id" class="trainer-radio-wrapper">
                                     <input type="radio"
                                            name="SelectedTrainerId"
                                            value="@trainer.Id"
                                            id="trainer-@trainer.Id"
-                                           checked="@(Model.SelectedTrainerId == trainer.Id)"
-                                           class="d-none" />
+                                           checked="@(Model.SelectedTrainerId == trainer.Id)" />
 
                                     <div class="trainer-card @(Model.SelectedTrainerId == trainer.Id ? "selected" : "")">
                                         <img src="@trainer.ImagePath" class="trainer-thumbnail" alt="@trainer.Name" />
@@ -114,76 +104,60 @@
                                         </div>
                                     </div>
                                 </label>
-                            </div>
+                            }
                         }
-                    }
+                    </div>
+                    <span asp-validation-for="SelectedTrainerId" class="field-validation-error"></span>
                 </div>
-                <span asp-validation-for="SelectedTrainerId" class="field-validation-error"></span>
             </div>
-        </div>
 
-
-        <!-- Membership Selection Section -->
-        <div class="form-section">
-            <h3 class="section-title">Choose Your Membership</h3>
-            <div class="membership-selection">
-                <div class="row">
-                    @foreach (var membership in Model.AvailableMemberships)
-                    {
-                        <div class="col-md-4 mb-3">
+            <div class="form-section">
+                <h3 class="section-title">Choose Your Membership</h3>
+                <div class="membership-selection">
+                    <div class="membership-grid">
+                        @foreach (var membership in Model.AvailableMemberships)
+                        {
                             <div class="membership-card @(Model.SelectedMembershipId == membership.Id ? "selected" : "")">
                                 <input type="radio" asp-for="SelectedMembershipId" value="@membership.Id" id="membership-@membership.Id" class="membership-radio" />
                                 <label for="membership-@membership.Id">
                                     <div class="membership-header">
                                         <h4>@membership.SelectedMembershipType</h4>
-                                  
                                     </div>
                                     <div class="membership-price">
                                         $@membership.Price
                                     </div>
                                     <div class="membership-features">
-                             
-                                            $@membership.Description
-                             
+                                        @membership.Description
                                     </div>
                                 </label>
                             </div>
-                        </div>
-                    }
+                        }
+                    </div>
+                    <span asp-validation-for="SelectedMembershipId" class="field-validation-error"></span>
                 </div>
-                <span asp-validation-for="SelectedMembershipId" class="field-validation-error"></span>
             </div>
-        </div>
 
-        <!-- Account Information Section -->
-        <div class="form-section">
-            <h3 class="section-title">Account Information</h3>
-            <div class="row">
-                <div class="col-md-6">
+            <div class="form-section">
+                <h3 class="section-title">Account Information</h3>
+                <div class="form-grid">
                     <div class="form-group">
                         <label asp-for="Name" class="form-label">Username</label>
                         <input asp-for="Name" class="form-control" placeholder="Choose a username" />
                         <span asp-validation-for="Name" class="field-validation-error"></span>
                     </div>
-                </div>
-                <div class="col-md-6">
+
                     <div class="form-group">
                         <label asp-for="Email" class="form-label">Email</label>
                         <input asp-for="Email" class="form-control" placeholder="Enter your email" />
                         <span asp-validation-for="Email" class="field-validation-error"></span>
                     </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="Password" class="form-label">Password</label>
                         <input asp-for="Password" type="password" class="form-control" placeholder="Create a password" />
                         <span asp-validation-for="Password" class="field-validation-error"></span>
                     </div>
-                </div>
-                <div class="col-md-6">
+
                     <div class="form-group">
                         <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
                         <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm your password" />
@@ -191,16 +165,15 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-       
-        <button type="submit" class="btn btn-primary btn-block">
-            <i class="fas fa-user-plus"></i> Register Now
-        </button>
-    </form>
-
-    <div class="auth-links">
-        Already have an account? <a asp-action="Login">Sign in</a>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Register Now
+                </button>
+                <div class="auth-links">
+                    Already have an account? <a asp-action="Login">Sign in</a>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-

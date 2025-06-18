@@ -1,67 +1,12 @@
-﻿﻿@{
-ViewData["Title"] = "ForceGym";
-var trainers = new[]
-    {
-        new { Name = "Sarah Johnson", Role = "CrossFit Specialist", ImageUrl = "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" },
-        new { Name = "John Doe", Role = "Yoga Expert", ImageUrl = "https://images.pexels.com/photos/903171/pexels-photo-903171.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" },
-        new { Name = "Emily Smith", Role = "Zumba Coach", ImageUrl = "https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" },
-        new { Name = "James Brown", Role = "Strength Trainer", ImageUrl = "https://images.pexels.com/photos/718786/pexels-photo-718786.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150" }
-    };
-var classSchedule = new[]
-{
-    new {
-        Time = "6:00 AM",
-        Monday = "CrossFit",
-        Tuesday = "HIIT",
-        Wednesday = "CrossFit",
-        Thursday = "HIIT",
-        Friday = "CrossFit",
-        Saturday = "Bootcamp",
-        Sunday = "-"
-    },
-    new {
-        Time = "8:00 AM",
-        Monday = "Yoga",
-        Tuesday = "Spin",
-        Wednesday = "Yoga",
-        Thursday = "Spin",
-        Friday = "Yoga",
-        Saturday = "Spin",
-        Sunday = "Yoga"
-    },
-    new {
-        Time = "12:00 PM",
-        Monday = "Pilates",
-        Tuesday = "Zumba",
-        Wednesday = "Pilates",
-        Thursday = "Zumba",
-        Friday = "Pilates",
-        Saturday = "-",
-        Sunday = "-"
-    },
-    new {
-        Time = "5:00 PM",
-        Monday = "Strength",
-        Tuesday = "Cardio",
-        Wednesday = "Strength",
-        Thursday = "Cardio",
-        Friday = "Strength",
-        Saturday = "-",
-        Sunday = "-"
-    },
-    new {
-        Time = "7:00 PM",
-        Monday = "Boxing",
-        Tuesday = "Kickboxing",
-        Wednesday = "Boxing",
-        Thursday = "Kickboxing",
-        Friday = "Boxing",
-        Saturday = "-",
-        Sunday = "-"
-    }
-};
+﻿@{
+    ViewData["Title"] = "ForceGym";
+    Layout = "_MainLayout";
+    var trainers = ViewBag.Trainers as IEnumerable<dynamic> ?? Enumerable.Empty<dynamic>();
+    var scheduleTable = ViewBag.ScheduleTable as IEnumerable<dynamic> ?? Enumerable.Empty<dynamic>();
 
+    string Cell(object? value) => string.IsNullOrWhiteSpace(value?.ToString()) ? "-" : value!.ToString()!;
 }
+
 <section class="hero-section">
     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -136,11 +81,10 @@ var classSchedule = new[]
 <section id="schedule" class="py-5">
     <div class="container py-5">
         <h2 class="section-title text-center">Class Schedule</h2>
-        <p class="lead mb-5 text-center">Plan your workout week with our comprehensive class timetable</p>
-
-        <div class="table-responsive animate">
-            <table class="table-bordered table-hover table">
-                <thead class="table-dark">
+        <p class="lead mb-5 text-center">
+           <div class="table-responsive animate">
+            <table class="table table-bordered table-hover text-center align-middle">
+                <thead class="table-dark text-bg-dark">
                     <tr>
                         <th>Time</th>
                         <th>Monday</th>
@@ -153,82 +97,43 @@ var classSchedule = new[]
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var row in classSchedule)
+                    @foreach (var row in scheduleTable)
                     {
                         <tr>
-                            <td>@row.Time</td>
-                            <td>@row.Monday</td>
-                            <td>@row.Tuesday</td>
-                            <td>@row.Wednesday</td>
-                            <td>@row.Thursday</td>
-                            <td>@row.Friday</td>
-                            <td>@row.Saturday</td>
-                            <td>@row.Sunday</td>
+                            <td class="fw-bold">@row.Time</td>
+                            <td>@Cell(row.Monday)</td>
+                            <td>@Cell(row.Tuesday)</td>
+                            <td>@Cell(row.Wednesday)</td>
+                            <td>@Cell(row.Thursday)</td>
+                            <td>@Cell(row.Friday)</td>
+                            <td>@Cell(row.Saturday)</td>
+                            <td>@Cell(row.Sunday)</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
-
-        <div class="mt-4 text-center">
-            <p class="text-muted">* All classes are 60 minutes unless otherwise noted</p>
-        </div>
     </div>
 </section>
 
-<section class="bg-light py-5">
-    <div class="container py-5">
-        <div class="row align-items-center">
-            <div class="col-lg-5 animate">
-                <div class="owner-img-placeholder">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-            </div>
-            <div class="col-lg-7 animate delay-1">
-                <h2 class="section-title mb-4">Meet Our Founder</h2>
-                <h3 class="text-dark mb-3">Captain Ahmed El Sonbaty</h3>
-                <p class="lead">A former professional athlete and certified fitness trainer with over 15 years of experience in the fitness industry.</p>
-                <p>
-                    Captain Ahmed founded <strong>Force Gym</strong> in Shibin El Kom with the vision of creating a community-driven fitness center that blends modern training techniques with personalized care. His deep passion for health and dedication to helping others reach their goals have made Force Gym one of the most trusted and respected gyms in the region.
-                </p>
-                <div class="d-flex mt-4 gap-3">
-                    <a href="#" class="btn btn-primary px-4 py-2">Read Full Story</a>
-                    <a href="#trainers" class="btn btn-outline-dark px-4 py-2">Meet Our Team</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Trainers Section -->
 <section id="trainers" class="bg-dark text-light py-5">
-    <div class="container py-5">
-        <h2 class="section-title text-center text-white">Meet Our Trainers</h2>
-        <p class="lead mb-5 text-center">Our certified professionals will help you achieve your fitness goals</p>
+    <div class="container">
+        <h2 class="text-center mb-4">Meet Our Trainers</h2>
         <div class="row g-4">
             @foreach (var trainer in trainers)
             {
-                <div class="col-lg-3 col-md-6 animate">
-                    <div class="trainer-card text-dark h-100 rounded bg-white p-4 text-center shadow">
-                        <div class="img-wrapper mx-auto mb-3">
-                            <img src="@trainer.ImageUrl"
-                                 alt="@trainer.Name"
-                                 class="rounded-circle bg-white p-1"
-                                 style="width: 150px; height: 150px; object-fit: cover;" />
-                        </div>
-                        <h4 class="mb-1">@trainer.Name</h4>
-                        <p class="text-primary mb-2">@trainer.Role</p>
-                        <p>Expertise and experience description here.</p>
-                        <div class="social-links mt-3">
-                            <a href="#" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-dark me-2"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="text-dark"><i class="fab fa-linkedin"></i></a>
-                        </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="bg-white text-dark rounded shadow text-center p-4 h-100">
+                        <img src="@trainer.ImagePath" class="rounded-circle mb-3" alt="@trainer.Name" style="width: 120px; height: 120px; object-fit: cover;" />
+                        <h5 class="fw-bold">@trainer.Name</h5>
+                        <p class="text-muted">@trainer.Specialty</p>
+
+                        <p>@trainer.Bio</p>
+                       
                     </div>
                 </div>
             }
         </div>
-    </div>
     </div>
 </section>
 
@@ -240,7 +145,7 @@ var classSchedule = new[]
         <div class="row g-4">
             <div class="col-lg-6 animate">
                 <div class="location-info">
-                    <h4 class="mb-4">PowerFit Gym</h4>
+                    <h4 class="mb-4">Force  Gym</h4>
                     <ul class="list-unstyled">
                         <li class="mb-3">
                             <i class="fas fa-map-marker-alt text me-3"></i>

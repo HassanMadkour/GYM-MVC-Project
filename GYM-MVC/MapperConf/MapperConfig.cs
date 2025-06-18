@@ -45,6 +45,7 @@ namespace GYM_MVC.Core.MapperConf {
             });
 
             CreateMap<CreateScheduleViewModel, Schedule>().ReverseMap();
+            CreateMap<Schedule, UpdateScheduleViewModel>().ReverseMap();
 
             CreateMap<Schedule, ScheduleViewModel>().ReverseMap();
             CreateMap<Member, MemberViewModel>().ReverseMap();
