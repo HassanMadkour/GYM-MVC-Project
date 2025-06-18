@@ -58,6 +58,7 @@ namespace GYM_MVC.Controllers {
                 return NotFound("Trainer is Not Exist!!");
             var trainer = await UnitOfWork.TrainerRepo.GetById(id.Value);
             return View(mapper.Map<EditTrainerVM>(trainer));
+            //
         }
 
         [HttpPost]
