@@ -1,6 +1,8 @@
 ﻿@using GYM_MVC.ViewModels.AccountViewModels
 @model RegisterMemberFromAdmin
-
+@{
+    SelectList trainerList = new SelectList(Model.AvailableTrainers, "Id", "Name");
+}
 <div class="col-md-6">
     <label asp-for="MemberName" class="form-label"></label>
     <input asp-for="MemberName" class="form-control" />
@@ -81,6 +83,12 @@
     }
  *@
 </div>
+
+<div>
+    <label asp-for="SelectedTrainerId" class="form-label"></label>
+    <select asp-items="trainerList" asp-for="SelectedTrainerId" class="form-select"> </select>
+</div>
+
 
 <div class="col-md-3">
     <label asp-for="IsApproved" class="form-check-label d-block mb-2"></label>

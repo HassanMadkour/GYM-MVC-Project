@@ -1,9 +1,14 @@
-﻿@using GYM_MVC.ViewModels.AccountViewModels
+﻿@using GYM_MVC.Core.Entities
+@using GYM_MVC.Core.Helper
+@using GYM_MVC.ViewModels.AccountViewModels
 @model RegisterMemberFromAdmin
 
 @{
     ViewData["Title"] = "Add Member";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    SelectList trainerList = new SelectList(Model.AvailableTrainers, "Id", "Name");
+    SelectList membershipList = EnumHelper.ToSelectList<MembershipType>();
+
 }
 
 <h2 class="mb-4 text-center">Add Member</h2>
@@ -64,15 +69,17 @@
         <label asp-for="Name" class="form-label"></label>
         <input asp-for="Name" class="form-control" />
     </div>
-
-    <div class="col-md-9">
-        <label asp-for="Password" class="form-label"></label>
-        <input asp-for="Password" class="form-control" />
+    <div class="row mt-3">
+        <div class="col-6">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" class="form-control" />
+        </div>
+        <div class="col-6">
+            <label asp-for="ConfirmPassword" class="form-label"></label>
+            <input asp-for="ConfirmPassword" class="form-control" />
+        </div>
     </div>
-    <div class="col-md-9">
-        <label asp-for="ConfirmPassword" class="form-label"></label>
-        <input asp-for="ConfirmPassword" class="form-control" />
-    </div>
+ 
     <div class="col-md-9">
         <label asp-for="Email" class="form-label"></label>
         <input asp-for="Email" class="form-control" />
@@ -86,11 +93,22 @@
     }
  *@
     </div>
+    <div class="row mt-3">
+    <div class="col-6">
+        <label asp-for="SelectedTrainerId" class="form-label"></label>
+        <select asp-items="trainerList" asp-for="SelectedTrainerId" class="form-select"> </select>
+    </div>
+    <div class="col-6">
+        <label asp-for="SelectedMembershipId" class="form-label"></label>
+        <select asp-items="membershipList" asp-for="SelectedMembershipId" class="form-select"> </select>
+    </div>
+    </div>
 
     <div class="col-md-3">
         <label asp-for="IsApproved" class="form-check-label d-block mb-2"></label>
         <input asp-for="IsApproved" class="form-check-input" />
     </div>
+ 
     <div class="col-12 text-center">
         <button type="submit" class="btn btn-primary px-5">Save</button>
         <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>

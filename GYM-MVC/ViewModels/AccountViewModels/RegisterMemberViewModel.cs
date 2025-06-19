@@ -46,10 +46,15 @@ namespace GYM_MVC.ViewModels.AccountViewModels {
 
         public IFormFile? Image { get; set; }
         public List<string> materialStatuseLists = new List<string>() { "Single", "Married" };
+
+        [Display(Name = "Trainer")]
         public int? SelectedTrainerId { get; set; }
+
         public List<DisplayTrainerVM> AvailableTrainers { get; set; } = new();
 
+        [Display(Name = "Membership")]
         public int SelectedMembershipId { get; set; }
+
         public List<DisplayMembershipViewModel> AvailableMemberships { get; set; } = new();
     }
 }

@@ -108,9 +108,10 @@ namespace GYM_MVC.Controllers {
             return View("Register", registerMemberViewModel);
         }
 
-        public IActionResult RegisterTheMemberFromAdmin() {
+        public async Task<IActionResult> RegisterTheMemberFromAdmin() {
             RegisterMemberFromAdmin registerMemFormAdmin = new RegisterMemberFromAdmin();
-
+            registerMemFormAdmin.AvailableMemberships = mapper.Map<List<DisplayMembershipViewModel>>(unitOfWork.MembershipRepo.GetAll().ToList());
+            registerMemFormAdmin.AvailableTrainers = mapper.Map<List<DisplayTrainerVM>>(unitOfWork.TrainerRepo.GetAll().ToList());
             return View(registerMemFormAdmin);
         }
 
