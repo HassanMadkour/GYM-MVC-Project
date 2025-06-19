@@ -22,6 +22,10 @@ namespace GYM_MVC.Controllers {
 
             return View(mapper.Map<List<DisplayTrainerVM>>(trainers));
         }
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
 
         public IActionResult Create() {
             return View();
@@ -54,6 +58,7 @@ namespace GYM_MVC.Controllers {
                 return NotFound("Trainer is Not Exist!!");
             var trainer = await UnitOfWork.TrainerRepo.GetById(id.Value);
             return View(mapper.Map<EditTrainerVM>(trainer));
+            //
         }
 
         [HttpPost]
@@ -63,14 +68,14 @@ namespace GYM_MVC.Controllers {
                 return NotFound();
             if (ModelState.IsValid) {
                 if (trainerVM.ImageFile != null) {
-                    string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "Trainers");
+                    string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "Trainer");
                     string fileName = Guid.NewGuid() + Path.GetExtension(trainerVM.ImageFile.FileName);
                     string filePath = Path.Combine(uploadsFolder, fileName);
 
                     using (var fileStream = new FileStream(filePath, FileMode.Create)) {
                         await trainerVM.ImageFile.CopyToAsync(fileStream);
                     }
-                    trainerVM.ImagePath = @$"/uploads/Trainers/{fileName}";
+                    trainerVM.ImagePath = @$"/images/Trainer/{fileName}";
                 }
                 UnitOfWork.TrainerRepo.Update(mapper.Map<Trainer>(trainerVM));
                 await UnitOfWork.Save();
@@ -100,10 +105,23 @@ namespace GYM_MVC.Controllers {
         public IActionResult GetMembersByTrainerId(int? id) {
             //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
             //    return NotFound();
-            List<Member> membersfromDb = UnitOfWork.MemberRepo.GetMembersByTrainerId(id!.Value);
-
+            //List<Member> membersfromDb = UnitOfWork.MemberRepo.GetMembersByTrainerId(id!.Value);
+            List<Member> membersfromDb = UnitOfWork.MemberRepo.GetMembersByTrainerId(id.Value)
+                                    .Where(m => m.IsApproved == true) 
+                                    .ToList();
             return View(mapper.Map<List<MemberByTrainerIdVM>>(membersfromDb));
         }
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id is null || !await UnitOfWork.TrainerRepo.Contains(t => t.Id == id))
+                return NotFound("Trainer not found!");
+
+            var trainer = await UnitOfWork.TrainerRepo.GetById(id.Value);
+            var viewModel = mapper.Map<DisplayTrainerVM>(trainer);
+
+            return View(viewModel);
+        }
+
 
         //[Authorize(Roles = "Trainer")]
         public async Task<IActionResult> GetMemberWithWorkoutPlans(int? id) {

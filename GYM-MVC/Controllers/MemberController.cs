@@ -116,7 +116,10 @@ namespace GYM_MVC.Controllers {
             MembershipId = m.MembershipId,
             TrainerId = m.TrainerId
         };
-
+        public int getMemberCount()
+        {
+            return _unitOfWork.MemberRepo.Count().Result;
+        }
         private static void MapToEntity(MemberViewModel vm, Member m) {
             m.Name = vm.Name;
             m.Age = vm.Age;

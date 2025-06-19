@@ -9,7 +9,12 @@
     --warning: #ff7f50;
     --danger: #ff4757;
 }
-
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
 body {
     font-family: 'Montserrat', sans-serif;
     color: #333;
@@ -23,7 +28,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
 }
-
+.s{
+    color:var(--primary-dark);
+}
 .section-title {
     position: relative;
     display: inline-block;
@@ -253,6 +260,9 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-50%);
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+main {
+    flex: 1;
 }
 
 .hero-section:hover .carousel-control-prev,
