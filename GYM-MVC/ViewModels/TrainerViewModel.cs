@@ -1,7 +1,6 @@
-﻿namespace GYM_MVC.ViewModels
-{
-    public class TrainerViewModel
-    {
+﻿namespace GYM_MVC.ViewModels {
+
+    public class TrainerViewModel {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }

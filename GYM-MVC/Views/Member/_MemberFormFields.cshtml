@@ -1,21 +1,24 @@
-﻿@model GYM_MVC.ViewModels.MemberViewModels.MemberViewModel
-
+﻿@using GYM_MVC.ViewModels.AccountViewModels
+@model RegisterMemberFromAdmin
+@{
+    SelectList trainerList = new SelectList(Model.AvailableTrainers, "Id", "Name");
+}
 <div class="col-md-6">
-    <label asp-for="Name" class="form-label"></label>
-    <input asp-for="Name" class="form-control" />
-    <span asp-validation-for="Name" class="text-danger"></span>
+    <label asp-for="MemberName" class="form-label"></label>
+    <input asp-for="MemberName" class="form-control" />
+    <span asp-validation-for="MemberName" class="text-danger"></span>
 </div>
 
 <div class="col-md-3">
-    <label asp-for="Age" class="form-label"></label>
-    <input asp-for="Age" class="form-control" />
-    <span asp-validation-for="Age" class="text-danger"></span>
+    <label asp-for="BirthDate" class="form-label"></label>
+    <input asp-for="BirthDate" class="form-control" />
+    <span asp-validation-for="BirthDate" class="text-danger"></span>
 </div>
 
 <div class="col-md-3">
-    <label asp-for="MaritalStatus" class="form-label"></label>
-    <select asp-for="MaritalStatus" class="form-select"
-            asp-items="Html.GetEnumSelectList<GYM.Domain.Entities.MaritalStatus>()">
+    <label asp-for="MaterialStatus" class="form-label"></label>
+    <select asp-for="MaterialStatus" class="form-select"
+            asp-items="@Model.MaterialStatusList" >
     </select>
 </div>
 
@@ -47,20 +50,45 @@
 </div>
 
 <div class="col-md-9">
-    <label asp-for="AvailableDays" class="form-label"></label>
-    <input asp-for="AvailableDays" class="form-control"
-           placeholder="e.g. Sun,Tue,Thu" />
+    <label asp-for="PhoneNumber" class="form-label"></label>
+    <input asp-for="PhoneNumber" class="form-control"
+           />
+</div>
+<div class="col-md-9">
+    <label asp-for="Name" class="form-label"></label>
+    <input asp-for="Name" class="form-control"
+           />
 </div>
 
+<div class="col-md-9">
+    <label asp-for="Password" class="form-label"></label>
+    <input asp-for="Password" class="form-control"
+          />
+</div>
+<div class="col-md-9">
+    <label asp-for="ConfirmPassword" class="form-label"></label>
+    <input asp-for="ConfirmPassword" class="form-control"
+            />
+</div>
+<div class="col-md-9">
+    <label asp-for="Email" class="form-label"></label>
+    <input asp-for="Email" class="form-control" />
+</div>
 <div class="col-md-6">
-    <label asp-for="ImageFile" class="form-label"></label>
-    <input asp-for="ImageFile" class="form-control" type="file" />
-   @*  @if (Model != null && !string.IsNullOrWhiteSpace(Model.ImagePath))
+    <label asp-for="Image" class="form-label"></label>
+    <input asp-for="Image" class="form-control" type="file" />
+@*     @if (Model != null && !string.IsNullOrWhiteSpace(Model.ImagePath))
     {
         <img src="@Model.ImagePath" alt="Member Image" width="150" />
-    } *@
-
+    }
+ *@
 </div>
+
+<div>
+    <label asp-for="SelectedTrainerId" class="form-label"></label>
+    <select asp-items="trainerList" asp-for="SelectedTrainerId" class="form-select"> </select>
+</div>
+
 
 <div class="col-md-3">
     <label asp-for="IsApproved" class="form-check-label d-block mb-2"></label>

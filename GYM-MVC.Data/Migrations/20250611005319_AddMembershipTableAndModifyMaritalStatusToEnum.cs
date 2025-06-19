@@ -1,16 +1,14 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace GYM_MVC.Data.Migrations
-{
+namespace GYM_MVC.Data.Migrations {
+
     /// <inheritdoc />
-    public partial class AddMembershipTableAndModifyMaritalStatusToEnum : Migration
-    {
+    public partial class AddMembershipTableAndModifyMaritalStatusToEnum : Migration {
+
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.AlterColumn<int>(
                 name: "MaritalStatus",
                 table: "Members",
@@ -29,8 +27,7 @@ namespace GYM_MVC.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Memberships",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<int>(type: "int", nullable: false),
@@ -41,8 +38,7 @@ namespace GYM_MVC.Data.Migrations
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Memberships", x => x.Id);
                 });
 
@@ -60,8 +56,7 @@ namespace GYM_MVC.Data.Migrations
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropForeignKey(
                 name: "FK_Members_Memberships_MembershipId",
                 table: "Members");

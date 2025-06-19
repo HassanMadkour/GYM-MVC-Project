@@ -16,7 +16,8 @@ body {
     display: flex;
     min-height: 100vh;
 }
-h1,h2,h3,h4,h5, h6 {
+
+h1, h2, h3, h4, h5, h6 {
     color: var(--primary-dark);
 }
 /* Sidebar */
@@ -119,6 +120,7 @@ h1,h2,h3,h4,h5, h6 {
         margin-left: 70px;
     }
 }
+
 .card {
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;

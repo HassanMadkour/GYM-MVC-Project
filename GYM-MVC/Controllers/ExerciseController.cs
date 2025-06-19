@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using DayOfWeek = GYM.Domain.Entities.DayOfWeek;
 
 namespace GYM_MVC.Controllers {
-
     //[Authorize(Roles ="Admin")]
     public class ExerciseController : Controller
     {
@@ -42,13 +41,11 @@ namespace GYM_MVC.Controllers {
             return View(model);
         }
 
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ExerciseVM exerciseVM)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 ViewBag.DaysOfWeek = EnumHelper.ToSelectList<DayOfWeek>();
                 return View(exerciseVM);
@@ -61,7 +58,6 @@ namespace GYM_MVC.Controllers {
 
             return RedirectToAction(nameof(Index) , new { WorkoutPlanId = exercise.WorkoutPlanId});
         }
-
 
         public async Task<IActionResult> Edit(int id)
         {
@@ -96,8 +92,6 @@ namespace GYM_MVC.Controllers {
             return View(DeleteConfirmed(id));
         }
 
-
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -108,7 +102,6 @@ namespace GYM_MVC.Controllers {
             TempData["SuccessMessage"] = "Deleted successfully ";
 
             return RedirectToAction("Index");
-
         }
     }
 }

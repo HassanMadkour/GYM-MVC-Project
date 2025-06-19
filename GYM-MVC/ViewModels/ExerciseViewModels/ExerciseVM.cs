@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GYM_MVC.ViewModels.ExerciseViewModels
-{
-    public class ExerciseVM
-    {
+namespace GYM_MVC.ViewModels.ExerciseViewModels {
+
+    public class ExerciseVM {
+
         [Required, MaxLength(50)]
         public string Name { get; set; }
 

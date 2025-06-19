@@ -1,16 +1,14 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace GYM_MVC.Data.Migrations
-{
+namespace GYM_MVC.Data.Migrations {
+
     /// <inheritdoc />
-    public partial class changeEntryDateNullabilityInBaseEntity : Migration
-    {
+    public partial class changeEntryDateNullabilityInBaseEntity : Migration {
+
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.AlterColumn<DateTime>(
                 name: "EntryDate",
                 table: "Workouts",
@@ -45,8 +43,7 @@ namespace GYM_MVC.Data.Migrations
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.AlterColumn<DateTime>(
                 name: "EntryDate",
                 table: "Workouts",

@@ -6,7 +6,6 @@
     }
 });
 
-
 $('a[href*="#"]').on('click', function (e) {
     e.preventDefault();
 
@@ -24,7 +23,6 @@ $(document).ready(function () {
         interval: 5000
     });
 
-
     function animateOnScroll() {
         $('.animate').each(function () {
             var position = $(this).offset().top;
@@ -36,7 +34,6 @@ $(document).ready(function () {
             }
         });
     }
-
 
     animateOnScroll();
     $(window).scroll(animateOnScroll);

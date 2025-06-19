@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GYM.Domain.Entities
-{
-    public class Trainer : BaseEntity
-    {
-        [Required,MaxLength(30)]
+namespace GYM.Domain.Entities {
+
+    public class Trainer : BaseEntity {
+
+        [Required, MaxLength(30)]
         public string Name { get; set; }
 
         [MaxLength(100)]
@@ -21,12 +16,13 @@ namespace GYM.Domain.Entities
 
         [Range(6000, 50000)]
         public decimal Salary { get; set; }
+
         public string ImagePath { get; set; }
 
         [ForeignKey("Id")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
-        public virtual ICollection<Member> Members { get; set; }= new List<Member>();
+        public virtual ICollection<Member> Members { get; set; } = new List<Member>();
         public virtual ICollection<WorkoutPlan> WorkoutPlans { get; set; } = new List<WorkoutPlan>();
     }
 }
