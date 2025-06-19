@@ -15,10 +15,6 @@ namespace GYM_MVC.Data.Repositories {
         }
 
 
-        public async Task<List<Exercise>> GetExercisesByWorkoutPlanId(int workoutPlanId)
-        {
-            return await dbSet.Where(e => e.WorkoutPlanId == workoutPlanId && !e.IsDeleted).ToListAsync();
 
-        }
     }
 }
