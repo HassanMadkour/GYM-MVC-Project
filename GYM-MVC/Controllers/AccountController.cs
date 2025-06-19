@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.IUnitOfWorks;
@@ -12,7 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace GYM_MVC.Controllers {
-
     public class AccountController : Controller {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> signInManager;

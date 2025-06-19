@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Execution;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
@@ -6,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GYM_MVC.Controllers {
-
     public class WorkoutPlanController : Controller {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;

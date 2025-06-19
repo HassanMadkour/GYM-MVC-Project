@@ -5,7 +5,6 @@ using GYM_MVC.ViewModels.MemberViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers {
-
     public class MemberController : Controller {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _env;
@@ -22,6 +21,11 @@ namespace GYM_MVC.Controllers {
                 .ToList();
             return View(members);
         }
+        //[HttpGet]
+        //public IActionResult Index() {
+        //    var members = _unitOfWork.MemberRepo.GetAll();
+        //    return View(members);
+        //}
 
         //[HttpGet]
         //public IActionResult Index() {

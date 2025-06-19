@@ -11,9 +11,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace GYM_MVC {
-
     public class Program {
-
         public static void Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
 

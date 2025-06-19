@@ -7,13 +7,12 @@ using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.ExerciseViewModels;
 using GYM_MVC.ViewModels.MembershipViewModels;
 using GYM_MVC.ViewModels.ScheduleViewModels;
+using GYM_MVC.ViewModels.ExerciseViewModels;
 using GYM_MVC.ViewModels.TrainerViewModels;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
 
 namespace GYM_MVC.Core.MapperConf {
-
     public class MapperConfig : Profile {
-
         public MapperConfig() {
             CreateMap<RegisterUserViewModel, ApplicationUser>().AfterMap((src, dist) => {
                 dist.PasswordHash = src.Password;
