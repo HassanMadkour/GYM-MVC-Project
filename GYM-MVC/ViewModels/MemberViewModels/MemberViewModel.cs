@@ -41,7 +41,7 @@ namespace GYM_MVC.ViewModels.MemberViewModels {
         [Display(Name = "Trainer")]
         public int? TrainerId { get; set; }
 
-        public string ImagePath { get; set; }
+        //public string ImagePath { get; set; }
 
         [Display(Name = "Profile Image")]
         public IFormFile ImageFile { get; set; }

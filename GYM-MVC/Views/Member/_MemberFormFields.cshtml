@@ -55,10 +55,10 @@
 <div class="col-md-6">
     <label asp-for="ImageFile" class="form-label"></label>
     <input asp-for="ImageFile" class="form-control" type="file" />
-    @if (Model != null && !string.IsNullOrWhiteSpace(Model.ImagePath))
+   @*  @if (Model != null && !string.IsNullOrWhiteSpace(Model.ImagePath))
     {
         <img src="@Model.ImagePath" alt="Member Image" width="150" />
-    }
+    } *@
 
 </div>
 
