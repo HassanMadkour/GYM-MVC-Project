@@ -1,96 +1,36 @@
 ﻿@{
     ViewData["Title"] = "Admin Dashboard";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-
-    var classSchedule = new[]
-    {
-        new {
-            Time = "6:00 AM", Monday = "CrossFit", Tuesday = "HIIT", Wednesday = "CrossFit", Thursday = "HIIT", Friday = "CrossFit", Saturday = "Bootcamp", Sunday = "-"
-        },
-        new {
-            Time = "8:00 AM", Monday = "Yoga", Tuesday = "Spin", Wednesday = "Yoga", Thursday = "Spin", Friday = "Yoga", Saturday = "Spin", Sunday = "Yoga"
-        },
-        new {
-            Time = "12:00 PM", Monday = "Pilates", Tuesday = "Zumba", Wednesday = "Pilates", Thursday = "Zumba", Friday = "Pilates", Saturday = "-", Sunday = "-"
-        },
-        new {
-            Time = "5:00 PM", Monday = "Strength", Tuesday = "Cardio", Wednesday = "Strength", Thursday = "Cardio", Friday = "Strength", Saturday = "-", Sunday = "-"
-        },
-        new {
-            Time = "7:00 PM", Monday = "Boxing", Tuesday = "Kickboxing", Wednesday = "Boxing", Thursday = "Kickboxing", Friday = "Boxing", Saturday = "-", Sunday = "-"
-        }
-    };
+    var classSchedule = ViewBag.ScheduleTable ?? new List<dynamic>();
 }
+    
+<table class="table table-hover mb-0">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in classSchedule)
+        {
+            <tr>
+                <td class="fw-bold">@row.Time</td>
+                <td>@(string.IsNullOrWhiteSpace(row.Monday) ? "-" : row.Monday)</td>
+                <td>@(string.IsNullOrWhiteSpace(row.Tuesday) ? "-" : row.Tuesday)</td>
+                <td>@(string.IsNullOrWhiteSpace(row.Wednesday) ? "-" : row.Wednesday)</td>
+                <td>@(string.IsNullOrWhiteSpace(row.Thursday) ? "-" : row.Thursday)</td>
+                <td>@(string.IsNullOrWhiteSpace(row.Friday) ? "-" : row.Friday)</td>
+                <td>@(string.IsNullOrWhiteSpace(row.Saturday) ? "-" : row.Saturday)</td>
+                <td>@(string.IsNullOrWhiteSpace(row.Sunday) ? "-" : row.Sunday)</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-<div class="container text-center">
-
-    <div class="d-flex justify-content-center flex-wrap my-4 gap-4">
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Members</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">142</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Trainers</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user-tie fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <h6 class="m-0 font-weight-bold text-center w-100 mb-2 fs-4">Weekly Class Schedule</h6>
-
-            <div class="d-flex justify-content-center shadow-lg">
-                <div class="table-responsive w-100">
-                <table class="table table-bordered table-hover" style="background-color=#ff4757" id="scheduleTable" width="100%" cellspacing="0">
-                        <thead class="table">
-                        <tr>
-                                <th>Time</th>
-                                <th>Monday</th>
-                                <th>Tuesday</th>
-                                <th>Wednesday</th>
-                                <th>Thursday</th>
-                                <th>Friday</th>
-                                <th>Saturday</th>
-                                <th>Sunday</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var row in classSchedule)
-                            {
-                                <tr>
-                                    <td class="fw-bold">@row.Time</td>
-                                    <td>@row.Monday</td>
-                                    <td>@row.Tuesday</td>
-                                    <td>@row.Wednesday</td>
-                                    <td>@row.Thursday</td>
-                                    <td>@row.Friday</td>
-                                    <td>@row.Saturday</td>
-                                    <td>@row.Sunday</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-</div>

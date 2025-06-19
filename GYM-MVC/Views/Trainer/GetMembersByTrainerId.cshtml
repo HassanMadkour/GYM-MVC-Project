@@ -4,34 +4,35 @@
 @model List<MemberByTrainerIdVM>
 @{
     ViewBag.Title = "Members List";
+    Layout = "~/Views/Shared/_TrainerLayout.cshtml";
+
 }
+<div class="container-sm px-4 py-4">
 
-<h2>My Members</h2>
+	<h2 class="mb-4 text-center text-danger">Members List</h2>
+	<div class="table-responsive">
+	<table class="table table-bordered table-hover table-striped align-middle shadow-sm text-center">
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Maritial Status</th>
+			<th>Details</th>
+		</tr>
 
-<table border="1" cellpadding="10" cellspacing="0" style="width:100%; border-collapse:collapse;">
-    <thead style="background-color: #f0f0f0;">
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Injuries</th>
-            <th>Details</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var member in Model)
-        {
-            <tr>
-                <td>@member.Name</td>
-                <td>@member.Age</td>
-                <td>@member.Injuries</td>
-                <td>
-                    <a asp-controller="Trainer" asp-action="GetMemberWithWorkoutPlans" asp-route-id = "@member.Id" style="background-color:#007bff; color:white; padding:6px 12px; text-decoration:none; border-radius:4px;">
-                        View Details
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+		@foreach (var member in Model)
+		{
+			<tr>
+				<td>@member.Name</td>
+				<td>@member.Age</td>
+				<td>@member.MaritalStatus</td>
+				<td>
+					<a class="btn btn-danger " asp-controller="Trainer" asp-action="GetMemberWithWorkoutPlans" asp-route-id="@member.Id">
+						View Details
+					</a>
+				</td>
+			</tr>
+		}
+	</table>
+	</div>
 
-
+</div>
