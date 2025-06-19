@@ -128,7 +128,7 @@
             <h3 class="section-title">Choose Your Membership</h3>
             <div class="membership-selection">
                 <div class="row">
-                    @foreach (var membership in Model.AvailableMemberships)
+                    @foreach (var membership in Model!.AvailableMemberships)
                     {
                         <div class="col-md-4 mb-3">
                             <div class="membership-card @(Model.SelectedMembershipId == membership.Id ? "selected" : "")">

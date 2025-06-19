@@ -54,7 +54,7 @@
     {
         <h3>Workout Plans</h3>
 
-        @foreach (var plan in Model?.WorkoutPlan)
+        @foreach (var plan in Model?.WorkoutPlan ?? [])
         {
             <div class="card mb-4 shadow-sm">
                 <div class="card-body">
@@ -67,7 +67,7 @@
                     @if (plan.Exercises?.Count > 0)
                     {
                         <div class="table-responsive">
-                            <table class="table table-bordered table-sm">
+                            <table class="table-bordered table-sm table">
                                 <thead class="table-light">
                                     <tr>
                                         <th>Name</th>

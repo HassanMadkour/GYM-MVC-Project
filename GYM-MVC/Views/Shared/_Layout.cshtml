@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">For<span>ce</span></a>
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity?.IsAuthenticated ?? false)
                 {
                     <a class="navbar-brand fs-6" asp-area="" asp-controller="Home" asp-action="Index">Hello @User.Identity.Name</a>
                 }
@@ -40,7 +40,7 @@
                             <a class="nav-link" href="#footer">Contact</a>
                         </li>
                         <li class="nav-item ms-lg-3">
-                            @if (User.Identity.IsAuthenticated)
+                            @if (User.Identity?.IsAuthenticated ?? false)
                             {
                                 <a class="btn btn-primary rounded-pill" asp-action="Logout" asp-controller="Account">Logout</a>
                             }else

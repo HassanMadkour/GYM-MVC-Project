@@ -7,7 +7,7 @@ namespace GYM_MVC.ViewModels.MemberViewModels {
         public int Id { get; set; }
 
         [Required, MaxLength(50)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Range(12, 100)]
         public int Age { get; set; }
@@ -22,16 +22,16 @@ namespace GYM_MVC.ViewModels.MemberViewModels {
         public decimal Height { get; set; }
 
         [MaxLength(200)]
-        public string Illnesses { get; set; }
+        public string? Illnesses { get; set; }
 
         [MaxLength(200)]
-        public string Injuries { get; set; }
+        public string? Injuries { get; set; }
 
         [Display(Name = "Sleep Hours"), Range(0, 24)]
         public int SleepHours { get; set; }
 
         [Display(Name = "Available Days")]
-        public string AvailableDays { get; set; }
+        public string? AvailableDays { get; set; }
 
         public bool IsApproved { get; set; }
 
@@ -44,6 +44,6 @@ namespace GYM_MVC.ViewModels.MemberViewModels {
         //public string ImagePath { get; set; }
 
         [Display(Name = "Profile Image")]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
     }
 }
