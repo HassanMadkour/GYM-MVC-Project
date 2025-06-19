@@ -21,7 +21,6 @@ namespace GYM_MVC.ViewModels.WorkoutPlansViewModels {
 
         [MaxLength(200)]
         public string InjuryInfo { get; set; }
-        public int? MemberId { get; set; }
 
         public int? MemberId { get; set; }
 

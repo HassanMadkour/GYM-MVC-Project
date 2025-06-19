@@ -105,6 +105,13 @@ namespace GYM_MVC.Controllers {
                     }
                 }
             }
+
+            registerMemberViewModel.AvailableTrainers = unitOfWork.TrainerRepo.GetAll()
+             .Select(t => mapper.Map<DisplayTrainerVM>(t)).ToList();
+
+            registerMemberViewModel.AvailableMemberships = unitOfWork.MembershipRepo.GetAll()
+         .Select(m => mapper.Map<DisplayMembershipViewModel>(m)).ToList();
+          
             return View("Register", registerMemberViewModel);
         }
 
