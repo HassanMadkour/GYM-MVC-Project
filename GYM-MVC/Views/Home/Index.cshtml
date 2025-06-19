@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "ForceGym";
     Layout = "_MainLayout";
     var trainers = ViewBag.Trainers as IEnumerable<dynamic> ?? Enumerable.Empty<dynamic>();
@@ -36,7 +37,11 @@
                 <h1 class="display-3 fw-bold mb-4 text-white">Transform Your <span class="text-primary">Body</span></h1>
                 <p class="lead mb-5 text-white">Join the most elite fitness community in the city and start your transformation journey today with our expert trainers and state-of-the-art facilities.</p>
                 <div class="d-flex gap-3">
-                    <a asp-action="Register" asp-controller="Account" class="btn btn-primary btn-lg rounded-pill px-4 py-3">Join Now</a>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                     <a asp-action="Register" asp-controller="Account" class="btn btn-primary btn-lg rounded-pill px-4 py-3">Join Now</a>
+
+                    }
                     <a href="#schedule" class="btn btn-outline-light btn-lg rounded-pill px-4 py-3">View Schedule</a>
                 </div>
             </div>
@@ -83,7 +88,7 @@
         <h2 class="section-title text-center">Class Schedule</h2>
         <p class="lead mb-5 text-center">
            <div class="table-responsive animate">
-            <table class="table table-bordered table-hover text-center align-middle">
+            <table class="table-bordered table-hover table text-center align-middle">
                 <thead class="table-dark text-bg-dark">
                     <tr>
                         <th>Time</th>
@@ -118,12 +123,12 @@
 
 <section id="trainers" class="bg-dark text-light py-5">
     <div class="container">
-        <h2 class="text-center mb-4">Meet Our Trainers</h2>
+        <h2 class="mb-4 text-center">Meet Our Trainers</h2>
         <div class="row g-4">
             @foreach (var trainer in trainers)
             {
                 <div class="col-md-4 col-lg-3">
-                    <div class="bg-white text-dark rounded shadow text-center p-4 h-100">
+                    <div class="text-dark h-100 rounded bg-white p-4 text-center shadow">
                         <img src="@trainer.ImagePath" class="rounded-circle mb-3" alt="@trainer.Name" style="width: 120px; height: 120px; object-fit: cover;" />
                         <h5 class="fw-bold">@trainer.Name</h5>
                         <p class="text-muted">@trainer.Specialty</p>

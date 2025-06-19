@@ -125,7 +125,7 @@ namespace GYM_MVC.Controllers {
         public async Task<IActionResult> GetMemberWithWorkoutPlans(int? id) {
             //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id)) 
             //    return NotFound();
-            var member = await UnitOfWork.MemberRepo.GetById(id.Value);
+            var member = await UnitOfWork.MemberRepo.GetById(id!.Value);
             return View(mapper.Map<DisplayMemberWithWorkoutPlansVM>(member));
         }
     }

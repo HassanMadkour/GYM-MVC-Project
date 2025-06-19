@@ -1,5 +1,4 @@
-﻿using System.Security.Claims;
-using AutoMapper;
+﻿using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.IUnitOfWorks;
@@ -13,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace GYM_MVC.Controllers {
+
     public class AccountController : Controller {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> signInManager;
@@ -45,17 +45,17 @@ namespace GYM_MVC.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LoginTheUser(LoginUserViewModel loginUserViewModel) {
             if (ModelState.IsValid) {
-                ApplicationUser user = await _userManager.FindByNameAsync(loginUserViewModel.UserName);
+                ApplicationUser? user = await _userManager.FindByNameAsync(loginUserViewModel.UserName);
                 if (user != null && user.EmailConfirmed) {
                     bool result = await _userManager.CheckPasswordAsync(user, loginUserViewModel.Password);
                     if (result) {
                         await signInManager.SignInAsync(user, loginUserViewModel.RememberMe);
-                        switch (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value) {
+                        switch (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)!.Value) {
                             case "Member":
                                 return RedirectToAction("ActiveWorkOutPlan", "Member", new { Id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value });
 
                             case "Trainer":
-                                return RedirectToAction("GetMembersByTrainerId", "Trainer", new { Id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value });
+                                return RedirectToAction("GetMembersByTrainerId", "Trainer", new { Id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value });
 
                             case "Admin":
                                 return RedirectToAction("Dashboard", "Admin");
@@ -115,7 +115,7 @@ namespace GYM_MVC.Controllers {
             return View("Register", registerMemberViewModel);
         }
 
-        public async Task<IActionResult> RegisterTheMemberFromAdmin() {
+        public IActionResult RegisterTheMemberFromAdmin() {
             RegisterMemberFromAdmin registerMemFormAdmin = new RegisterMemberFromAdmin();
             registerMemFormAdmin.AvailableMemberships = mapper.Map<List<DisplayMembershipViewModel>>(unitOfWork.MembershipRepo.GetAll().ToList());
             registerMemFormAdmin.AvailableTrainers = mapper.Map<List<DisplayTrainerVM>>(unitOfWork.TrainerRepo.GetAll().ToList());
@@ -182,13 +182,13 @@ namespace GYM_MVC.Controllers {
         }
 
         public async Task<IActionResult> ConfirmEmail(int userId, string code) {
-            ApplicationUser user = _userManager.FindByIdAsync(userId.ToString()).Result;
+            ApplicationUser? user = _userManager.FindByIdAsync(userId.ToString()).Result;
             if (user == null) {
                 return NotFound();
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded) {
-                signInManager.SignInAsync(user, false);
+                await signInManager.SignInAsync(user, false);
                 return RedirectToAction("Index", "Home");
             }
             return View("Error");
@@ -208,10 +208,10 @@ namespace GYM_MVC.Controllers {
         [HttpPost]
         public async Task<IActionResult> ForgetPassword(ForgotPasswordViewModel forgotPasswordViewModel) {
             if (ModelState.IsValid) {
-                ApplicationUser user = await _userManager.FindByEmailAsync(forgotPasswordViewModel.Email);
+                ApplicationUser? user = await _userManager.FindByEmailAsync(forgotPasswordViewModel.Email);
                 if (user != null) {
                     string code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                    string callbackUrl = Url.Action("ResetPassword", "Account", new { email = user.Email, code = code }, Request.Scheme);
+                    string callbackUrl = Url.Action("ResetPassword", "Account", new { email = user.Email, code = code }, Request.Scheme)!;
                     await emailSender.SendEmailAsync(forgotPasswordViewModel.Email, "Reset your password", "Please reset your password by clicking this link: <a href=\"" + callbackUrl + "\">Reset</a>");
                 }
             }
@@ -254,7 +254,7 @@ namespace GYM_MVC.Controllers {
         //--------------------------
         private async Task SendEmailConfirmation(ApplicationUser user) {
             Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
-            string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme);
+            string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme)!;
             await emailSender.SendEmailAsync(user.Email!, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");
         }
     }

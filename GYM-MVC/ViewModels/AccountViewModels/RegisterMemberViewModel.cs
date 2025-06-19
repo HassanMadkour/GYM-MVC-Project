@@ -9,8 +9,8 @@ namespace GYM_MVC.ViewModels.AccountViewModels {
 
     public class RegisterMemberViewModel : RegisterUserViewModel {
 
-        [Display(Name = "Your Name")]
-        public string MemberName { get; set; }
+        [Display(Name = "Your Name"), Required]
+        public string? MemberName { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
@@ -35,8 +35,6 @@ namespace GYM_MVC.ViewModels.AccountViewModels {
 
         [Display(Name = "Available Days")]
         public int AvailableDays { get; set; }
-
-        private SelectList? materialStatusList;
 
         public SelectList? MaterialStatusList {
             get {
