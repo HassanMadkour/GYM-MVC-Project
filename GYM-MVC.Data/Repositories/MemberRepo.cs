@@ -11,7 +11,7 @@ namespace GYM_MVC.Data.Repositories {
 
         public List<Member> GetMembersByTrainerId(int trainerId) {
             return context.Members
-                .Where(m => m.TrainerId == trainerId).Distinct()
+                .Where(m => m.TrainerId == trainerId && m.IsApproved && !m.IsDeleted).Distinct()
                 .ToList();
         }
     }

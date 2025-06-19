@@ -2,16 +2,16 @@
 
 namespace GYM_MVC.Core.Entities {
 
-    public enum MembershipType {
-        Basic,
-        Premium,
-        VIP
-    }
+    //public enum MembershipType {
+    //    Basic,
+    //    Premium,
+    //    VIP
+    //}
 
     //1	 Basic	30	100   "One-month membership"
 
     public class Membership : BaseEntity {
-        public MembershipType Type { get; set; }
+        public string Type { get; set; }
         public decimal Price { get; set; }
         public int DurationInDays { get; set; }
 

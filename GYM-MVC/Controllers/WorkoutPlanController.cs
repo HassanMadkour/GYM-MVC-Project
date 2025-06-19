@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
 using AutoMapper.Execution;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
@@ -34,7 +35,7 @@ namespace GYM_MVC.Controllers {
         public async Task<IActionResult> Create(CreateWorkoutPlanVM createWorkoutPlan) {
             if (createWorkoutPlan is null)
                 return NotFound();
-            createWorkoutPlan.TrainerId = 6;// int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            createWorkoutPlan.TrainerId =  int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (ModelState.IsValid) {
                 var workOutPlan = mapper.Map<WorkoutPlan>(createWorkoutPlan);
                 await unitOfWork.WorkoutPlanRepo.Add(workOutPlan);

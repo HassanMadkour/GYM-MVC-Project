@@ -6,7 +6,7 @@
 
 @{
     ViewData["Title"] = "Member Details";
-        Layout = "~/Views/Shared/_TrainerLayout.cshtml";
+    Layout = "~/Views/Shared/_TrainerLayout.cshtml";
 
 }
 
@@ -52,12 +52,18 @@
 
     <hr class="my-4" />
 
+    <div class="d-flex justify-content-around mb-3">
+        <h3 class="text-center mb-2">Workout Plans</h3>
+        <a class="btn btn-success" asp-controller="WorkoutPlan" asp-action="Create" asp-route-memberId="@Model?.Id">Add Plan</a>
+
+    </div>
     @if (Model?.WorkoutPlan?.Any() == true)
     {
-        <h3 class="text-center mb-2">Workout Plans</h3>
+
         <div class="row">
             @foreach (var plan in Model?.WorkoutPlan)
             {
+
                 if (!plan.IsDeleted)
                 {
                     <div class="col-6">
@@ -68,38 +74,9 @@
 
                                 <p><strong>Start:</strong> @plan.StartDate.ToShortDateString()</p>
                                 <p><strong>End:</strong> @plan.EndDate.ToShortDateString()</p>
-
-                                @if (plan.Exercises?.Count > 0)
-                                {
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-sm">
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Reps</th>
-                                                <th>Sets</th>
-                                                <th>Rest Time</th>
-                                                <th>Day</th>
-                                            </tr>
-                                            @foreach (var ex in plan.Exercises)
-                                            {
-                                                <tr>
-                                                    <td>@ex.Name</td>
-                                                    <td>@ex.Repetitions</td>
-                                                    <td>@ex.Sets</td>
-                                                    <td>@ex.RestTime sec</td>
-                                                    <td>@ex.DayOfWeek</td>
-                                                </tr>
-                                            }
-                                        </table>
-                                    </div>
-
-                                }
-                                else
-                                {
-                                    <p class="text-muted">No exercises added to this plan.</p>
-
-                                }
                                 <div class="d-flex justify-content-around">
+                                    <a class="btn btn-primary" asp-action="Index" asp-controller="Exercise" asp-route-WorkoutPlanId="@plan.Id">Exercise Details</a>
+
                                     <a class="btn btn-info" asp-action="Edit" asp-controller="WorkoutPlan" asp-route-id=@plan.Id>Edit</a>
                                     <a class="btn btn-danger" asp-action="Delete" asp-controller="WorkoutPlan" asp-route-id=@plan.Id>Delete</a>
                                 </div>
@@ -112,7 +89,6 @@
     }
     else
     {
-        <p>No workout plans assigned to this member.</p>
+        <p class="text-center m-auto">No workout plans assigned to this member.</p>
     }
-    <a class="btn btn-success" asp-controller="WorkoutPlan" asp-action="Create" asp-route-memberId="@Model?.Id" >Add Plan</a>
 </div>

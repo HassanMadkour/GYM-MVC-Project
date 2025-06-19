@@ -19,13 +19,13 @@ namespace GYM_MVC.Controllers {
         [HttpGet]
         public IActionResult Create() {
             CreateMembershipViewModel model = new CreateMembershipViewModel();
-            model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
+           // model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateMembershipViewModel model) {
-            model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
+            //model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
             if (!ModelState.IsValid) return View(model);
             await unitOfWork.MembershipRepo.Add(mapper.Map<Membership>(model));
             await unitOfWork.Save();
@@ -36,13 +36,13 @@ namespace GYM_MVC.Controllers {
         public async Task<IActionResult> Update(int id) {
             Membership membership = await unitOfWork.MembershipRepo.GetById(id);
             UpdateMembershipViewModel model = mapper.Map<UpdateMembershipViewModel>(membership);
-            model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
+            //model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Update(UpdateMembershipViewModel model) {
-            model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
+           // model.MembershipTypeList = EnumHelper.ToSelectList<MembershipType>();
             if (!ModelState.IsValid) return View(model);
             unitOfWork.MembershipRepo.Update(mapper.Map<Membership>(model));
             await unitOfWork.Save();

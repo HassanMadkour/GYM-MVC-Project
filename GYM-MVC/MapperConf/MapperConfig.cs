@@ -61,11 +61,11 @@ namespace GYM_MVC.Core.MapperConf {
 
             CreateMap<CreateMembershipViewModel, Membership>().AfterMap(
                 (src, dist) =>
-                    dist.Type = EnumHelper.ToEnum<MembershipType>(src.SelectedMembershipType)
+                    dist.Type =src.SelectedMembershipType
                 );
             CreateMap<UpdateMembershipViewModel, Membership>().AfterMap(
                 (src, dist) => {
-                    dist.Type = EnumHelper.ToEnum<MembershipType>(src.SelectedMembershipType);
+                    dist.Type = src.SelectedMembershipType;
                     dist.Id = src.Id;
                 }).ReverseMap().AfterMap(
                    (src, dist) => {

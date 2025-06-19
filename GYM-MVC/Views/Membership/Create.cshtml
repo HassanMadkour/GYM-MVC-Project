@@ -19,9 +19,10 @@
 
                 <div class="mb-3">
                     <label asp-for="SelectedMembershipType" class="form-label fw-semibold"></label>
-                    <select asp-for="SelectedMembershipType" asp-items="@Model.MembershipTypeList" class="form-select">
+                   @*  <select asp-for="SelectedMembershipType" asp-items="@Model.MembershipTypeList" class="form-select">
                         <option value="">-- Select Membership Type --</option>
-                    </select>
+                    </select> *@
+                    <input asp-for="SelectedMembershipType" class="form-control" />
                     <span asp-validation-for="SelectedMembershipType" class="text-danger small"></span>
                 </div>
 
