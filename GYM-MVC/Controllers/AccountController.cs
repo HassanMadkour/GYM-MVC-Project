@@ -52,7 +52,7 @@ namespace GYM_MVC.Controllers {
                         await signInManager.SignInAsync(user, loginUserViewModel.RememberMe);
                         switch (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value) {
                             case "Member":
-                                return RedirectToAction("Index", "Home");
+                                return RedirectToAction("ActiveWorkOutPlan", "Member", new { Id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value });
 
                             case "Trainer":
                                 return RedirectToAction("GetMembersByTrainerId", "Trainer", new { Id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value });

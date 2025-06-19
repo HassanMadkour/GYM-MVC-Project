@@ -1,6 +1,8 @@
-﻿using GYM.Domain.Entities;
+﻿using System.Threading.Tasks;
+using GYM.Domain.Entities;
 using GYM_MVC.Core.IRepositories;
 using GYM_MVC.Data.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GYM_MVC.Data.Repositories {
 
@@ -14,5 +16,9 @@ namespace GYM_MVC.Data.Repositories {
                 .Where(wp => wp.MemberId == memberId)
                 .ToList();
         }
+        public async Task<WorkoutPlan> GetActiveWorkOutPlan(int memberId)
+        {
+           return await dbSet.FirstOrDefaultAsync(wp => wp.MemberId == memberId && wp.StartDate < DateTime.Now && wp.EndDate > DateTime.Now);
+        } // enddate > now && start <
     }
 }

@@ -1,17 +1,22 @@
-﻿using GYM.Domain.Entities;
+﻿using System.Threading.Tasks;
+using AutoMapper;
+using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.MemberViewModels;
+using GYM_MVC.ViewModels.WorkoutPlansViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers {
     public class MemberController : Controller {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _env;
+        private readonly IMapper mapper;
 
-        public MemberController(IUnitOfWork unitOfWork, IWebHostEnvironment env) {
+        public MemberController(IUnitOfWork unitOfWork, IWebHostEnvironment env, IMapper mapper) {
             _unitOfWork = unitOfWork;
             _env = env;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -21,18 +26,6 @@ namespace GYM_MVC.Controllers {
                 .ToList();
             return View(members);
         }
-        //[HttpGet]
-        //public IActionResult Index() {
-        //    var members = _unitOfWork.MemberRepo.GetAll();
-        //    return View(members);
-        //}
-
-        //[HttpGet]
-        //public IActionResult Index() {
-        //    var members = _unitOfWork.MemberRepo.GetAll();
-        //    return View(members);
-        //}
-
         [HttpGet]
         public async Task<IActionResult> Details(int id) {
             var member = await _unitOfWork.MemberRepo.GetById(id);
@@ -155,6 +148,14 @@ namespace GYM_MVC.Controllers {
             await file.CopyToAsync(stream);
 
             return $"/images/members/{fileName}";
+        }
+
+        public async Task<IActionResult> ActiveWorkOutPlan(int id)
+        {
+            var activeWorkoutPlan = await _unitOfWork.WorkoutPlanRepo.GetActiveWorkOutPlan(id);
+
+            return View(mapper.Map<DisplayWorkoutPlanVM>(activeWorkoutPlan));
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GYM.Domain.Entities;
 
 namespace GYM_MVC.ViewModels.WorkoutPlansViewModels {
 
@@ -27,5 +28,6 @@ namespace GYM_MVC.ViewModels.WorkoutPlansViewModels {
         public string MemberName { get; set; }
 
         public string TrainerName { get; set; }
+        public List<Exercise> Exercises { get; set; }
     }
 }

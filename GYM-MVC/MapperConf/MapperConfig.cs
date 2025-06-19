@@ -54,6 +54,7 @@ namespace GYM_MVC.Core.MapperConf {
             CreateMap<WorkoutPlan, DisplayWorkoutPlanVM>().AfterMap((src, dist) => {
                 dist.MemberName = src.Member.Name;
                 dist.TrainerName = src.Trainer.Name;
+                dist.Exercises = src.Exercises.ToList();
             }).ReverseMap();
             CreateMap<WorkoutPlan, CreateWorkoutPlanVM>().ReverseMap();
             CreateMap<WorkoutPlan, EditWorkoutPlanVM>().ReverseMap();

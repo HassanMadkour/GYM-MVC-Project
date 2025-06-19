@@ -22,7 +22,7 @@
                         <i class="fas fa-dumbbell  text-light p-1"></i>
                         For<span class="s">ce</span>
                     </a>
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated )
                     {
                         <a class="navbar-brand fs-6" asp-area="" asp-controller="Home" asp-action="Index">Hello @User.Identity.Name</a>
                     }
