@@ -1,5 +1,6 @@
 ﻿using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
+using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.MemberViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,13 +16,13 @@ namespace GYM_MVC.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Index()
-        {
+        public IActionResult Index() {
             var members = _unitOfWork.MemberRepo.GetAll()
                 .Select(MapToViewModel)
                 .ToList();
             return View(members);
         }
+
         //[HttpGet]
         //public IActionResult Index() {
         //    var members = _unitOfWork.MemberRepo.GetAll();
@@ -38,7 +39,11 @@ namespace GYM_MVC.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Create() => View();
+        public IActionResult Create() {
+            RegisterMemberFromAdmin vm = new RegisterMemberFromAdmin();
+
+            return View(vm);
+        }
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MemberViewModel vm) {
@@ -111,7 +116,7 @@ namespace GYM_MVC.Controllers {
             Injuries = m.Injuries,
             SleepHours = m.SleepHours,
             AvailableDays = m.AvailableDays,
-            ImagePath = m.ImagePath,
+            //ImagePath = m.ImagePath,
             IsApproved = m.IsApproved,
             MembershipId = m.MembershipId,
             TrainerId = m.TrainerId

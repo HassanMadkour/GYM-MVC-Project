@@ -1,4 +1,5 @@
-﻿@model GYM_MVC.ViewModels.MemberViewModels.MemberViewModel
+﻿@using GYM_MVC.ViewModels.AccountViewModels
+@model RegisterMemberFromAdmin
 
 @{
     ViewData["Title"] = "Add Member";
@@ -7,7 +8,8 @@
 
 <h2 class="mb-4 text-center">Add Member</h2>
 
-<form asp-action="Create" enctype="multipart/form-data" class="row g-3">
+<form asp-action="RegisterTheMemberFromAdmin" asp-controller="Account" enctype="multipart/form-data" class="row g-3">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <partial name="_MemberFormFields" model="Model" />
     <div class="col-12 text-center">
         <button type="submit" class="btn btn-primary px-5">Save</button>

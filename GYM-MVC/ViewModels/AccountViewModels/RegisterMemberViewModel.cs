@@ -1,6 +1,8 @@
 ﻿using GYM.Domain.Entities;
+using GYM_MVC.Core.Helper;
 using GYM_MVC.ViewModels.MembershipViewModels;
 using GYM_MVC.ViewModels.TrainerViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace GYM_MVC.ViewModels.AccountViewModels {
@@ -34,8 +36,17 @@ namespace GYM_MVC.ViewModels.AccountViewModels {
         [Display(Name = "Available Days")]
         public int AvailableDays { get; set; }
 
+        private SelectList? materialStatusList;
+
+        public SelectList? MaterialStatusList {
+            get {
+                return EnumHelper.ToSelectList<MaritalStatus>();
+            }
+        }
+
+        public IFormFile? Image { get; set; }
         public List<string> materialStatuseLists = new List<string>() { "Single", "Married" };
-        public int SelectedTrainerId { get; set; }
+        public int? SelectedTrainerId { get; set; }
         public List<DisplayTrainerVM> AvailableTrainers { get; set; } = new();
 
         public int SelectedMembershipId { get; set; }

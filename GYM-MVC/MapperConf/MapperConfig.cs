@@ -4,9 +4,9 @@ using GYM_MVC.Core.Entities;
 using GYM_MVC.Core.Helper;
 using GYM_MVC.ViewModels;
 using GYM_MVC.ViewModels.AccountViewModels;
+using GYM_MVC.ViewModels.ExerciseViewModels;
 using GYM_MVC.ViewModels.MembershipViewModels;
 using GYM_MVC.ViewModels.ScheduleViewModels;
-using GYM_MVC.ViewModels.ExerciseViewModels;
 using GYM_MVC.ViewModels.TrainerViewModels;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
 
@@ -29,12 +29,19 @@ namespace GYM_MVC.Core.MapperConf {
                 dist.Name = src.MemberName;
                 dist.Age = DateTime.Today.Year - src.BirthDate.Year;
                 dist.AvailableDays = src.AvailableDays.ToString();
-                dist.MaritalStatus = src.MaterialStatus;
-                dist.Weight = src.Weight;
-                dist.Height = src.Height;
+
                 dist.Illnesses = src.Illnesses ?? "";
                 dist.Injuries = src.Injuries ?? "";
-                dist.SleepHours = src.SleepHours;
+                dist.TrainerId = src.SelectedTrainerId;
+            });
+            CreateMap<RegisterMemberFromAdmin, Member>().AfterMap((src, dist) => {
+                dist.Name = src.MemberName;
+                dist.AvailableDays = src.AvailableDays.ToString();
+                dist.IsApproved = src.IsApproved;
+                dist.Age = DateTime.Today.Year - src.BirthDate.Year;
+
+                dist.Illnesses = src.Illnesses ?? "";
+                dist.Injuries = src.Injuries ?? "";
                 dist.TrainerId = src.SelectedTrainerId;
             });
             CreateMap<RegisterTrainerViewModel, Trainer>().ReverseMap();
@@ -79,8 +86,7 @@ namespace GYM_MVC.Core.MapperConf {
                     dist.SelectedMembershipType = src.Type.ToString();
                 }
                 );
-            CreateMap<Exercise, EditExerciseVM>().AfterMap((src, dest) =>
-            {
+            CreateMap<Exercise, EditExerciseVM>().AfterMap((src, dest) => {
                 dest.MemberId = src.WorkoutPlan.MemberId;
             }).ReverseMap();
             CreateMap<Exercise, ExerciseVM>().ReverseMap();
