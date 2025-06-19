@@ -115,27 +115,36 @@
                 <h3 class="section-title">Choose Your Membership</h3>
                 <div class="membership-selection">
                     <div class="membership-grid">
-                        @foreach (var membership in Model.AvailableMemberships)
+                        @if (Model.AvailableMemberships != null)
                         {
-                            <div class="membership-card @(Model.SelectedMembershipId == membership.Id ? "selected" : "")">
-                                <input type="radio" asp-for="SelectedMembershipId" value="@membership.Id" id="membership-@membership.Id" class="membership-radio" />
-                                <label for="membership-@membership.SelectedMembershipType">
-                                    <div class="membership-header">
-                                        <h4>@membership.SelectedMembershipType</h4>
-                                    </div>
-                                    <div class="membership-price">
-                                        $@membership.Price
-                                    </div>
-                                    <div class="membership-features">
-                                        @membership.Description
+                            foreach (var membership in Model.AvailableMemberships)
+                            {
+                                <label for="membership-@membership.Id" class="membership-radio-wrapper">
+                                    <input type="radio"
+                                           name="SelectedMembershipId"
+                                           value="@membership.Id"
+                                           id="membership-@membership.Id"
+                                           checked="@(Model.SelectedMembershipId == membership.Id)" />
+
+                                    <div class="membership-card @(Model.SelectedMembershipId == membership.Id ? "selected" : "")">
+                                        <div class="membership-header">
+                                            <h4>@membership.SelectedMembershipType</h4>
+                                        </div>
+                                        <div class="membership-price">
+                                            $@membership.Price
+                                        </div>
+                                        <div class="membership-features">
+                                            @membership.Description
+                                        </div>
                                     </div>
                                 </label>
-                            </div>
+                            }
                         }
                     </div>
                     <span asp-validation-for="SelectedMembershipId" class="field-validation-error"></span>
                 </div>
             </div>
+
 
             <div class="form-section">
                 <h3 class="section-title">Account Information</h3>
