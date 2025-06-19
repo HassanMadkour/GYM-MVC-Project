@@ -5,7 +5,6 @@ using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.Data.UnitOfWorks;
 using GYM_MVC.ViewModels.ScheduleViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace GYM_MVC.Controllers
 {

@@ -8,10 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace GYM_MVC.Controllers
-{
-    public class HomeController : Controller
-    {
+namespace GYM_MVC.Controllers {
+
+    public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -54,8 +53,7 @@ namespace GYM_MVC.Controllers
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
+        public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

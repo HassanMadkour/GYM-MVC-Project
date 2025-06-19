@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GYM_MVC.ViewModels.TrainerViewModels
-{
-    public class CreateTrainerVM
-    {
+namespace GYM_MVC.ViewModels.TrainerViewModels {
+
+    public class CreateTrainerVM {
+
         [Required, MaxLength(30)]
         public string Name { get; set; }
 
@@ -15,9 +15,10 @@ namespace GYM_MVC.ViewModels.TrainerViewModels
 
         [Range(6000, 50000)]
         public decimal Salary { get; set; }
-        [Display(Name ="Profile Picture")]
-        public IFormFile ImageFile { get; set; }
-        public string ImagePath { get; set; }
 
+        [Display(Name = "Profile Picture")]
+        public IFormFile ImageFile { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

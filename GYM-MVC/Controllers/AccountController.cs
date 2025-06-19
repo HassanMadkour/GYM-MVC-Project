@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace GYM_MVC.Controllers {
-
     public class AccountController : Controller {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> signInManager;
@@ -49,18 +49,17 @@ namespace GYM_MVC.Controllers {
                 if (user != null && user.EmailConfirmed) {
                     bool result = await _userManager.CheckPasswordAsync(user, loginUserViewModel.Password);
                     if (result) {
-                        
                         await signInManager.SignInAsync(user, loginUserViewModel.RememberMe);
-                        switch (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value)
-                        {
+                        switch (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value) {
                             case "Member":
                                 return RedirectToAction("Index", "Home");
+
                             case "Trainer":
                                 return RedirectToAction("GetMembersByTrainerId", "Trainer", new { Id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value });
+
                             case "Admin":
                                 return RedirectToAction("Dashboard", "Admin");
                         }
-                       
                     }
                 }
             }
@@ -107,6 +106,39 @@ namespace GYM_MVC.Controllers {
                 }
             }
             return View("Register", registerMemberViewModel);
+        }
+
+        public async Task<IActionResult> RegisterTheMemberFromAdmin() {
+            RegisterMemberFromAdmin registerMemFormAdmin = new RegisterMemberFromAdmin();
+            registerMemFormAdmin.AvailableMemberships = mapper.Map<List<DisplayMembershipViewModel>>(unitOfWork.MembershipRepo.GetAll().ToList());
+            registerMemFormAdmin.AvailableTrainers = mapper.Map<List<DisplayTrainerVM>>(unitOfWork.TrainerRepo.GetAll().ToList());
+            return View(registerMemFormAdmin);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterTheMemberFromAdmin(RegisterMemberFromAdmin registerMemFormAdmin) {
+            if (ModelState.IsValid) {
+                ApplicationUser user = mapper.Map<RegisterMemberViewModel, ApplicationUser>(registerMemFormAdmin);
+                Member member = mapper.Map<RegisterMemberFromAdmin, Member>(registerMemFormAdmin);
+                IdentityResult result = _userManager.CreateAsync(user, registerMemFormAdmin.Password).Result;
+                var resultOfRole = await _userManager.AddToRoleAsync(user, "Member");
+
+                if (result.Succeeded && resultOfRole.Succeeded) {
+                    member.Id = user.Id;
+                    await unitOfWork.MemberRepo.Add(member);
+                    await unitOfWork.Save();
+                    await SendEmailConfirmation(user);
+                    return View("confirmEmail");
+                } else {
+                    foreach (var error in result.Errors) {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+            registerMemFormAdmin.AvailableMemberships = mapper.Map<List<DisplayMembershipViewModel>>(unitOfWork.MembershipRepo.GetAll().ToList());
+            registerMemFormAdmin.AvailableTrainers = mapper.Map<List<DisplayTrainerVM>>(unitOfWork.TrainerRepo.GetAll().ToList());
+            return View(registerMemFormAdmin);
         }
 
         [HttpPost]

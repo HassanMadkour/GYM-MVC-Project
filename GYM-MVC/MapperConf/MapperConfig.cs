@@ -4,6 +4,7 @@ using GYM_MVC.Core.Entities;
 using GYM_MVC.Core.Helper;
 using GYM_MVC.ViewModels;
 using GYM_MVC.ViewModels.AccountViewModels;
+using GYM_MVC.ViewModels.ExerciseViewModels;
 using GYM_MVC.ViewModels.MembershipViewModels;
 using GYM_MVC.ViewModels.ScheduleViewModels;
 using GYM_MVC.ViewModels.ExerciseViewModels;
@@ -11,13 +12,8 @@ using GYM_MVC.ViewModels.TrainerViewModels;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
 
 namespace GYM_MVC.Core.MapperConf {
-
     public class MapperConfig : Profile {
-
         public MapperConfig() {
-            //CreateMap<ApplicationUser, RegisterMemberViewModel>().AfterMap((src, dist) => {
-            //    dist.Password = src
-            //});
             CreateMap<RegisterUserViewModel, ApplicationUser>().AfterMap((src, dist) => {
                 dist.PasswordHash = src.Password;
                 dist.UserName = src.Name;
@@ -29,14 +25,15 @@ namespace GYM_MVC.Core.MapperConf {
                 dist.Name = src.MemberName;
                 dist.Age = DateTime.Today.Year - src.BirthDate.Year;
                 dist.AvailableDays = src.AvailableDays.ToString();
-                dist.MaritalStatus = src.MaterialStatus;
-                dist.Weight = src.Weight;
-                dist.Height = src.Height;
                 dist.Illnesses = src.Illnesses ?? "";
                 dist.Injuries = src.Injuries ?? "";
-                dist.SleepHours = src.SleepHours;
                 dist.TrainerId = src.SelectedTrainerId;
+                dist.MembershipId = src.SelectedMembershipId;
             });
+            CreateMap<RegisterMemberFromAdmin, Member>().IncludeBase<RegisterMemberViewModel, Member>()
+             .AfterMap((src, dist) => {
+                 dist.IsApproved = src.IsApproved;
+             });
             CreateMap<RegisterTrainerViewModel, Trainer>().ReverseMap();
             CreateMap<Member, RegisterMemberViewModel>().AfterMap((src, dist) => {
             });
@@ -69,8 +66,7 @@ namespace GYM_MVC.Core.MapperConf {
                 (src, dist) => {
                     dist.Type = EnumHelper.ToEnum<MembershipType>(src.SelectedMembershipType);
                     dist.Id = src.Id;
-                }
-                ).ReverseMap().AfterMap(
+                }).ReverseMap().AfterMap(
                    (src, dist) => {
                        dist.SelectedMembershipType = src.Type.ToString();
                    }
@@ -80,8 +76,7 @@ namespace GYM_MVC.Core.MapperConf {
                     dist.SelectedMembershipType = src.Type.ToString();
                 }
                 );
-            CreateMap<Exercise, EditExerciseVM>().AfterMap((src, dest) =>
-            {
+            CreateMap<Exercise, EditExerciseVM>().AfterMap((src, dest) => {
                 dest.MemberId = src.WorkoutPlan.MemberId;
             }).ReverseMap();
             CreateMap<Exercise, ExerciseVM>().ReverseMap();

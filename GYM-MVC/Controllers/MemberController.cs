@@ -1,10 +1,10 @@
 ﻿using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
+using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.MemberViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers {
-
     public class MemberController : Controller {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _env;
@@ -15,13 +15,18 @@ namespace GYM_MVC.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Index()
-        {
+        public IActionResult Index() {
             var members = _unitOfWork.MemberRepo.GetAll()
                 .Select(MapToViewModel)
                 .ToList();
             return View(members);
         }
+        //[HttpGet]
+        //public IActionResult Index() {
+        //    var members = _unitOfWork.MemberRepo.GetAll();
+        //    return View(members);
+        //}
+
         //[HttpGet]
         //public IActionResult Index() {
         //    var members = _unitOfWork.MemberRepo.GetAll();
@@ -38,7 +43,11 @@ namespace GYM_MVC.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Create() => View();
+        public IActionResult Create() {
+            RegisterMemberFromAdmin vm = new RegisterMemberFromAdmin();
+
+            return View(vm);
+        }
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MemberViewModel vm) {
