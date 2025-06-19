@@ -1,7 +1,6 @@
-﻿namespace GYM_MVC.ViewModels
-{
-    public class GymAdminDashboardViewModel
-    {
+﻿namespace GYM_MVC.ViewModels {
+
+    public class GymAdminDashboardViewModel {
         public int TotalMembers { get; set; }
         public int TotalTrainers { get; set; }
         public int TotalWorkoutPlans { get; set; }

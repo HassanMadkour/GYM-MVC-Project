@@ -136,6 +136,8 @@ namespace GYM_MVC.Controllers {
                     }
                 }
             }
+            registerMemFormAdmin.AvailableMemberships = mapper.Map<List<DisplayMembershipViewModel>>(unitOfWork.MembershipRepo.GetAll().ToList());
+            registerMemFormAdmin.AvailableTrainers = mapper.Map<List<DisplayTrainerVM>>(unitOfWork.TrainerRepo.GetAll().ToList());
             return View(registerMemFormAdmin);
         }
 

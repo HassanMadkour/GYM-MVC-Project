@@ -1,12 +1,9 @@
 ﻿using GYM.Domain.Entities;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Security.Principal;
 
-namespace GYM_MVC.ViewModels.TrainerViewModels
-{
-    public class DisplayMemberWithWorkoutPlansVM
-    {
+namespace GYM_MVC.ViewModels.TrainerViewModels {
+
+    public class DisplayMemberWithWorkoutPlansVM {
         public int Id { get; set; }
 
         [Required, MaxLength(50)]

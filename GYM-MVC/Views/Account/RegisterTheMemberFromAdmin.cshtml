@@ -7,7 +7,7 @@
     ViewData["Title"] = "Add Member";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     SelectList trainerList = new SelectList(Model.AvailableTrainers, "Id", "Name");
-    SelectList membershipList = EnumHelper.ToSelectList<MembershipType>();
+    SelectList membershipList = new SelectList(Model.AvailableMemberships, "Id", "DurationInDays");
 
 }
 

@@ -15,9 +15,6 @@ namespace GYM_MVC.Core.MapperConf {
     public class MapperConfig : Profile {
 
         public MapperConfig() {
-            //CreateMap<ApplicationUser, RegisterMemberViewModel>().AfterMap((src, dist) => {
-            //    dist.Password = src
-            //});
             CreateMap<RegisterUserViewModel, ApplicationUser>().AfterMap((src, dist) => {
                 dist.PasswordHash = src.Password;
                 dist.UserName = src.Name;
@@ -29,21 +26,15 @@ namespace GYM_MVC.Core.MapperConf {
                 dist.Name = src.MemberName;
                 dist.Age = DateTime.Today.Year - src.BirthDate.Year;
                 dist.AvailableDays = src.AvailableDays.ToString();
-
                 dist.Illnesses = src.Illnesses ?? "";
                 dist.Injuries = src.Injuries ?? "";
                 dist.TrainerId = src.SelectedTrainerId;
+                dist.MembershipId = src.SelectedMembershipId;
             });
-            CreateMap<RegisterMemberFromAdmin, Member>().AfterMap((src, dist) => {
-                dist.Name = src.MemberName;
-                dist.AvailableDays = src.AvailableDays.ToString();
-                dist.IsApproved = src.IsApproved;
-                dist.Age = DateTime.Today.Year - src.BirthDate.Year;
-
-                dist.Illnesses = src.Illnesses ?? "";
-                dist.Injuries = src.Injuries ?? "";
-                dist.TrainerId = src.SelectedTrainerId;
-            });
+            CreateMap<RegisterMemberFromAdmin, Member>().IncludeBase<RegisterMemberViewModel, Member>()
+             .AfterMap((src, dist) => {
+                 dist.IsApproved = src.IsApproved;
+             });
             CreateMap<RegisterTrainerViewModel, Trainer>().ReverseMap();
             CreateMap<Member, RegisterMemberViewModel>().AfterMap((src, dist) => {
             });
@@ -75,8 +66,7 @@ namespace GYM_MVC.Core.MapperConf {
                 (src, dist) => {
                     dist.Type = EnumHelper.ToEnum<MembershipType>(src.SelectedMembershipType);
                     dist.Id = src.Id;
-                }
-                ).ReverseMap().AfterMap(
+                }).ReverseMap().AfterMap(
                    (src, dist) => {
                        dist.SelectedMembershipType = src.Type.ToString();
                    }

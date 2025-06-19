@@ -2,14 +2,13 @@
 
 #nullable disable
 
-namespace GYM_MVC.Data.Migrations
-{
+namespace GYM_MVC.Data.Migrations {
+
     /// <inheritdoc />
-    public partial class changeuseridtoID : Migration
-    {
+    public partial class changeuseridtoID : Migration {
+
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropForeignKey(
                 name: "FK_Members_AspNetUsers_UserId",
                 table: "Members");
@@ -29,7 +28,6 @@ namespace GYM_MVC.Data.Migrations
                 nullable: false,
                 oldClrType: typeof(int),
                 oldType: "int");
-                
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Members_AspNetUsers_Id",
@@ -41,8 +39,7 @@ namespace GYM_MVC.Data.Migrations
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropForeignKey(
                 name: "FK_Members_AspNetUsers_Id",
                 table: "Members");

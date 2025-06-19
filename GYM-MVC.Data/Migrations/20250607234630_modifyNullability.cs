@@ -2,14 +2,13 @@
 
 #nullable disable
 
-namespace GYM_MVC.Data.Migrations
-{
+namespace GYM_MVC.Data.Migrations {
+
     /// <inheritdoc />
-    public partial class modifyNullability : Migration
-    {
+    public partial class modifyNullability : Migration {
+
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropForeignKey(
                 name: "FK_Exercise_Workouts_WorkoutPlanId",
                 table: "Exercise");
@@ -118,8 +117,7 @@ namespace GYM_MVC.Data.Migrations
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropForeignKey(
                 name: "FK_Exercise_Workouts_WorkoutPlanId",
                 table: "Exercise");

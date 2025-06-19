@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GYM_MVC.ViewModels.ExerciseViewModels
-{
-    public class EditExerciseVM
-    {
+namespace GYM_MVC.ViewModels.ExerciseViewModels {
+
+    public class EditExerciseVM {
         public int Id { get; set; }
 
         [Required, MaxLength(50)]

@@ -4,11 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GYM.Domain.Entities {
 
-    public enum MaritalStatus
-    {
-        Single ,
-        Married 
-       
+    public enum MaritalStatus {
+        Single,
+        Married
     }
 
     public class Member : BaseEntity {
@@ -37,9 +35,9 @@ namespace GYM.Domain.Entities {
         public int SleepHours { get; set; }
 
         public string AvailableDays { get; set; }
-        public string ImagePath {  get; set; }
-        public bool IsApproved { get; set; }=false;
-        
+        public string ImagePath { get; set; }
+        public bool IsApproved { get; set; } = false;
+
         public int? MembershipId { get; set; }
 
         [ForeignKey("MembershipId")]
@@ -53,6 +51,6 @@ namespace GYM.Domain.Entities {
         [ForeignKey("TrainerId")]
         public virtual Trainer Trainer { get; set; }
 
-        public virtual ICollection<WorkoutPlan> WorkoutPlan { get; set; }=new List<WorkoutPlan>();
+        public virtual ICollection<WorkoutPlan> WorkoutPlan { get; set; } = new List<WorkoutPlan>();
     }
 }
