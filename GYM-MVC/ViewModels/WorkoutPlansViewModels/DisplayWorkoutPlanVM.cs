@@ -5,7 +5,7 @@ namespace GYM_MVC.ViewModels.WorkoutPlansViewModels {
     public class DisplayWorkoutPlanVM {
 
         [Required, MaxLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; } 
 
         [Required, MaxLength(500)]
         public string Description { get; set; }

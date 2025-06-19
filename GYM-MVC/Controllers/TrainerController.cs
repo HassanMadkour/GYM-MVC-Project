@@ -105,9 +105,8 @@ namespace GYM_MVC.Controllers {
             //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
             //    return NotFound();
             //List<Member> membersfromDb = UnitOfWork.MemberRepo.GetMembersByTrainerId(id!.Value);
-            List<Member> membersfromDb = UnitOfWork.MemberRepo.GetMembersByTrainerId(id.Value)
-                                    .Where(m => m.IsApproved == true) 
-                                    .ToList();
+            List<Member> membersfromDb = UnitOfWork.MemberRepo.GetMembersByTrainerId(id.Value);
+                                    
             return View(mapper.Map<List<MemberByTrainerIdVM>>(membersfromDb));
         }
         public async Task<IActionResult> Details(int? id)

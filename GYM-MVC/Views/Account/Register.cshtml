@@ -5,10 +5,10 @@
     Layout = "_AuthLayout";
 }
 
+       <form asp-action="RegisterTheMember" class="register-form">
 <div class="split-container">
     <!-- Left Side - Personal & Health Info -->
     <div class="split-left">
-        <form asp-action="RegisterTheMember" class="register-form">
             <div class="form-header">
                 <h1 class="register-title">Create Your Account</h1>
                 <p class="register-subtitle">Join our fitness community today</p>
@@ -76,11 +76,11 @@
                     </div>
                 </div>
             </div>
-        </form>
+      
     </div>
 
     <div class="split-right">
-        <form asp-action="RegisterTheMember" class="register-form">
+       
             <div class="form-section">
                 <h3 class="section-title">Select Your Trainer</h3>
                 <div class="trainer-selection">
@@ -119,7 +119,7 @@
                         {
                             <div class="membership-card @(Model.SelectedMembershipId == membership.Id ? "selected" : "")">
                                 <input type="radio" asp-for="SelectedMembershipId" value="@membership.Id" id="membership-@membership.Id" class="membership-radio" />
-                                <label for="membership-@membership.Id">
+                                <label for="membership-@membership.SelectedMembershipType">
                                     <div class="membership-header">
                                         <h4>@membership.SelectedMembershipType</h4>
                                     </div>
@@ -170,10 +170,13 @@
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-user-plus"></i> Register Now
                 </button>
+               
                 <div class="auth-links">
                     Already have an account? <a asp-action="Login">Sign in</a>
                 </div>
             </div>
-        </form>
+
     </div>
 </div>
+    </form>
+   

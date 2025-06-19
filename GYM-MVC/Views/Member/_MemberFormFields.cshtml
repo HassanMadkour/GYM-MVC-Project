@@ -1,4 +1,4 @@
-﻿@* @model GYM_MVC.ViewModels.MemberViewModels.MemberViewModel
+﻿@model GYM_MVC.ViewModels.MemberViewModels.MemberViewModel
 
 <div class="row g-3">
     <div class="col-md-6">
@@ -80,7 +80,7 @@
         <div class="mb-3">
             <label asp-for="ImageFile" class="form-label fw-semibold"></label>
             <input asp-for="ImageFile" class="form-control" type="file" />
-            @if (Model != null && !string.IsNullOrWhiteSpace(Model.ImageFile))
+            @if (Model != null && !string.IsNullOrWhiteSpace(Model?.ImageFile?.FileName))
             {
                 <div class="mt-2">
                     <img src="@Model.ImageFile" alt="Member Image" class="img-thumbnail" width="150" />
@@ -98,4 +98,3 @@
     </div>
 </div>
 
- *@

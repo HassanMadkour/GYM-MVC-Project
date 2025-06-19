@@ -1,8 +1,10 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.ExerciseViewModels;
+using GYM_MVC.ViewModels.WorkoutPlansViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using DayOfWeek = GYM.Domain.Entities.DayOfWeek;
@@ -20,12 +22,13 @@ namespace GYM_MVC.Controllers {
             _mapper = mapper;
         }
         [HttpGet]
-        public IActionResult Index(int WorkoutPlanId)
+        public async Task<IActionResult> Index(int WorkoutPlanId)
         {
-            var ExcerciseRepo = _unitOfWork.ExcerciseRepo.GetExercisesByWorkoutPlanId(WorkoutPlanId);
+            var ExcerciseRepo = await _unitOfWork.ExcerciseRepo.GetExercisesByWorkoutPlanId(WorkoutPlanId);
+            var workoutPlan = await _unitOfWork.WorkoutPlanRepo.GetById(WorkoutPlanId);
             ViewBag.WorkoutPlanId = WorkoutPlanId;
-            var GetAllExercises = _mapper.Map<List<EditExerciseVM>>(ExcerciseRepo.Result);
-
+            ViewBag.WorkOutPlan = _mapper.Map<DisplayWorkoutPlanVM>(workoutPlan);
+            var GetAllExercises = _mapper.Map<List<EditExerciseVM>>(ExcerciseRepo);
             return View(GetAllExercises ?? new List<EditExerciseVM>());
         }
 
@@ -74,14 +77,14 @@ namespace GYM_MVC.Controllers {
         {
             if (!ModelState.IsValid) return View("Edit");
 
-            var exercise = await _unitOfWork.ExcerciseRepo.GetById(id);
+            var exercise = _mapper.Map<Exercise>(NewExercise);
+
             if (exercise == null) return NotFound();
 
-            _mapper.Map(NewExercise, exercise);
             _unitOfWork.ExcerciseRepo.Update(exercise);
             await _unitOfWork.Save();
 
-            return RedirectToAction(nameof(Index)); ///put here action after create excercise
+            return RedirectToAction(nameof(Index) , new {WorkoutPlanId = exercise.WorkoutPlanId}); 
         }
 
         public async Task<IActionResult> Delete(int id)
@@ -96,12 +99,13 @@ namespace GYM_MVC.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var exercise = await _unitOfWork.ExcerciseRepo.GetById(id);
             _unitOfWork.ExcerciseRepo.Delete(id);
             await _unitOfWork.Save();
 
             TempData["SuccessMessage"] = "Deleted successfully ";
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index" , new {WorkoutPlanId = exercise.WorkoutPlanId});
         }
     }
 }

@@ -13,8 +13,7 @@
 
 }
 
-<h2 class="text-center ">Exercises for this work plan</h2>
-
+<h2 class="text-center ">Exercises </h2>
 
 <table class="table mt-3 table-bordered  text-center">
     <thead>
@@ -74,8 +73,6 @@
             </tr>
         }
 
-
-
         @if (!Model.Any())
         {
                 <tr>
@@ -87,10 +84,8 @@
 
 <div class="d-flex justify-content-center gap-3 my-4">
     <a asp-action="Create" asp-route-workoutPlanId="@workoutPlanId" class="btn btn-primary px-4">Add New Exercise</a>
-
-    @* <form asp-controller="WorkoutPlan" asp-action="ViewWorkoutPlan" asp-route-workoutPlanId="@workoutPlanId" method="get"> *@
     <a class="btn btn-success px-4" asp-controller="Trainer" asp-action="GetMemberWithWorkoutPlans" asp-route-id=@Model.FirstOrDefault()?.MemberId>Finish Workout Plan</a>
-    @* </form> *@
+
 </div>
 
 @section Scripts {
@@ -103,14 +98,24 @@
     <style>
     .table tbody tr:nth-child(even) td:nth-child(even),
     .table tbody tr:nth-child(odd) td:nth-child(odd) {
-        background-color: #e8f0fe; /* أزرق فاتح */
+        background-color: #e8f0fe; 
     }
 
     .table tbody tr:nth-child(even) td:nth-child(odd),
     .table tbody tr:nth-child(odd) td:nth-child(even) {
-        background-color: #ffffff; /* أبيض */
+        background-color: #ffffff;
     }
 
     </style>
 
 
+@* <h2 class="text-center m-auto">Workoutplan Details</h2>
+<div class="d-flex justify-content-around">
+
+    <h4>Name : @ViewBag.WorkOutPlan.Name</h4>
+    <h4>Description : @ViewBag.WorkOutPlan.Description</h4>
+    <h4>StartDate : @ViewBag.WorkOutPlan.StartDate.ToShortDateString()</h4>
+    <h4>EndDate : @ViewBag.WorkOutPlan.EndDate.ToShortDateString()</h4>
+</div>
+
+ *@

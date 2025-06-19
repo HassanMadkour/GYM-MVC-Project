@@ -26,9 +26,10 @@
 
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <select asp-for="SelectedMembershipType" class="form-select" asp-items="Model.MembershipTypeList">
+                      @*   <select asp-for="SelectedMembershipType" class="form-select" asp-items="Model.MembershipTypeList">
                             <option value="">-- Select Membership Type --</option>
-                        </select>
+                        </select> *@
+                        <input asp-for="SelectedMembershipType" class="form-control" />
                         <label asp-for="SelectedMembershipType" class="fw-semibold"></label>
                         <span asp-validation-for="SelectedMembershipType" class="text-danger small"></span>
                     </div>
