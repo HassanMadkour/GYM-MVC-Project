@@ -2,103 +2,110 @@
 @model DisplayWorkoutPlanVM
 
 @{
-    ViewData["Title"] = "Active WorkOut Plan";
+    ViewData["Title"] = "Active Workout Plan";
     Layout = "_MainLayout";
 }
-<style>
-    .w-40{
-        width:40%
-    }
-</style>
 
-<div class="d-flex justify-content-between">
 
-    <div class="alert alert-light w-40">
-        <h2 class="text-center m-auto">Current Workout Plan</h2>
-        <dl class="row p-4" >
-            <dt class="col-sm-3">Name</dt>
-            <dd class="col-sm-9">@Model.Name</dd>
+<div class="container py-4">
+    <h2 class="section-title mb-4">
+        <i class="fas fa-dumbbell me-2"></i>Workout Plan
+    </h2>
 
-            <dt class="col-sm-3">Description</dt>
-            <dd class="col-sm-9">@Model.Description</dd>    
+    <div class="d-flex flex-wrap workout-container">
+        <div class="workout-details pe-lg-4" style="width: 40%; max-width: 500px;">
+            <div class="workout-card h-100">
+                <h3 class="text-center mb-4">
+                    <i class="fas fa-clipboard-list  me-2"></i>Plan Details
+                </h3>
 
-            <dt class="col-sm-3">Start Date</dt>
-            <dd class="col-sm-9">@Model.StartDate.ToShortDateString()</dd>
+                <div class="mb-3">
+                    <div class="info-label">Plan Name</div>
+                    <div class="info-value">@Model.Name</div>
+                </div>
 
-            <dt class="col-sm-3">End Date</dt>
-            <dd class="col-sm-9">@Model.EndDate.ToShortDateString()</dd>
+                <div class="mb-3">
+                    <div class="info-label">Description</div>
+                    <div class="info-value">@Model.Description</div>
+                </div>
 
-            <dt class="col-sm-3">General Info</dt>
-            <dd class="col-sm-9">@Model.GeneralInfo</dd>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="info-label">Start Date</div>
+                        <div class="info-value">@Model.StartDate.ToShortDateString()</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-label">End Date</div>
+                        <div class="info-value">@Model.EndDate.ToShortDateString()</div>
+                    </div>
+                </div>
 
-            <dt class="col-sm-3">Injury Info</dt>
-            <dd class="col-sm-9">@Model.InjuryInfo</dd>
+                <div class="mb-3">
+                    <div class="info-label">General Instructions</div>
+                    <div class="info-value">@Model.GeneralInfo</div>
+                </div>
 
-            <dt class="col-sm-3">Member ID</dt>
-            <dd class="col-sm-9">@Model.MemberId</dd>
+                <div class="mb-3">
+                    <div class="info-label">Injury Information</div>
+                    <div class="info-value">@(string.IsNullOrEmpty(Model.InjuryInfo) ? "None reported" : Model.InjuryInfo)</div>
+                </div>
 
-            <dt class="col-sm-3">Member Name</dt>
-            <dd class="col-sm-9">@Model.MemberName</dd>
+                <hr class="my-3">
 
-            <dt class="col-sm-3">Trainer Name</dt>
-            <dd class="col-sm-9">@Model.TrainerName</dd>
-        </dl>
-    </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="info-label">Member</div>
+                        <div class="info-value">@Model.MemberName</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-label">Trainer</div>
+                        <div class="info-value">@Model.TrainerName</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="w-50">
-        <h2 class="text-center ">Exercises </h2>
-        <table class="table table-responsive  m-auto mt-3 table-bordered  text-center">
-            <thead>
-                <tr>
+        <div class="exercise-section flex-grow-1 ps-lg-4" style="width: 60%; min-width: 300px;">
+            <div class="exercise-table">
+                <h3 class="text-center mb-4">
+                    <i class="fas fa-running  me-2"></i>Exercises
+                </h3>
 
-                    <th>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr >
+                                <th class="text-black">Exercise</th>
+                                <th class="text-black">Reps</th>
+                                <th class="text-black">Sets</th>
+                                <th class="text-black">Rest</th>
+                                <th class="text-black">Day</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Exercises)
+                            {
+                                <tr>
+                                    <td class="fw-semibold">@item.Name</td>
+                                    <td>@item.Repetitions</td>
+                                    <td>@item.Sets</td>
+                                    <td>@item.RestTime</td>
+                                    <td>@item.DayOfWeek</td>
+                                </tr>
+                            }
 
-                        @Html.DisplayName("Name")
-                    </th>
-                    <th>
-                        @Html.DisplayName("Repititions")
-                    </th>
-                    <th>
-                        @Html.DisplayName("Sets")
-                    </th>
-                    <th>
-                        @Html.DisplayName("RestTime")
-                    </th>
-                    <th>
-                        @Html.DisplayName("DayOfWeek")
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Exercises)
-                {
-                    <tr>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Repetitions)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Sets)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.RestTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DayOfWeek)
-                        </td>
-                    </tr>
-                }
-
-                @if (!Model.Exercises.Any())
-                {
-                    <tr>
-                        <td colspan="6" class="text-center text-muted fs-2">No Exercises to show</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                            @if (!Model.Exercises.Any())
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center py-4 text-muted">
+                                        <i class="fas fa-info-circle me-2"></i>No exercises assigned to this plan
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

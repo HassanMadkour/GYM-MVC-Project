@@ -9,6 +9,12 @@
     --warning: #ff7f50;
     --danger: #ff4757;
 }
+.container i.fas,
+.container i.far,
+.container i.fab {
+    color: #ff4757 ;
+}
+
 body, html {
     height: 100%;
     margin: 0;
@@ -671,6 +677,66 @@ footer {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     height: 100%;
 }
+.workout-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    height: 100%;
+}
+
+.exercise-table {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+    .exercise-table th {
+        background-color: var(--dark);
+        color:var(--primary-dark);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    .exercise-table td {
+        vertical-align: middle;
+    }
+
+    .exercise-table tr:nth-child(even) {
+        background-color: rgba(0,0,0,0.02);
+    }
+
+    .exercise-table tr:hover {
+        background-color: rgba(255,107,107,0.05);
+    }
+
+.info-label {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.info-value {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+@@media (max-width: 992px) {
+    .workout-container {
+        flex-direction: column;
+    }
+
+    .workout-details, .exercise-section {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .exercise-section {
+        margin-top: 2rem;
+    }
+}
 
 /* Footer */
 .social-links-footer a {
@@ -684,6 +750,10 @@ footer {
     color: white;
     transition: all 0.3s ease;
     margin-right: 0.5rem;
+}
+.dropdownBtn{
+    border:1px solid var(--primary-dark);
+    color:#fff;
 }
 
     .social-links-footer a:hover {
