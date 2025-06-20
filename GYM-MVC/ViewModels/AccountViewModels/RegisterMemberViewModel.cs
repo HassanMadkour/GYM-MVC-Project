@@ -5,9 +5,11 @@ using GYM_MVC.ViewModels.TrainerViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
-namespace GYM_MVC.ViewModels.AccountViewModels {
+namespace GYM_MVC.ViewModels.AccountViewModels
+{
 
-    public class RegisterMemberViewModel : RegisterUserViewModel {
+    public class RegisterMemberViewModel : RegisterUserViewModel
+    {
 
         [Display(Name = "Your Name"), Required]
         public string? MemberName { get; set; }
@@ -36,8 +38,10 @@ namespace GYM_MVC.ViewModels.AccountViewModels {
         [Display(Name = "Available Days")]
         public int AvailableDays { get; set; }
 
-        public SelectList? MaterialStatusList {
-            get {
+        public SelectList? MaterialStatusList
+        {
+            get
+            {
                 return EnumHelper.ToSelectList<MaritalStatus>();
             }
         }
