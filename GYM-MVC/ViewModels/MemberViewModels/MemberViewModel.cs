@@ -1,4 +1,5 @@
 ﻿using GYM.Domain.Entities;
+using GYM_MVC.Core.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace GYM_MVC.ViewModels.MemberViewModels {
@@ -45,5 +46,9 @@ namespace GYM_MVC.ViewModels.MemberViewModels {
 
         [Display(Name = "Profile Image")]
         public IFormFile? ImageFile { get; set; }
+
+        public List<Membership>? Memberships { get; set; }
+        public List<Trainer>? Trainers { get; set; }
+
     }
 }
