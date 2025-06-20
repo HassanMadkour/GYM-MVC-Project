@@ -46,12 +46,24 @@
                     <span>Memberships</span>
                 </a>
             </div>
-            <div class="sidebar-footer">
+            <div class="dropdown sidebar-footer ">
+                <div class="user-profile">
+                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle"></i>
+                        <span class="mx-2"> <strong class="fs-5"> @User?.Identity?.Name</strong></span>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                        
+                        <li><a class="dropdown-item" asp-action="Logout" asp-controller="Account">Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+           @*  <div class="sidebar-footer">
                 <div class="user-profile">
                     <i class="fas fa-user-circle"></i>
                     <span>Admin</span>
                 </div>
-            </div>
+            </div> *@
         </nav>
 
         <!-- Main Content Area -->

@@ -8,7 +8,7 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between">
         <h2 class="card-title">All Trainers</h2>
-        <a asp-action="Create" class="btn btn-light">
+        <a asp-action="RegisterTheTrainer" asp-controller="Account" class="btn btn-light">
             <i class="fas fa-plus"></i> Add New Trainer
         </a>
     </div>
@@ -21,7 +21,7 @@
                     <th>Name</th>
                     <th>Specialty</th>
                     <th>Salary</th>
-                    <th>Image</th>
+             
 
                     <th>Actions</th>
                 </tr>
@@ -36,7 +36,7 @@
                         <td>@trainer.Name</td>
                         <td>@trainer.Specialty</td>
                         <td>@trainer.Salary </td>
-                        <td>@trainer.ImagePath</td>
+                     
                         <td>
                             <div class="btn-group">
                                 <a asp-action="Edit" asp-route-id="@trainer.Id" class="btn btn-outline">

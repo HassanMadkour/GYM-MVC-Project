@@ -65,6 +65,7 @@ namespace GYM_MVC.Controllers {
         public async Task<IActionResult> Edit(int? id, EditTrainerVM trainerVM) {
             if (id is null || id != trainerVM.Id)
                 return NotFound();
+            var trainer = await UnitOfWork.TrainerRepo.GetById(id.Value);
             if (ModelState.IsValid) {
                 if (trainerVM.ImageFile != null) {
                     string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "Trainer");
@@ -75,8 +76,12 @@ namespace GYM_MVC.Controllers {
                         await trainerVM.ImageFile.CopyToAsync(fileStream);
                     }
                     trainerVM.ImagePath = @$"/images/Trainer/{fileName}";
+                }else
+                {   
+                    trainerVM.ImagePath = trainer.ImagePath;
                 }
-                UnitOfWork.TrainerRepo.Update(mapper.Map<Trainer>(trainerVM));
+
+                    UnitOfWork.TrainerRepo.Update(mapper.Map(trainerVM,trainer));
                 await UnitOfWork.Save();
                 return RedirectToAction(nameof(GetAll));
             }

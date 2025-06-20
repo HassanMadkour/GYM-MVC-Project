@@ -41,7 +41,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .logo {
@@ -421,4 +421,9 @@ body {
     .register-title {
         font-size: 1.8rem;
     }
+}
+
+
+.text-primary {
+    color:var(--primary)
 }

@@ -173,7 +173,8 @@ namespace GYM_MVC.Controllers {
         public async Task<IActionResult> ActiveWorkOutPlan(int id)
         {
             var activeWorkoutPlan = await _unitOfWork.WorkoutPlanRepo.GetActiveWorkOutPlan(id);
-
+            var member = await _unitOfWork.MemberRepo.GetById(id);
+            ViewBag.IsApproved = member.IsApproved;
             return View(mapper.Map<DisplayWorkoutPlanVM>(activeWorkoutPlan));
 
         }

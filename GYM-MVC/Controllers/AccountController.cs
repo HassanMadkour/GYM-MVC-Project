@@ -148,6 +148,11 @@ namespace GYM_MVC.Controllers {
             return View(registerMemFormAdmin);
         }
 
+        public IActionResult RegisterTheTrainer ()
+        {
+            return View("RegisterTrainer");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterTheTrainer(RegisterTrainerViewModel registerTrainerViewModel) {
