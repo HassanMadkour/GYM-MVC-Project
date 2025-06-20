@@ -135,7 +135,7 @@ namespace GYM_MVC.Data.Migrations
 
                     b.HasIndex("WorkoutPlanId");
 
-                    b.ToTable("Exercise");
+                    b.ToTable("Exercise", (string)null);
                 });
 
             modelBuilder.Entity("GYM.Domain.Entities.Member", b =>
@@ -201,7 +201,7 @@ namespace GYM_MVC.Data.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Members");
+                    b.ToTable("Members", (string)null);
                 });
 
             modelBuilder.Entity("GYM.Domain.Entities.Trainer", b =>
@@ -239,7 +239,7 @@ namespace GYM_MVC.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Trainers");
+                    b.ToTable("Trainers", (string)null);
                 });
 
             modelBuilder.Entity("GYM.Domain.Entities.WorkoutPlan", b =>
@@ -295,7 +295,7 @@ namespace GYM_MVC.Data.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Workouts");
+                    b.ToTable("Workouts", (string)null);
                 });
 
             modelBuilder.Entity("GYM_MVC.Core.Entities.Membership", b =>
@@ -329,7 +329,7 @@ namespace GYM_MVC.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Memberships");
+                    b.ToTable("Memberships", (string)null);
                 });
 
             modelBuilder.Entity("GYM_MVC.Core.Entities.Schedule", b =>
@@ -360,7 +360,7 @@ namespace GYM_MVC.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Schedules");
+                    b.ToTable("Schedules", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>

@@ -187,8 +187,12 @@ namespace GYM_MVC.Controllers {
                     }
                     trainer.ImagePath = ((UploadImageSuccess)status).FileName;
                 }
+                //else
+                //{
+                //    trainer.ImagePath = "~/images/DefImage.jpg";
+                //}
 
-                IdentityResult result = _userManager.CreateAsync(user, registerTrainerViewModel.Password).Result;
+                    IdentityResult result = _userManager.CreateAsync(user, registerTrainerViewModel.Password).Result;
                 var resultOfRole = await _userManager.AddToRoleAsync(user, "Trainer");
                 if (result.Succeeded && resultOfRole.Succeeded) {
                     trainer.Id = user.Id;

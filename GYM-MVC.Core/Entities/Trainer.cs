@@ -17,7 +17,7 @@ namespace GYM.Domain.Entities {
         [Range(6000, 50000)]
         public decimal Salary { get; set; }
 
-        public string ImagePath { get; set; }
+        public string ImagePath { get; set; }  = "/images/DefImage.jpg";
 
         [ForeignKey("Id")]
         public virtual ApplicationUser ApplicationUser { get; set; }

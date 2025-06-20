@@ -4,55 +4,16 @@
     ViewData["Title"] = "Register";
     Layout = "_AuthLayout";
 }
-@section Styles {
-    <style>
-        .profile-upload {
-            width: 150px;
-            height: 150px;
-        }
-
-        .profile-upload img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #007bff;
-            transition: 0.3s ease-in-out;
-        }
-
-        .profile-upload img:hover {
-            opacity: 0.7;
-        }
-
-        .profile-upload input[type="file"] {
-            display: none;
-        }
-
-        .upload-overlay {
-           
-            width: 100%;
-            height: 35px;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            border-radius: 10px;
-            text-align: center;
-            line-height: 35px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-    </style>
-}
 
 
        <form asp-action="RegisterTheMember" class="register-form" enctype="multipart/form-data">
           <div class="d-flex justify-content-center my-4">
-    <div class="profile-upload">
+   @*  <div class="profile-upload">
         <label for="imageUpload">
-            <img id="profilePreview" src="~/images/main.jpg" alt="Profile Image" />
+            <img id="profilePreview" src="~/images/DefImage.jpg" alt="Profile Image" />
             <div class="upload-overlay"><i class="fas fa-upload"></i> Upload Photo</div>
         </label>
-        <input type="file" id="imageUpload" asp-for="@Model.Image" accept="image/*" onchange="previewImage(event)" />
-    </div>
+    </div> *@
 </div>
 
       
@@ -126,6 +87,16 @@
                         <input asp-for="Injuries" class="form-control" placeholder="List any injuries" />
                         <span asp-validation-for="Injuries" class="field-validation-error"></span>
                     </div>
+
+                    <div class="form-group full-width">
+                        <label asp-for="Image" class="form-label">Any Injuries (if applicable)</label>
+                         <input asp-for="Image" class="form-control" type="file" />
+
+                        <span asp-validation-for="Image" class="field-validation-error"></span>
+                    </div>
+
+                  
+
                 </div>
             </div>
       

@@ -133,7 +133,7 @@ namespace GYM_MVC.Controllers {
             Injuries = m.Injuries,
             SleepHours = m.SleepHours,
             AvailableDays = m.AvailableDays,
-            //ImagePath = m.ImagePath,
+            ImagePath = m.ImagePath,
             IsApproved = m.IsApproved,
             MembershipId = m.MembershipId,
             TrainerId = m.TrainerId

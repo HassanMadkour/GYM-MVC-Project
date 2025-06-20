@@ -35,7 +35,7 @@ namespace GYM.Domain.Entities {
         public int SleepHours { get; set; }
 
         public string AvailableDays { get; set; }
-        public string ImagePath { get; set; }
+        public string ImagePath { get; set; } = "/images/DefImage.jpg";
         public bool IsApproved { get; set; } = false;
 
         public int? MembershipId { get; set; }

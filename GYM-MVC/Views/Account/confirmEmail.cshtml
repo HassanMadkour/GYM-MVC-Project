@@ -13,10 +13,10 @@
    
     @if(User?.IsInRole("Admin") ?? false)
     {
-        <h1 class="auth-title">Trainer has been created Succesfully</h1>
+        <h1 class="auth-title">Account has been created Succesfully</h1>
         <p class="auth-subtitle">
             We've sent a confirmation link to your his Email.<br />
-            Tell Him to Chek his Email to Activate Account And Start Login.
+            Tell User to Chek his Email to Activate Account And Start Login.
         </p>
 
         <a class="btn btn-primary mt-4" asp-action="GetAll" asp-controller="Trainer">Back to Dashbord</a>
