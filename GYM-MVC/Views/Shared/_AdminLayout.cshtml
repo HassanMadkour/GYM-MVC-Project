@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -46,28 +48,33 @@
                     <span>Memberships</span>
                 </a>
             </div>
-            <div class="dropdown sidebar-footer ">
-                <div class="user-profile">
-                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="menu-item text-start" href="/Account/Logout">
+                <i class="fas fa-sign-out-alt me-1"></i> Logout
+            </a>
+
+
+            <div class="sidebar-footer">
+                <div class="d-flex align-items-center">
+                    <div class="avatar me-3">
                         <i class="fas fa-user-circle"></i>
-                        <span class="mx-2"> <strong class="fs-5"> @User?.Identity?.Name</strong></span>
-                    </a>
-                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                        
-                        <li><a class="dropdown-item" asp-action="Logout" asp-controller="Account">Log out</a></li>
-                    </ul>
+                    </div>
+                    <div>
+                        <div class="fw-bold">@HttpContextAccessor.HttpContext.User.Identity?.Name</div>
+                        <small class="text-muted">Admin</small>
+                    </div>
+
                 </div>
-            </div>
-           @*  <div class="sidebar-footer">
-                <div class="user-profile">
-                    <i class="fas fa-user-circle"></i>
-                    <span>Admin</span>
-                </div>
-            </div> *@
+            </div> 
         </nav>
 
+
+
+      
+
+
+
         <!-- Main Content Area -->
-        <main class="admin-main">
+        <main class="admin-main bg-white">
             <div class="main-content">
                 @RenderBody()
             </div>
