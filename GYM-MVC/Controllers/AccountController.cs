@@ -140,6 +140,16 @@ namespace GYM_MVC.Controllers {
                 IdentityResult result = _userManager.CreateAsync(user, registerMemFormAdmin.Password).Result;
                 var resultOfRole = await _userManager.AddToRoleAsync(user, "Member");
 
+                if (registerMemFormAdmin.Image != null) {
+                    UploadImageStatus status = await ImageHandler.UploadImage(registerMemFormAdmin.Image, "members");
+                    if (status is UploadImageError) {
+                        ModelState.AddModelError(string.Empty, status.Message);
+                        return View("Register", registerMemFormAdmin);
+                    }
+                    member.ImagePath = ((UploadImageSuccess)status).FileName;
+                }
+
+
                 if (result.Succeeded && resultOfRole.Succeeded) {
                     member.Id = user.Id;
                     await unitOfWork.MemberRepo.Add(member);
