@@ -46,9 +46,7 @@ namespace GYM_MVC.ViewModels.MemberViewModels {
 
         [Display(Name = "Profile Image")]
         public IFormFile? ImageFile { get; set; }
-
         public List<Membership>? Memberships { get; set; }
         public List<Trainer>? Trainers { get; set; }
-
     }
 }

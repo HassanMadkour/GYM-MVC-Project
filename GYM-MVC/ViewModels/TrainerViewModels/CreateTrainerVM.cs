@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GYM_MVC.ViewModels.TrainerViewModels {
+namespace GYM_MVC.ViewModels.TrainerViewModels
+{
 
-    public class CreateTrainerVM {
+    public class CreateTrainerVM
+    {
 
         [Required, MaxLength(30)]
         public string Name { get; set; }

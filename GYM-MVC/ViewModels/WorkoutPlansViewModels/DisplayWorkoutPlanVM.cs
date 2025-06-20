@@ -1,12 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GYM.Domain.Entities;
 
-namespace GYM_MVC.ViewModels.WorkoutPlansViewModels {
+namespace GYM_MVC.ViewModels.WorkoutPlansViewModels
+{
 
-    public class DisplayWorkoutPlanVM {
+    public class DisplayWorkoutPlanVM
+    {
 
         [Required, MaxLength(100)]
-        public string Name { get; set; } 
+        public string Name { get; set; }
 
         [Required, MaxLength(500)]
         public string Description { get; set; }
