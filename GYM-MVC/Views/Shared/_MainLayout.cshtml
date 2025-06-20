@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,6 +17,10 @@
     <meta name="keywords" content="gym, fitness, workout, personal training, exercise, health">
 </head>
 <body>
+    @{
+        var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+    }
+    
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader">
@@ -74,8 +79,12 @@
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                                 <li><a class="dropdown-item" asp-controller="Member" asp-action="Profile">Profile</a></li>
-                                                <li><a class="dropdown-item" asp-controller="Member" asp-action="ActiveWorkOutPlan"><i class="fas fa-dumbbell me-2"></i>Workout Plan</a></li>
+                                                <li><a class="dropdown-item" asp-controller="Member" asp-action="ActiveWorkOutPlan"
+                                                       asp-route-id="@userId"><i class="fas fa-dumbbell me-2"></i>Workout Plan</a>
+                                                </li>
                                                 <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" asp-controller="Member" asp-action="Details" asp-route-id="@userId">Update Profile</a></li>
+
                                                 <li><a class="dropdown-item text-danger" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
                                             </ul>
                                         </div>
