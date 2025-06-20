@@ -4,11 +4,13 @@ using GYM_MVC.Data.UnitOfWorks;
 using GYM_MVC.Models;
 using GYM_MVC.ViewModels.ScheduleViewModels;
 using GYM_MVC.ViewModels.TrainerViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace GYM_MVC.Controllers {
+    [AllowAnonymous]
 
     public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
@@ -25,6 +27,16 @@ namespace GYM_MVC.Controllers {
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+
+
+            if (User.Identity.IsAuthenticated && User.IsInRole("Trainer"))
+            {
+                return RedirectToAction("GetMembersByTrainerId", "Trainer");
+            }
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Dashboard", "Admin");
+            }
             var schedules = await Task.Run(() => unitOfWork.ScheduleRepo.GetAll().ToList());
             var scheduleViewModels = mapper.Map<List<ScheduleViewModel>>(schedules);
             var trainrs = mapper.Map < List < DisplayTrainerVM >> (await Task.Run(() => unitOfWork.TrainerRepo.GetAll().ToList()));
