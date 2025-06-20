@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.Entities;
-using GYM_MVC.Core.Helper;
 using GYM_MVC.ViewModels;
 using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.ExerciseViewModels;
@@ -62,7 +61,7 @@ namespace GYM_MVC.Core.MapperConf {
 
             CreateMap<CreateMembershipViewModel, Membership>().AfterMap(
                 (src, dist) =>
-                    dist.Type =src.SelectedMembershipType
+                    dist.Type = src.SelectedMembershipType
                 );
             CreateMap<UpdateMembershipViewModel, Membership>().AfterMap(
                 (src, dist) => {

@@ -40,7 +40,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
                 <div class="container">
                     <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
-                        <i class="fas fa-dumbbell  me-2"></i>
+                        <i class="fas fa-dumbbell me-2"></i>
                         <span class="brand-text">FOR<span class="brand-highlight">CE</span> GYM</span>
                     </a>
 
@@ -50,8 +50,8 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <div class="navbar-collapse collapse" id="navbarNav">
+                        <ul class="navbar-nav align-items-lg-center ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
@@ -73,7 +73,7 @@
                                     if (User.IsInRole("Member"))
                                     {
                                         <div class="dropdown dropdownBtn">
-                                            <a class="btn  rounded-pill dropdown-toggle d-flex align-items-center dropdownBtn" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <a class="btn rounded-pill dropdown-toggle d-flex align-items-center dropdownBtn" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="fas fa-user-circle me-2" style="color: #f1f1f1;"></i>
                                                 <strong class="p-2" style="color: #f1f1f1;">@User.Identity.Name</strong>
                                             </a>
@@ -93,7 +93,7 @@
                                 }
                                 else
                                 {
-                                    <a class="btn  rounded-pill px-4" asp-action="Login" asp-controller="Account">
+                                    <a class="btn rounded-pill px-4" asp-action="Login" asp-controller="Account">
                                         <i class="fas fa-sign-in-alt me-2"></i>Login
                                     </a>
                                 }
@@ -113,45 +113,45 @@
         </div>
 
         <!-- Enhanced Footer -->
-        <footer class="bg-dark text-white pt-5" id="footer">
+        <footer class="bg-dark pt-5 text-white" id="footer">
             <div class="container">
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-brand d-flex align-items-center mb-4">
-                            <i class="fas fa-dumbbell  fs-3 me-2"></i>
+                            <i class="fas fa-dumbbell fs-3 me-2"></i>
                             <span class="h4 mb-0">FOR<span >CE</span> GYM</span>
                         </div>
                         <p class="text-muted">Transform your body, empower your mind. Our mission is to help you achieve your fitness goals in a supportive community environment.</p>
                         <div class="social-icons mt-4">
-                            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="me-3 text-white"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="me-3 text-white"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="me-3 text-white"><i class="fab fa-twitter"></i></a>
                             <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
 
                     <div class="col-lg-2 col-md-6">
-                        <h5 class="text-uppercase  mb-4">Quick Links</h5>
+                        <h5 class="text-uppercase mb-4">Quick Links</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Home</a></li>
-                            <li class="mb-2"><a href="#classes" class="text-white text-decoration-none">Classes</a></li>
-                            <li class="mb-2"><a href="#trainers" class="text-white text-decoration-none">Trainers</a></li>
-                            <li class="mb-2"><a href="#membership" class="text-white text-decoration-none">Membership</a></li>
-                            <li class="mb-2"><a href="#testimonials" class="text-white text-decoration-none">Success Stories</a></li>
+                            <li class="mb-2"><a href="#" class="text-decoration-none text-white">Home</a></li>
+                            <li class="mb-2"><a href="#classes" class="text-decoration-none text-white">Classes</a></li>
+                            <li class="mb-2"><a href="#trainers" class="text-decoration-none text-white">Trainers</a></li>
+                            <li class="mb-2"><a href="#membership" class="text-decoration-none text-white">Membership</a></li>
+                            <li class="mb-2"><a href="#testimonials" class="text-decoration-none text-white">Success Stories</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
-                        <h5 class="text-uppercase  mb-4">Opening Hours</h5>
+                        <h5 class="text-uppercase mb-4">Opening Hours</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-3 d-flex">
-                                <span class="me-3"><i class="fas fa-clock "></i></span>
+                            <li class="d-flex mb-3">
+                                <span class="me-3"><i class="fas fa-clock"></i></span>
                                 <div>
                                     <strong>Monday - Friday</strong><br>
                                     6:00 AM - 10:00 PM
                                 </div>
                             </li>
-                            <li class="mb-3 d-flex">
+                            <li class="d-flex mb-3">
                                 <span class="me-3"><i class="fas fa-clock"></i></span>
                                 <div>
                                     <strong>Saturday</strong><br>
@@ -159,7 +159,7 @@
                                 </div>
                             </li>
                             <li class="d-flex">
-                                <span class="me-3"><i class="fas fa-clock "></i></span>
+                                <span class="me-3"><i class="fas fa-clock"></i></span>
                                 <div>
                                     <strong>Sunday</strong><br>
                                     8:00 AM - 6:00 PM
@@ -169,35 +169,35 @@
                     </div>
 
                     <div class="col-lg-3 col-md-6">
-                        <h5 class="text-uppercase  mb-4">Contact Us</h5>
+                        <h5 class="text-uppercase mb-4">Contact Us</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-3 d-flex">
-                                <span class="me-3"><i class="fas fa-map-marker-alt "></i></span>
+                            <li class="d-flex mb-3">
+                                <span class="me-3"><i class="fas fa-map-marker-alt"></i></span>
                                 <div>123 Fitness Avenue<br>Shibin Elkom, Monofia</div>
                             </li>
-                            <li class="mb-3 d-flex">
-                                <span class="me-3"><i class="fas fa-phone "></i></span>
+                            <li class="d-flex mb-3">
+                                <span class="me-3"><i class="fas fa-phone"></i></span>
                                 <div>0123 456 7890</div>
                             </li>
                             <li class="d-flex">
-                                <span class="me-3"><i class="fas fa-envelope "></i></span>
+                                <span class="me-3"><i class="fas fa-envelope"></i></span>
                                 <div>info@forcegym.com</div>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <hr class="my-4 border-secondary">
+                <hr class="border-secondary my-4">
 
                 <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <p class="mb-0 text-muted">&copy; @DateTime.Now.Year Force Gym. All rights reserved.</p>
+                    <div class="col-md-6 text-md-start mb-md-0 mb-3 text-center">
+                        <p class="text-muted mb-0">&copy; @DateTime.Now.Year Force Gym. All rights reserved.</p>
                     </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <p class="mb-0 text-muted">
+                    <div class="col-md-6 text-md-end text-center">
+                        <p class="text-muted mb-0">
                             Designed with <i class="fas fa-heart text-danger"></i> for fitness enthusiasts |
-                            <a href="#" class="text-white text-decoration-none">Privacy Policy</a> |
-                            <a href="#" class="text-white text-decoration-none">Terms of Service</a>
+                            <a href="#" class="text-decoration-none text-white">Privacy Policy</a> |
+                            <a href="#" class="text-decoration-none text-white">Terms of Service</a>
                         </p>
                     </div>
                 </div>

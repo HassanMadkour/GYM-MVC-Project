@@ -93,6 +93,15 @@ namespace GYM_MVC.Controllers {
                 IdentityResult result = _userManager.CreateAsync(user, registerMemberViewModel.Password).Result;
                 var resultOfRole = await _userManager.AddToRoleAsync(user, "Member");
 
+                if (registerMemberViewModel.Image != null) {
+                    UploadImageStatus status = await ImageHandler.UploadImage(registerMemberViewModel.Image, "members");
+                    if (status is UploadImageError) {
+                        ModelState.AddModelError(string.Empty, status.Message);
+                        return View("Register", registerMemberViewModel);
+                    }
+                    member.ImagePath = ((UploadImageSuccess)status).FileName;
+                }
+
                 if (result.Succeeded && resultOfRole.Succeeded) {
                     member.Id = user.Id;
                     await unitOfWork.MemberRepo.Add(member);
@@ -111,7 +120,7 @@ namespace GYM_MVC.Controllers {
 
             registerMemberViewModel.AvailableMemberships = unitOfWork.MembershipRepo.GetAll()
          .Select(m => mapper.Map<DisplayMembershipViewModel>(m)).ToList();
-          
+
             return View("Register", registerMemberViewModel);
         }
 
@@ -130,6 +139,16 @@ namespace GYM_MVC.Controllers {
                 Member member = mapper.Map<RegisterMemberFromAdmin, Member>(registerMemFormAdmin);
                 IdentityResult result = _userManager.CreateAsync(user, registerMemFormAdmin.Password).Result;
                 var resultOfRole = await _userManager.AddToRoleAsync(user, "Member");
+
+                if (registerMemFormAdmin.Image != null) {
+                    UploadImageStatus status = await ImageHandler.UploadImage(registerMemFormAdmin.Image, "members");
+                    if (status is UploadImageError) {
+                        ModelState.AddModelError(string.Empty, status.Message);
+                        return View("Register", registerMemFormAdmin);
+                    }
+                    member.ImagePath = ((UploadImageSuccess)status).FileName;
+                }
+
 
                 if (result.Succeeded && resultOfRole.Succeeded) {
                     member.Id = user.Id;
