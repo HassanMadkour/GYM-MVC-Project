@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
@@ -32,6 +33,8 @@ namespace GYM_MVC.Controllers {
             if (member == null) return NotFound();
 
             var vm = MapToViewModel(member);
+            vm.Trainers = _unitOfWork.TrainerRepo.GetAll().ToList();
+            vm.Memberships = _unitOfWork.MembershipRepo.GetAll().ToList();
             return View(vm);
         }
 
@@ -70,8 +73,13 @@ namespace GYM_MVC.Controllers {
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(MemberViewModel vm) {
-            if (!ModelState.IsValid) return View("Details", vm);
+            if (!ModelState.IsValid)
+            {
+                vm.Trainers = _unitOfWork.TrainerRepo.GetAll().ToList();
+                vm.Memberships = _unitOfWork.MembershipRepo.GetAll().ToList();
 
+                return View("Details", vm);
+            }
             var member = await _unitOfWork.MemberRepo.GetById(vm.Id);
             if (member == null) return NotFound();
 
@@ -89,7 +97,9 @@ namespace GYM_MVC.Controllers {
             _unitOfWork.MemberRepo.Update(member);
             await _unitOfWork.Save(); // Save changes to DB
 
-            return RedirectToAction(nameof(Index));
+            if (User.IsInRole("Admin"))
+                return RedirectToAction(nameof(Index));
+            return RedirectToAction("ActiveWorkoutPlan", "Member", new { id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value });
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -163,7 +173,8 @@ namespace GYM_MVC.Controllers {
         public async Task<IActionResult> ActiveWorkOutPlan(int id)
         {
             var activeWorkoutPlan = await _unitOfWork.WorkoutPlanRepo.GetActiveWorkOutPlan(id);
-
+            var member = await _unitOfWork.MemberRepo.GetById(id);
+            ViewBag.IsApproved = member.IsApproved;
             return View(mapper.Map<DisplayWorkoutPlanVM>(activeWorkoutPlan));
 
         }

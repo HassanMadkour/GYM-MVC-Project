@@ -17,8 +17,8 @@ namespace GYM_MVC.ViewModels.TrainerViewModels {
         public decimal Salary { get; set; }
 
         [Display(Name = "Profile Picture")]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
 
-        public string ImagePath { get; set; }
+        public string? ImagePath { get; set; }
     }
 }

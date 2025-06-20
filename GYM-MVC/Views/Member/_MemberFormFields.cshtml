@@ -1,5 +1,8 @@
 ﻿@model GYM_MVC.ViewModels.MemberViewModels.MemberViewModel
-
+@{
+    var trainersList = new SelectList(Model.Trainers, "Id", "Name", new { Model.TrainerId });
+    var memberShipsList = new SelectList(Model.Memberships, "Id", "Type", new { Model.MembershipId });
+}
 <div class="row g-3">
     <div class="col-md-6">
         <div class="form-floating">
@@ -20,7 +23,7 @@
     <div class="col-md-3">
         <div class="form-floating">
             <select asp-for="MaritalStatus" class="form-select"
-                    asp-items="Html.GetEnumSelectList<GYM.Domain.Entities.MaritalStatus>()">
+            asp-items="Html.GetEnumSelectList<GYM.Domain.Entities.MaritalStatus>()">
                 <option value="">Select Status</option>
             </select>
             <label asp-for="MaritalStatus" class="fw-semibold"></label>
@@ -67,14 +70,35 @@
         </div>
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-3">
         <div class="form-floating">
             <input asp-for="AvailableDays" class="form-control" placeholder=" "
-                   placeholder="e.g. Sun,Tue,Thu" />
+            placeholder="e.g. Sun,Tue,Thu" />
             <label asp-for="AvailableDays" class="fw-semibold"></label>
         </div>
     </div>
 
+    <div class="col-md-3">
+        <div class="form-floating">
+
+            <select asp-for="TrainerId" class="form-select"
+            asp-items="@trainersList">
+                <option value="">Select Trainer</option>
+            </select>
+            <label asp-for="TrainerId" class="fw-semibold"></label>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-floating">
+            <select asp-for="MembershipId" class="form-select"
+            asp-items="@memberShipsList">
+                <option value="">Select MemberShip</option>
+            </select>
+            <label asp-for="MembershipId" class="fw-semibold"></label>
+        </div>
+    </div>
+    <br />
     <!-- Image Upload -->
     <div class="col-md-6">
         <div class="mb-3">
@@ -90,11 +114,14 @@
     </div>
 
     <!-- Approval Status -->
-    <div class="col-md-3">
-        <div class="form-check form-switch mt-4 pt-2">
-            <input asp-for="IsApproved" class="form-check-input" role="switch" />
-            <label asp-for="IsApproved" class="form-check-label fw-semibold"></label>
+    @if(User.IsInRole("Admin"))
+    {
+        <div class="col-md-3">
+            <div class="form-check form-switch mt-4 pt-2">
+                <input asp-for="IsApproved" class="form-check-input" role="switch" />
+                <label asp-for="IsApproved" class="form-check-label fw-semibold"></label>
+            </div>
         </div>
-    </div>
+    }
 </div>
 

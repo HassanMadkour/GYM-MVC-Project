@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,6 +17,10 @@
     <meta name="keywords" content="gym, fitness, workout, personal training, exercise, health">
 </head>
 <body>
+    @{
+        var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+    }
+    
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader">
@@ -34,7 +39,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
                 <div class="container">
                     <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
-                        <i class="fas fa-dumbbell  me-2"></i>
+                        <i class="fas fa-dumbbell me-2"></i>
                         <span class="brand-text">FOR<span class="brand-highlight">CE</span> GYM</span>
                     </a>
 
@@ -44,8 +49,8 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <div class="navbar-collapse collapse" id="navbarNav">
+                        <ul class="navbar-nav align-items-lg-center ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
@@ -67,14 +72,18 @@
                                     if (User.IsInRole("Member"))
                                     {
                                         <div class="dropdown dropdownBtn">
-                                            <a class="btn  rounded-pill dropdown-toggle d-flex align-items-center dropdownBtn" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <a class="btn rounded-pill dropdown-toggle d-flex align-items-center dropdownBtn" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="fas fa-user-circle me-2" style="color: #f1f1f1;"></i>
                                                 <strong class="p-2" style="color: #f1f1f1;">@User.Identity.Name</strong>
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                                 <li><a class="dropdown-item" asp-controller="Member" asp-action="Profile">Profile</a></li>
-                                                <li><a class="dropdown-item" asp-controller="Member" asp-action="ActiveWorkOutPlan"><i class="fas fa-dumbbell me-2"></i>Workout Plan</a></li>
+                                                <li><a class="dropdown-item" asp-controller="Member" asp-action="ActiveWorkOutPlan"
+                                                       asp-route-id="@userId"><i class="fas fa-dumbbell me-2"></i>Workout Plan</a>
+                                                </li>
                                                 <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" asp-controller="Member" asp-action="Details" asp-route-id="@userId">Update Profile</a></li>
+
                                                 <li><a class="dropdown-item text-danger" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
                                             </ul>
                                         </div>
