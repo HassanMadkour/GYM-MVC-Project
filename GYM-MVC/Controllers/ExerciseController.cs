@@ -27,6 +27,7 @@ namespace GYM_MVC.Controllers {
             var ExcerciseRepo = await _unitOfWork.ExcerciseRepo.GetExercisesByWorkoutPlanId(WorkoutPlanId);
             var workoutPlan = await _unitOfWork.WorkoutPlanRepo.GetById(WorkoutPlanId);
             ViewBag.WorkoutPlanId = WorkoutPlanId;
+
             ViewBag.WorkOutPlan = _mapper.Map<DisplayWorkoutPlanVM>(workoutPlan);
             var GetAllExercises = _mapper.Map<List<EditExerciseVM>>(ExcerciseRepo);
             return View(GetAllExercises ?? new List<EditExerciseVM>());

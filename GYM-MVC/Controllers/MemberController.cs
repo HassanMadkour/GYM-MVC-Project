@@ -60,6 +60,16 @@ namespace GYM_MVC.Controllers {
 
             return RedirectToAction(nameof(Index));
         }
+        //[HttpGet]
+        //public async Task<IActionResult> Edit(int id)
+        //{
+        //    var member = await _unitOfWork.MemberRepo.GetById(id);
+        //    if (member == null) return NotFound();
+
+        //    var vm = MapToViewModel(member);
+        //    return View(vm); 
+        //}
+
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(MemberViewModel vm) {
@@ -167,5 +177,20 @@ namespace GYM_MVC.Controllers {
             return View(mapper.Map<DisplayWorkoutPlanVM>(activeWorkoutPlan));
 
         }
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            var userName = User.Identity?.Name;
+            if (string.IsNullOrWhiteSpace(userName)) return RedirectToAction("Login", "Account");
+
+            var member = _unitOfWork.MemberRepo.GetAll()
+                            .FirstOrDefault(m => m.Name == userName);
+
+            if (member == null) return NotFound("Member profile not found.");
+
+            var vm = MapToViewModel(member);
+            return View(vm);
+        }
     }
+   
 }
