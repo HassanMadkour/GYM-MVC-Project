@@ -2,10 +2,13 @@
 using GYM_MVC.Core.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.ScheduleViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers
 {
+
+    [Authorize(Roles ="Admin")]
     public class ScheduleController : Controller
     {
         private readonly IUnitOfWork unitOfWork;

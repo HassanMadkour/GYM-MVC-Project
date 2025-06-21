@@ -1,12 +1,14 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.TrainerViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers {
 
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Trainer")]
     public class TrainerController : Controller {
         private IUnitOfWork UnitOfWork;
         private IMapper mapper;
@@ -105,13 +107,11 @@ namespace GYM_MVC.Controllers {
             return RedirectToAction(nameof(GetAll));
         }
 
-        //[Authorize(Roles = "Trainer")]
-        public IActionResult GetMembersByTrainerId(int? id) {
-            //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
-            //    return NotFound();
-            //List<Member> membersfromDb = UnitOfWork.MemberRepo.GetMembersByTrainerId(id!.Value);
+        
+        public async Task<IActionResult> GetMembersByTrainerId(int? id) {
+            if (id is null || !await UnitOfWork.TrainerRepo.Contains(m => m.Id == id))
+                return NotFound();
             List<Member> membersfromDb = UnitOfWork.MemberRepo.GetMembersByTrainerId(id.Value);
-                                    
             return View(mapper.Map<List<MemberByTrainerIdVM>>(membersfromDb));
         }
         public async Task<IActionResult> Details(int? id)
@@ -126,10 +126,11 @@ namespace GYM_MVC.Controllers {
         }
 
 
-        //[Authorize(Roles = "Trainer")]
+        
         public async Task<IActionResult> GetMemberWithWorkoutPlans(int? id) {
-            //if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id)) 
-            //    return NotFound();
+            if (id is null || !await UnitOfWork.MemberRepo.Contains(m => m.Id == id))
+                return NotFound();
+
             var member = await UnitOfWork.MemberRepo.GetById(id!.Value);
             return View(mapper.Map<DisplayMemberWithWorkoutPlansVM>(member));
         }

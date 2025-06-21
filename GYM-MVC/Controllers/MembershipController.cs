@@ -3,10 +3,12 @@ using GYM_MVC.Core.Entities;
 using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.MembershipViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers {
 
+    [Authorize(Roles ="Admin")]
     public class MembershipController : Controller {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;

@@ -89,7 +89,7 @@
 
                         <!-- Form Buttons -->
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2 px-4">
+                            <a asp-action="Index" asp-route-WorkoutPlanId= "@Model.WorkoutPlanId" class="btn btn-outline-secondary me-md-2 px-4">
                                 <i class="fas fa-arrow-left me-2"></i>Back
                             </a>
                             <button type="submit" class="btn btn-primary-dark px-4">

@@ -4,10 +4,13 @@ using AutoMapper.Execution;
 using GYM.Domain.Entities;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GYM_MVC.Controllers {
+
+    [Authorize(Roles = "Trainer")]
     public class WorkoutPlanController : Controller {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -26,6 +29,7 @@ namespace GYM_MVC.Controllers {
         public IActionResult Create(int memberId) {
             var allMembers = unitOfWork.MemberRepo.GetAll().ToList();
             ViewBag.MemberId = memberId;
+
             ViewBag.MembersList = new SelectList(allMembers, "Id", "Name", memberId);
             return View();
         }

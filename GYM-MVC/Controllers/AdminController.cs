@@ -4,10 +4,12 @@ using GYM_MVC.Core.IRepositories;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.Data.UnitOfWorks;
 using GYM_MVC.ViewModels.ScheduleViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
 
     {

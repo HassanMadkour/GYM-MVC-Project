@@ -6,6 +6,7 @@ using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.AccountViewModels;
 using GYM_MVC.ViewModels.MemberViewModels;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYM_MVC.Controllers {
@@ -38,6 +39,7 @@ namespace GYM_MVC.Controllers {
             return View(vm);
         }
 
+        [Authorize(Roles ="Admin,Member")]
         [HttpGet]
         public IActionResult Create() {
             RegisterMemberFromAdmin vm = new RegisterMemberFromAdmin();
@@ -45,6 +47,7 @@ namespace GYM_MVC.Controllers {
             return View(vm);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MemberViewModel vm) {
             if (!ModelState.IsValid) return View(vm);
@@ -70,6 +73,7 @@ namespace GYM_MVC.Controllers {
         //    return View(vm); 
         //}
 
+        [Authorize(Roles = "Admin,Member")]
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(MemberViewModel vm) {
@@ -101,6 +105,7 @@ namespace GYM_MVC.Controllers {
                 return RedirectToAction(nameof(Index));
             return RedirectToAction("ActiveWorkoutPlan", "Member", new { id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value });
         }
+        [Authorize(Roles = "Admin,Member")]
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id) {
@@ -108,7 +113,7 @@ namespace GYM_MVC.Controllers {
             await _unitOfWork.Save(); // Save changes to DB
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteRange(List<int> memberIds) {
             var members = _unitOfWork.MemberRepo
@@ -170,6 +175,8 @@ namespace GYM_MVC.Controllers {
             return $"/images/members/{fileName}";
         }
 
+        [Authorize(Roles = "Member")]
+
         public async Task<IActionResult> ActiveWorkOutPlan(int id)
         {
             var activeWorkoutPlan = await _unitOfWork.WorkoutPlanRepo.GetActiveWorkOutPlan(id);
@@ -178,6 +185,7 @@ namespace GYM_MVC.Controllers {
             return View(mapper.Map<DisplayWorkoutPlanVM>(activeWorkoutPlan));
 
         }
+        [Authorize(Roles = "Member")]
         [HttpGet]
         public async Task<IActionResult> Profile()
         {

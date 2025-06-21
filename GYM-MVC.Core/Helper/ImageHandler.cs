@@ -31,7 +31,7 @@ namespace GYM_MVC.Core.Helper {
                 if (image.Length > allowedSize)
                     return new UploadImageError("Image size must be less than 5MB");
 
-                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" , ".jfif" , ".heic" };
                 var extension = Path.GetExtension(image.FileName).ToLower();
 
                 if (!allowedExtensions.Contains(extension))

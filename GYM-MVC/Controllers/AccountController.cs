@@ -33,12 +33,12 @@ namespace GYM_MVC.Controllers {
             this.unitOfWork = unitOfWork;
         }
 
+        
         [HttpGet]
-        public IActionResult Login() {
-            //if (User.Identity.IsAuthenticated) {
-            //    return RedirectToAction("Index", "Home");
-            //}
-            return View("Login");
+        public IActionResult Login() {   
+            if(!User.Identity.IsAuthenticated)
+                 return View("Login");
+            return NotFound();
         }
 
         [HttpPost]
@@ -67,8 +67,11 @@ namespace GYM_MVC.Controllers {
             return View("Login", loginUserViewModel);
         }
 
+        
         [HttpGet]
         public IActionResult Register() {
+            if (User.Identity.IsAuthenticated)
+                return NotFound();
             var model = new RegisterMemberViewModel {
                 AvailableTrainers = unitOfWork.TrainerRepo.GetAll()
               .Select(t => mapper.Map<DisplayTrainerVM>(t)).ToList(),
@@ -78,7 +81,7 @@ namespace GYM_MVC.Controllers {
             };
             return View("Register", model);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult RegisterTrainer() {
             return View();
@@ -124,6 +127,7 @@ namespace GYM_MVC.Controllers {
             return View("Register", registerMemberViewModel);
         }
 
+        [Authorize(Roles ="Admin")]
         public IActionResult RegisterTheMemberFromAdmin() {
             RegisterMemberFromAdmin registerMemFormAdmin = new RegisterMemberFromAdmin();
             registerMemFormAdmin.AvailableMemberships = mapper.Map<List<DisplayMembershipViewModel>>(unitOfWork.MembershipRepo.GetAll().ToList());
@@ -131,6 +135,7 @@ namespace GYM_MVC.Controllers {
             return View(registerMemFormAdmin);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterTheMemberFromAdmin(RegisterMemberFromAdmin registerMemFormAdmin) {
@@ -167,11 +172,13 @@ namespace GYM_MVC.Controllers {
             return View(registerMemFormAdmin);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult RegisterTheTrainer ()
         {
             return View("RegisterTrainer");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterTheTrainer(RegisterTrainerViewModel registerTrainerViewModel) {
@@ -280,7 +287,7 @@ namespace GYM_MVC.Controllers {
         }
 
         //--------------------------
-        private async Task SendEmailConfirmation(ApplicationUser user) {
+        private async Task SendEmailConfirmation(ApplicationUser user) {    
             Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(user);
             string callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result }, Request.Scheme)!;
             await emailSender.SendEmailAsync(user.Email!, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">Confirm</a>");

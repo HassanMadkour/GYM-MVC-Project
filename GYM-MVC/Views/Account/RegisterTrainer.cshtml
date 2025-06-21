@@ -16,7 +16,7 @@
         </div>
 
         <form asp-action="RegisterTheTrainer" asp-controller="Account" class="trainer-registration-form" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="All" class="validation-summary alert alert-danger"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
 
             <!-- Profile Section -->
             <div class="form-section profile-section">
@@ -164,7 +164,7 @@
                 <button type="submit" class="btn btn-primary btn-register">
                     <i class="fas fa-user-plus"></i> Register Trainer
                 </button>
-                <a asp-action="GetAll" asp-controller="Trainer" class="btn btn-outline-secondary btn-back">
+                <a asp-action="GetAll" asp-controller="Trainer" class="btn btn-outline-secondary">
                     <i class="fas fa-arrow-left"></i> Back to List
                 </a>
             </div>

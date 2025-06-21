@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace GYM_MVC.Controllers {
     [AllowAnonymous]
@@ -31,7 +32,7 @@ namespace GYM_MVC.Controllers {
 
             if (User.Identity.IsAuthenticated && User.IsInRole("Trainer"))
             {
-                return RedirectToAction("GetMembersByTrainerId", "Trainer");
+                return RedirectToAction("GetMembersByTrainerId", "Trainer" , new {Id = User?.FindFirstValue(ClaimTypes.NameIdentifier) });
             }
             if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
@@ -42,7 +43,7 @@ namespace GYM_MVC.Controllers {
             var trainrs = mapper.Map < List < DisplayTrainerVM >> (await Task.Run(() => unitOfWork.TrainerRepo.GetAll().ToList()));
 
             var scheduleTable = scheduleViewModels
-                .GroupBy(s => s.Time.ToString(@"hh\:mm"))
+                .GroupBy(s => s.Time.ToString("hh:mm tt"))
                 .Select(g => new
                 {
                     Time = g.Key,

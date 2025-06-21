@@ -5,12 +5,13 @@ using GYM_MVC.Core.Helper;
 using GYM_MVC.Core.IUnitOfWorks;
 using GYM_MVC.ViewModels.ExerciseViewModels;
 using GYM_MVC.ViewModels.WorkoutPlansViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using DayOfWeek = GYM.Domain.Entities.DayOfWeek;
 
 namespace GYM_MVC.Controllers {
-    //[Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Trainer")]
     public class ExerciseController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -27,7 +28,7 @@ namespace GYM_MVC.Controllers {
             var ExcerciseRepo = await _unitOfWork.ExcerciseRepo.GetExercisesByWorkoutPlanId(WorkoutPlanId);
             var workoutPlan = await _unitOfWork.WorkoutPlanRepo.GetById(WorkoutPlanId);
             ViewBag.WorkoutPlanId = WorkoutPlanId;
-
+            ViewBag.MemberId = workoutPlan.MemberId;
             ViewBag.WorkOutPlan = _mapper.Map<DisplayWorkoutPlanVM>(workoutPlan);
             var GetAllExercises = _mapper.Map<List<EditExerciseVM>>(ExcerciseRepo);
             return View(GetAllExercises ?? new List<EditExerciseVM>());

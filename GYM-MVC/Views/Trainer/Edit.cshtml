@@ -55,7 +55,7 @@
                             <label class="upload-label">
                                 <input asp-for="ImageFile" id="ImageFile" type="file" class="upload-input" accept="image/*" />
                                 <div class="upload-preview">
-                                    <img id="imagePreview" src="@Model.ImagePath ?? " /images/default-trainer.jpg"" alt="Trainer Preview" />
+                                    <img id="imagePreview" src="@Model.ImagePath" alt="Trainer Preview" />
                                     <div class="upload-overlay">
                                         <i class="fas fa-camera-retro"></i>
                                         <span>Click to upload</span>
